@@ -6,13 +6,9 @@ import AdvancedSearchForm from './AdvancedSearchForm';
 function Main(props) {
     return (
         <div id="search-input-wrap">
-            <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
+            <ul className="nav nav-tabs" id="myTab" role="tablist">                
                     <TabButton />                    
-                </li>
-                <li className="nav-item" role="presentation">
-                    <TabButton quick="false"/>
-                </li>
+                    <TabButton quick="false"/>                
             </ul>
             <div className="tab-content" id="myTabContent">
                 <div
