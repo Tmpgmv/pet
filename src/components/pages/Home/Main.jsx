@@ -1,5 +1,5 @@
 import React from 'react';
-import QuickSearch from './QuickSearch';
+import QuickSearch from '../../QuickSearch';
 import About from './About';
 import Carousel from './Carousel';
 import FoundAnimals from './FoundAnimals';

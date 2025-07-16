@@ -1,4 +1,5 @@
 import React from 'react';
+import QuickSearch from '../../QuickSearch';
 
 function Main(props) {
     return (
@@ -42,24 +43,9 @@ function Main(props) {
                 aria-labelledby="simple-tab"
                 tabIndex={0}
                 >
-                <form id="quick-search" className="mt-4" method="post">
-                    <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Кого ищем?"
-                        aria-describedby="button-addon2"
-                        required=""
-                    />
-                    <button
-                        className="btn btn-outline-primary"
-                        type="submit"
-                        id="button-addon2"
-                    >
-                        Поиск
-                    </button>
-                    </div>
-                </form>
+               
+                <QuickSearch />
+
                 </div>
                 <div
                 className="tab-pane fade"
