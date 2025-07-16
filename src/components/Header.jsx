@@ -16,13 +16,11 @@ function Header() {
     return (
         <header>
             <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <a
-                href="#"
-                className="d-flex align-items-center link-body-emphasis text-decoration-none"
-                >
-                <img src={cat} height={32} alt="cat" />
-                <span className="fs-4 text-primary ms-2">Найди питомца</span>{" "}
-                </a>
+                <Link className="d-flex align-items-center link-body-emphasis text-decoration-none" to={'/'}>
+                    <img src={cat} height={32} alt="cat" />
+                    <span className="fs-4 text-primary ms-2">Найди питомца</span>{" "}
+                </Link>                
+                
                 <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                 <a
                     className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3"
