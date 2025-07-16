@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Search() {
+function QuickSearch() {
     return (
     <div id="search-wrap">
       <form id="quick-search" method="post">
@@ -25,4 +25,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default QuickSearch;

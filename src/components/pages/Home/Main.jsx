@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './Search';
+import QuickSearch from './QuickSearch';
 import About from './About';
 import Carousel from './Carousel';
 import FoundAnimals from './FoundAnimals';
@@ -10,7 +10,7 @@ function Main() {
       <main>
         <div id="intro">
             <About />
-            <Search />
+            <QuickSearch />
         </div>
         
         <Carousel />
