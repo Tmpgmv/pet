@@ -10,6 +10,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../assets/css/pricing.css';
 import '../assets/css/style.css';
+import MainMenuItem from './MainMenuItem.jsx';
 
 
 function Header() {
@@ -22,15 +23,10 @@ function Header() {
                 </Link>
 
                 <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                
-                    <Link className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3" to={'/post/new'}><img src={application} height={20} alt="new post" /></Link>
-
-                    <Link className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3" to={'/search'}><img src={search} height={20} alt="search" /></Link>
-
-                    <Link className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3" to={'/account'}><img src={account} height={20} alt="person" /></Link>
-
-                    <Link className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3" to={'/login'}><img src={login} height={20} alt="login" /></Link>
-
+                    <MainMenuItem to="/post/new" imgSrc={application} alt="new post"/>
+                    <MainMenuItem to="/search" imgSrc={search} alt="search"/>
+                    <MainMenuItem to="/account" imgSrc={account} alt="person"/>
+                    <MainMenuItem to="/login" imgSrc={login} alt="person"/>
                 </nav>
             </div>
         </header>
