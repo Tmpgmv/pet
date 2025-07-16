@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 import cat from '../assets/images/cat.svg';
 import application from '../assets/images/application.svg';
@@ -41,12 +42,9 @@ function Header() {
                 >
                     <img src={account} height={20} alt="person" />
                 </a>
-                <a
-                    className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3"
-                    href="#"
-                >
-                    <img src={login} height={20} alt="login" />
-                </a>
+
+                <Link className="py-2 link-body-emphasis text-decoration-none ps-3 pe-3" to={'/login'}><img src={login} height={20} alt="login" /></Link>
+
                 </nav>
             </div>
         </header>
