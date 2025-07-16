@@ -1,0 +1,43 @@
+.bs-primary-bg-subtle {
+    background-color: var(--bs-primary-bg-subtle);    	
+}
+
+.border-solid {
+  border: solid;
+}
+
+
+.line-hight-08 {
+	line-height: 0.8;
+}
+
+.mh-3em {
+	min-height: 3em;
+}
+
+.info .row:nth-child(odd) {
+	background-color:  var(--bs-secondary-bg);
+}
+
+
+
+.delete, .edit {
+    all: unset;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    background-size: 20px 20px;
+    width: 20px; 
+    height: 20px;    
+}
+
+.edit {
+    background-image: url(../images/pencil.svg);
+}
+
+
+.delete {
+    background-image: url(../images/trash.svg);
+}
+
