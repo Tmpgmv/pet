@@ -11,10 +11,8 @@ function AdvancedSearchForm(props) {
                 Выберите район, вид или и то, и другое.
                 </div>
                 <label htmlFor="district">Район:</label>
-                <select className="form-select mb-2" id="district">
-                <option selected="" value="">
-                    ---
-                </option>
+                <select className="form-select mb-2" id="district" defaultValue="">
+                <option value="">---</option>
                 <option>Адмиралтейский</option>
                 <option>Василеостровский</option>
                 <option>Выборгский</option>
