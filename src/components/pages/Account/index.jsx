@@ -4,7 +4,7 @@ import Footer from '../../Footer';
 import Main from './Main';
 
 
-function index(props) {
+function index() {
     return (
         <div>
             <Header />
