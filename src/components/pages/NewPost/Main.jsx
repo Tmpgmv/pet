@@ -7,9 +7,9 @@ import KindInput from "../../KindInput";
 import MarkInput from "./MarkInput";
 import DescriptionInput from "./DescriptionInput";
 import ImageInput from "./ImageInput";
-import PasswordConfirmationInput from '../../PasswordConfirmationInput';
+import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import Button from "../../Button";
-
+import CheckboxInput from "../../CheckboxInput";
 
 function Main() {
   return (
@@ -22,7 +22,7 @@ function Main() {
         className="row g-3 mt-2 col-12 col-md-6 mx-auto"
       >
         <NameInput />
-        
+
         <PhoneInput />
 
         <EmailInput />
@@ -33,62 +33,33 @@ function Main() {
 
         <DescriptionInput />
 
-        <ImageInput aLabel={true}/>
+        <ImageInput aLabel={true} />
 
         <ImageInput />
 
         <ImageInput />
 
-        <div>
-          <div className="form-check">
-            <input
-              className="form-check-input is-invalid"
-              type="checkbox"
-              defaultValue=""
-              id="validationServerConfirm"
-              aria-describedby="confirmError"
-              name="confirm"
-              required=""
-            />
-            <label
-              className="form-check-label"
-              htmlFor="validationServerConfirm"
-            >
-              Согласие на обработку персональных данных
-            </label>
-            <div id="confirmError" className="invalid-feedback">
-              Необходимо согласиться.
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="form-check">
-            <input
-              className="form-check-input is-invalid"
-              type="checkbox"
-              defaultValue=""
-              id="validationServerRegister"
-              aria-describedby="registerError"
-              name="register"
-            />
-            <label
-              className="form-check-label"
-              htmlFor="validationServerRegister"
-            >
-              Пройти автоматическую регистрацию
-            </label>
-            <div id="registerError" className="invalid-feedback">
-              Проблема на сервере.
-            </div>
-          </div>
-        </div>
+        <CheckboxInput
+          name="confirm"
+          label="Согласие на обработку персональных данных"
+          errorMessage="Необходимо согласиться."
+          isRequired={true}
+        />
 
-        <PasswordInput />
+        <CheckboxInput
+          name="register"
+          label="Пройти автоматическую регистрацию"
+          errorMessage="Проблема на сервере."
+        />
 
-        <PasswordConfirmationInput />
+        <div id="passwords">
+          <PasswordInput />
+
+          <PasswordConfirmationInput />
+        </div>
 
         <div className="col">
-          <Button btnText="Опубликовать" />          
+          <Button btnText="Опубликовать" />
         </div>
       </form>
     </section>
