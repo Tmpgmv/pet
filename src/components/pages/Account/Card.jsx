@@ -4,7 +4,7 @@ import calendar from '../../../assets/images/calendar.svg';
 import status from '../../../assets/images/status.svg';
 import Img from '../../Img';
 
-function Card() {
+function Card({src, alt}) {
     return (
         <div className="col">
                 <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">
@@ -12,7 +12,7 @@ function Card() {
                     <h4 className="my-0 fw-normal">Кошка</h4>
                 </div>
                 <div className="card-body">
-                    <Img src="https://placebear.com/674/400" aClassName="w-100" alt="pet" />
+                    <Img src={src} aClassName="w-100" alt={alt} />
 
                     <div className="row mt-2">
                     <div className="w-25 text-end">

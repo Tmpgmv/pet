@@ -16,15 +16,15 @@ function Adverts() {
             
             <div className="row row-cols-1 row-cols-md-3 mt-4 mb-3 text-center">
             
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
+                <Card src="https://placebear.com/674/400" alt="cat"/>
 
             </div>
             
