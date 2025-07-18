@@ -4,7 +4,7 @@ import calendar from '../../../assets/images/calendar.svg';
 import status from '../../../assets/images/status.svg';
 import Img from '../../Img';
 import Card from './Card';
-import Nav from '../../Nav';
+import Pagination from '../../Pagination';
 import H2 from '../../H2';
 
 
@@ -28,7 +28,7 @@ function Adverts() {
 
             </div>
             
-            <Nav />
+            <Pagination />
         </section>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Nav(props) {
+function Pagination() {
     return (
         <nav aria-label="pagination">
             <ul className="pagination">
@@ -32,4 +32,4 @@ function Nav(props) {
     );
 }
 
-export default Nav;
+export default Pagination;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Img({src, height, alt, aClassName=""}) {
+function Img({src, alt, aClassName="", height=null}) {
     return (
-        <img src={src} height={height} alt={alt} className= {aClassName ?? undefined}/>
+        <img src={src} height={height ?? undefined} alt={alt} className= {aClassName ?? undefined}/>
     );
 }
 
