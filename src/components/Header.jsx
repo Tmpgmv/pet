@@ -1,15 +1,14 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-import cat from "../assets/images/cat.svg";
-import application from "../assets/images/application.svg";
-import search from "../assets/images/search.svg";
-import account from "../assets/images/account.svg";
-import login from "../assets/images/login.svg";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../assets/css/pricing.css";
 import "../assets/css/style.css";
+import account from "../assets/images/account.svg";
+import application from "../assets/images/application.svg";
+import cat from "../assets/images/cat.svg";
+import login from "../assets/images/login.svg";
+import search from "../assets/images/search.svg";
 import MainMenuItem from "./MainMenuItem.jsx";
 
 function Header() {

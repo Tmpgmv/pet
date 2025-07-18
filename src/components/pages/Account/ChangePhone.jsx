@@ -1,7 +1,6 @@
-import React from "react";
+import Button from "../../Button";
 import H2 from "../../H2";
 import PhoneInput from "../../PhoneInput";
-import Button from "../../Button";
 
 function ChangePhone() {
   return (

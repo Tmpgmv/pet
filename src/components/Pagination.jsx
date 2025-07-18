@@ -1,5 +1,3 @@
-import React from "react";
-
 function Pagination() {
   return (
     <nav aria-label="pagination">

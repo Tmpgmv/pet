@@ -1,6 +1,5 @@
-import React from "react";
-import FoundAnimalCard from "./FoundAnimalCard";
 import H2 from "../../H2";
+import FoundAnimalCard from "./FoundAnimalCard";
 
 function FoundAnimals(props) {
   return (

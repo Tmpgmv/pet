@@ -1,6 +1,5 @@
-import React from "react";
-import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
+import geo from "../../../assets/images/geo.svg";
 import Button from "../../Button";
 
 function FoundAnimalCard({ kind, src, alt, date, district }) {

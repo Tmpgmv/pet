@@ -1,4 +1,3 @@
-import React from "react";
 
 function CarouselItem({ src, h5, p, alt, activeClass = "" }) {
   return (

@@ -1,7 +1,6 @@
-import React from "react";
-import H2 from "../../H2";
-import EmailInput from "../../EmailInput";
 import Button from "../../Button";
+import EmailInput from "../../EmailInput";
+import H2 from "../../H2";
 
 function ChangeEmail() {
   return (

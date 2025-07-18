@@ -1,11 +1,10 @@
-import React from "react";
-import PhoneInput from "../../PhoneInput";
-import EmailInput from "../../EmailInput";
-import NameInput from "../../NameInput";
-import PasswordInput from "../../PasswordInput";
-import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import Button from "../../Button";
 import CheckboxInput from "../../CheckboxInput";
+import EmailInput from "../../EmailInput";
+import NameInput from "../../NameInput";
+import PasswordConfirmationInput from "../../PasswordConfirmationInput";
+import PasswordInput from "../../PasswordInput";
+import PhoneInput from "../../PhoneInput";
 
 function Form() {
   return (

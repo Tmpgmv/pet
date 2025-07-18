@@ -1,8 +1,7 @@
-import React from "react";
-import Img from "../../Img";
-import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
+import geo from "../../../assets/images/geo.svg";
 import Button from "../../Button";
+import Img from "../../Img";
 
 function Card({ h2, src }) {
   return (

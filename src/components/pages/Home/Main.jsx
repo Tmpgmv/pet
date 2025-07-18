@@ -1,4 +1,3 @@
-import React from "react";
 import QuickSearch from "../../QuickSearch";
 import About from "./About";
 import Carousel from "./Carousel";

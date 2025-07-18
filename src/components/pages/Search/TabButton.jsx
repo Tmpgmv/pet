@@ -1,5 +1,3 @@
-import React from "react";
-
 function TabButton({ quick }) {
   return (
     <li className="nav-item" role="presentation">

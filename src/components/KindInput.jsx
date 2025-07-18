@@ -1,6 +1,4 @@
-import React from "react";
-
-function KindInput({aClassName=null}) {
+function KindInput({ aClassName = null }) {
   return (
     <div className={aClassName ?? undefined}>
       <label htmlFor="validationServerKind" className="form-label">

@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 
 function QuickSearch({ nameOfClass = null }) {
@@ -18,8 +17,7 @@ function QuickSearch({ nameOfClass = null }) {
             required=""
           />
 
-          <Button btnText="Поиск"/>
-
+          <Button btnText="Поиск" />
         </div>
       </form>
     </div>

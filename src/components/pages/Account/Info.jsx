@@ -1,6 +1,5 @@
-import React from "react";
-import Row from "./Row";
 import H1 from "../../H1";
+import Row from "./Row";
 
 function Info() {
   return (

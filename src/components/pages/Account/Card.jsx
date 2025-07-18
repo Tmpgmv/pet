@@ -1,11 +1,10 @@
-import React from "react";
-import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
+import geo from "../../../assets/images/geo.svg";
 import status from "../../../assets/images/status.svg";
-import Img from "../../Img";
 import Button from "../../Button";
+import Img from "../../Img";
 
-function Card({ src, alt }) {
+function Card({ src, alt, date, district }) {
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">
@@ -20,15 +19,15 @@ function Card({ src, alt }) {
               <Img src={calendar} height="30" alt="calendar" />
             </div>
             <div className="w-75 text-start my-auto fw-bold">
-              30 июня 2025 г.
+              {date}
             </div>
           </div>
           <div className="row mt-2 mh-3em">
-            <div className="w-25 text-end">
+            <div className="w-25 my-auto text-end">
               <Img src={geo} height="30" alt="geo" />
             </div>
             <div className="w-75 text-start my-auto fw-bold ">
-              Красногвардейский район
+              {district}
             </div>
           </div>
           <div className="row mt-2 mb-2">

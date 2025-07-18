@@ -1,9 +1,4 @@
-import React from "react";
-
-function CheckboxInput({name,     
-    label,
-    errorMessage,
-    isRequired=false}) {
+function CheckboxInput({ name, label, errorMessage, isRequired = false }) {
   return (
     <div>
       <div className="form-check">
@@ -17,7 +12,7 @@ function CheckboxInput({name,
           required={isRequired ? true : undefined}
         />
         <label className="form-check-label" htmlFor={`validationServer${name}`}>
-            {label}          
+          {label}
         </label>
         <div id={`${name}Error`} className="invalid-feedback">
           {errorMessage}

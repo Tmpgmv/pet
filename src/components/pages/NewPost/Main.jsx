@@ -1,15 +1,14 @@
-import React from "react";
-import NameInput from "../../NameInput";
-import PhoneInput from "../../PhoneInput";
-import PasswordInput from "../../PasswordInput";
-import EmailInput from "../../EmailInput";
-import KindInput from "../../KindInput";
-import MarkInput from "./MarkInput";
-import DescriptionInput from "./DescriptionInput";
-import ImageInput from "./ImageInput";
-import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import Button from "../../Button";
 import CheckboxInput from "../../CheckboxInput";
+import EmailInput from "../../EmailInput";
+import KindInput from "../../KindInput";
+import NameInput from "../../NameInput";
+import PasswordConfirmationInput from "../../PasswordConfirmationInput";
+import PasswordInput from "../../PasswordInput";
+import PhoneInput from "../../PhoneInput";
+import DescriptionInput from "./DescriptionInput";
+import ImageInput from "./ImageInput";
+import MarkInput from "./MarkInput";
 
 function Main() {
   return (

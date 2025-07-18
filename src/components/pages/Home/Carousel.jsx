@@ -1,6 +1,5 @@
-import React from "react";
-import CarouselIndicator from "./CarouselIndicator";
 import CarouselButton from "./CarouselButton";
+import CarouselIndicator from "./CarouselIndicator";
 import CarouselItem from "./CarouselItem";
 
 function Carousel() {

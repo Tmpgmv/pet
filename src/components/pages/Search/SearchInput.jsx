@@ -1,7 +1,6 @@
-import React from "react";
 import QuickSearch from "../../QuickSearch";
-import TabButton from "./TabButton";
 import AdvancedSearchForm from "./AdvancedSearchForm";
+import TabButton from "./TabButton";
 import TabPane from "./TabPane";
 
 function SearchInput(props) {
