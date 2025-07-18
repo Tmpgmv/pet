@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function QuickSearch({nameOfClass=null}) {    
-    return (
+function QuickSearch({ nameOfClass = null }) {
+  return (
     <div id="search-wrap">
-      <form id="quick-search" className={nameOfClass ?? undefined } method="post">
+      <form
+        id="quick-search"
+        className={nameOfClass ?? undefined}
+        method="post"
+      >
         <div className="input-group mb-3">
           <input
             type="text"
@@ -22,7 +26,7 @@ function QuickSearch({nameOfClass=null}) {
         </div>
       </form>
     </div>
-    );
+  );
 }
 
 export default QuickSearch;

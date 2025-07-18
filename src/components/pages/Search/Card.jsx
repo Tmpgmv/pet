@@ -1,9 +1,9 @@
 import React from "react";
 import Img from "../../Img";
-import geo from '../../../assets/images/geo.svg';
-import calendar from '../../../assets/images/calendar.svg';
+import geo from "../../../assets/images/geo.svg";
+import calendar from "../../../assets/images/calendar.svg";
 
-function Card({h2, src}) {
+function Card({ h2, src }) {
   return (
     <>
       <div className="col">
@@ -12,8 +12,8 @@ function Card({h2, src}) {
             <h2 className="my-0 fw-normal">{h2}</h2>
           </div>
           <div className="card-body">
-            <Img src={src}  aClassName="w-100" alt="pet" />
-            
+            <Img src={src} aClassName="w-100" alt="pet" />
+
             <div className="row mt-2">
               <div className="w-25 text-end">
                 <Img src={calendar} height={30} alt="calendar" />
@@ -24,7 +24,7 @@ function Card({h2, src}) {
             </div>
             <div className="row mb-2 mh-3em">
               <div className="w-25 text-end my-auto">
-                <Img src={geo} height={30} alt="geo" />                
+                <Img src={geo} height={30} alt="geo" />
               </div>
               <div className="w-75 text-start my-auto fw-bold ">
                 Красногвардейский район
