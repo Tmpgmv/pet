@@ -1,22 +1,21 @@
 import React from 'react';
 
 
-function TabButton({quick}) {
-    debugger;    
+function TabButton({ quick }) {
     return (
         <li className="nav-item" role="presentation">
             <button
-                className={quick==="true" ? "nav-link active" : "nav-link"}
-                id={quick==="true" ? "quick-tab" : "advanced-tab"}
+                className={quick ? "nav-link active" : "nav-link"}
+                id={quick ? "quick-tab" : "advanced-tab"}
                 data-bs-toggle="tab"
-                data-bs-target={ quick==="true" ? "#quick-tab-pane" : "#advanced-tab-pane"}
+                data-bs-target={quick ? "#quick-tab-pane" : "#advanced-tab-pane"}
                 type="button"
                 role="tab"
-                aria-controls={quick==="true" ? "quick-tab-pane" : "advanced-tab-pane"}
-                aria-selected={quick==="true" ? "true" : "false"}
-                tabIndex={quick==="true" ? undefined : -1}
+                aria-controls={quick ? "quick-tab-pane" : "advanced-tab-pane"}
+                aria-selected={quick ? "true" : "false"}
+                tabIndex={quick ? undefined : -1}
             >
-                {quick==="true" ? "Быстрый поиск" : "Расширенный поиск"}
+                {quick ? "Быстрый поиск" : "Расширенный поиск"}
             </button>
         </li>        
     );

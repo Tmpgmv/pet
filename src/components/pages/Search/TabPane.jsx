@@ -1,17 +1,15 @@
 import React from 'react';
 
-function TabPane({searchComponent, quick}) {
+function TabPane({ searchComponent, quick }) {
     return (
         <div
-            className={quick==="true" ? "tab-pane fade show active" : "tab-pane fade show"}
-            id={quick==="true" ? "quick-tab-pane" : "advanced-tab-pane"}
+            className={quick ? "tab-pane fade show active" : "tab-pane fade show"}
+            id={quick ? "quick-tab-pane" : "advanced-tab-pane"}
             role="tabpanel"
-            aria-labelledby={quick==="true" ? "quick-tab" : "advanced-tab"}
-            tabIndex={quick==="true" ?  undefined : -1}
-            >
-        
+            aria-labelledby={quick ? "quick-tab" : "advanced-tab"}
+            tabIndex={quick ? undefined : -1}
+        >
             {searchComponent}
-
         </div>
     );
 }
