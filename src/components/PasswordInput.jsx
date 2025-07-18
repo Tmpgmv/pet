@@ -1,11 +1,10 @@
 import React from "react";
 
-function PasswordInput() {
+function PasswordInput({extendedLabel=false}) {
   return (
     <div>
       <label htmlFor="validationServerPassword" className="form-label">
-        Пароль (не менее 7 символов, обязательно: 1 цифра, 1 строчная, 1
-        заглавная буквы)
+        Пароль {extendedLabel ? " (не менее 7 символов, обязательно: 1 цифра, 1 строчная, 1 заглавная буквы\)" : undefined}        
       </label>
       <input
         type="password"

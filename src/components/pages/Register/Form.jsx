@@ -20,7 +20,7 @@ function Form() {
 
       <EmailInput />
 
-      <PasswordInput />
+      <PasswordInput extendedLabel={true}/>
 
       <PasswordConfirmationInput />
 
