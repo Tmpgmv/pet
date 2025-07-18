@@ -10,7 +10,7 @@ function Info() {
             
             <div className="container text-start info col col-md-8 mt-4">
                 <Row caption="Имя" value="Иван" />
-                <Row caption="Email" value="info@example.com" isEmail="true"/>
+                <Row caption="Email" value="info@example.com" isEmail={true}/>
                 <Row caption="Зарегистрирован" value="01-01-1970" />
                 <Row caption="Количество объявлений" value="4" />
                 <Row caption="Найдено животных" value="2" />

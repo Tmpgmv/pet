@@ -9,7 +9,7 @@ function Carousel() {
           <h2 className="text-center line-hight-08">Недавно вернулись домой</h2>
           <div id="carousel" className="carousel slide">
             <div className="carousel-indicators">
-              <CarouselIndicator slideTo={0} label="Slide 1" active="true" current="true" />
+              <CarouselIndicator slideTo={0} label="Slide 1" active={true} current={true} />
               <CarouselIndicator slideTo={1} label="Slide 2" />
               <CarouselIndicator slideTo={2} label="Slide 3" />
             </div>
