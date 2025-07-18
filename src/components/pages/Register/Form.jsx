@@ -1,6 +1,8 @@
 import React from "react";
 import PhoneInput from '../../PhoneInput';
 import EmailInput from '../../EmailInput';
+import PasswordInput from '../../PasswordInput';
+import PasswordConfirmationInput from '../../PasswordConfirmationInput';
 import Button from "../../Button";
 
 function Form() {
@@ -32,43 +34,10 @@ function Form() {
 
       <EmailInput />
 
-      <div>
-        <label htmlFor="validationServerPassword" className="form-label">
-          Пароль (не менее 7 символов, обязательно: 1 цифра, 1 строчная, 1
-          заглавная буквы)
-        </label>
-        <input
-          type="password"
-          className="form-control is-invalid"
-          id="validationServerPassword"
-          aria-describedby="passwordError"
-          name="password"
-          pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).{7,}"
-          required=""
-        />
-        <div id="passwordError" className="invalid-feedback">
-          Введите корректный пароль.
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="validationServerPasswordConfirmation"
-          className="form-label"
-        >
-          Повтор пароля
-        </label>
-        <input
-          type="password"
-          className="form-control is-invalid"
-          id="validationServerPasswordConfirmation"
-          aria-describedby="passwordConfirmationError"
-          name="passwordConfirmation"
-          required=""
-        />
-        <div id="passwordConfirmationError" className="invalid-feedback">
-          Пароли не совпадают.
-        </div>
-      </div>
+      <PasswordInput />
+
+      <PasswordConfirmationInput />
+
       <div>
         <div className="form-check">
           <input

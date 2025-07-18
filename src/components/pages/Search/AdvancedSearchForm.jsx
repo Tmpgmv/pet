@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../Button";
+import KindInput from "../../KindInput";
 
 function AdvancedSearchForm() {
   return (
@@ -30,12 +31,10 @@ function AdvancedSearchForm() {
         <option>Фрунзенский</option>
         <option>Центральный</option>
       </select>
-      <div className="mt-3">
-        <label htmlFor="kind" className="form-label">
-          Вид животного (кошка, собака и т.п.)
-        </label>
-        <input type="text" className="form-control" id="kind" />
-      </div>
+
+
+      <KindInput aClassName="mt-3" />
+      
 
       <Button aClassName="mt-3" btnText="Поиск" />
 
