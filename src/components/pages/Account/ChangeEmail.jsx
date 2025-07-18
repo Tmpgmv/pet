@@ -1,5 +1,7 @@
 import React from "react";
 import H2 from "../../H2";
+import EmailInput from "../../EmailInput";
+import Button from "../../Button";
 
 function ChangeEmail() {
   return (
@@ -11,24 +13,11 @@ function ChangeEmail() {
         className="mx-auto col col-md-8 mt-4"
         method="post"
       >
-        <label htmlFor="validationServerEmail" className="form-label">
-          Адрес электронной почты
-        </label>
-        <input
-          type="email"
-          className="form-control is-invalid"
-          id="validationServerEmail"
-          aria-describedby="emailError"
-          name="email"
-          required=""
-        />
-        <div id="emailError" className="invalid-feedback">
-          Адрес электронной почты уже занят.
-        </div>
+
+        <EmailInput />
+
         <div className="col">
-          <button className="btn btn-primary mt-3" type="submit">
-            Сохранить
-          </button>
+          <Button btnText="Сохранить" aClassName="mt-3"/>
         </div>
       </form>
     </section>

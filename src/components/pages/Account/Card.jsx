@@ -3,6 +3,7 @@ import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
 import status from "../../../assets/images/status.svg";
 import Img from "../../Img";
+import Button from "../../Button";
 
 function Card({ src, alt }) {
   return (
@@ -36,9 +37,8 @@ function Card({ src, alt }) {
             </div>
             <div className="w-75 text-start my-auto fw-bold">Активное</div>
           </div>
-          <button type="button" className="w-100 btn btn-lg btn-primary">
-            Подробнее
-          </button>
+
+          <Button btnText="Подробнее" aClassName="w-100" />
         </div>
       </div>
     </div>

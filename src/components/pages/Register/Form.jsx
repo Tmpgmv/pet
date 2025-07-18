@@ -1,5 +1,7 @@
 import React from "react";
 import PhoneInput from '../../PhoneInput';
+import EmailInput from '../../EmailInput';
+import Button from "../../Button";
 
 function Form() {
   return (
@@ -28,22 +30,8 @@ function Form() {
       
       <PhoneInput />
 
-      <div>
-        <label htmlFor="validationServerEmail" className="form-label">
-          Электронная почта
-        </label>
-        <input
-          type="email"
-          className="form-control is-invalid"
-          id="validationServerEmail"
-          aria-describedby="emailError"
-          name="email"
-          required=""
-        />
-        <div id="emailError" className="invalid-feedback">
-          Адрес электронной почты уже занят.
-        </div>
-      </div>
+      <EmailInput />
+
       <div>
         <label htmlFor="validationServerPassword" className="form-label">
           Пароль (не менее 7 символов, обязательно: 1 цифра, 1 строчная, 1
@@ -101,9 +89,7 @@ function Form() {
         </div>
       </div>
       <div className="col-12">
-        <button className="btn btn-primary" type="submit">
-          Отправить
-        </button>
+        <Button btnText="Зарегистрироваться" />
       </div>
     </form>
   );

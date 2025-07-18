@@ -1,6 +1,7 @@
 import React from "react";
 import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
+import Button from "../../Button";
 
 function FoundAnimalCard({ kind, src, alt, date, district }) {
   return (
@@ -23,9 +24,9 @@ function FoundAnimalCard({ kind, src, alt, date, district }) {
             </div>
             <div className="w-75 my-auto text-start fw-bold ">{district}</div>
           </div>
-          <button type="button" className="w-100 btn btn-lg btn-primary">
-            Подробнее
-          </button>
+
+          <Button btnText="Подробнее" aClassName="w-100" />
+          
         </div>
       </div>
     </div>

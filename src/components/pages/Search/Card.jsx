@@ -2,6 +2,7 @@ import React from "react";
 import Img from "../../Img";
 import geo from "../../../assets/images/geo.svg";
 import calendar from "../../../assets/images/calendar.svg";
+import Button from "../../Button";
 
 function Card({ h2, src }) {
   return (
@@ -30,9 +31,9 @@ function Card({ h2, src }) {
                 Красногвардейский район
               </div>
             </div>
-            <button type="button" className="w-100 btn btn-lg btn-primary">
-              Подробнее
-            </button>
+
+            <Button aClassName="w-100" btnText="Подробнее" />
+
           </div>
         </div>
       </div>

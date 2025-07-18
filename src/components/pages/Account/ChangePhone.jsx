@@ -1,5 +1,7 @@
 import React from "react";
 import H2 from "../../H2";
+import PhoneInput from "../../PhoneInput";
+import Button from "../../Button";
 
 function ChangePhone() {
   return (
@@ -11,25 +13,10 @@ function ChangePhone() {
         className="mx-auto col col-md-8 mt-4"
         method="post"
       >
-        <label htmlFor="validationServerPhone" className="form-label">
-          Телефон (цифры, может начинаться со знака +)
-        </label>
-        <input
-          type="tel"
-          className="form-control is-invalid"
-          id="validationServerPhone"
-          aria-describedby="phoneError"
-          name="phone"
-          pattern="^\+?\d+$"
-          required=""
-        />
-        <div id="phoneError" className="invalid-feedback">
-          Введите корректный телефон.
-        </div>
+        <PhoneInput />
+
         <div className="col">
-          <button className="btn btn-primary mt-3" type="submit">
-            Сохранить
-          </button>
+          <Button btnText="Сохранить" aClassName="mt-3" />
         </div>
       </form>
     </section>

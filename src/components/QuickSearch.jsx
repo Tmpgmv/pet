@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 function QuickSearch({ nameOfClass = null }) {
   return (
@@ -16,13 +17,9 @@ function QuickSearch({ nameOfClass = null }) {
             aria-describedby="button-addon2"
             required=""
           />
-          <button
-            className="btn btn-outline-primary"
-            type="submit"
-            id="quick-search-button"
-          >
-            Поиск
-          </button>
+
+          <Button btnText="Поиск"/>
+
         </div>
       </form>
     </div>

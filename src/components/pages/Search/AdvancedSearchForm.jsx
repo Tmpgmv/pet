@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../Button";
 
 function AdvancedSearchForm() {
   return (
@@ -35,9 +36,9 @@ function AdvancedSearchForm() {
         </label>
         <input type="text" className="form-control" id="kind" />
       </div>
-      <button className="btn btn-primary mt-3" type="submit">
-        Поиск
-      </button>
+
+      <Button aClassName="mt-3" btnText="Поиск" />
+
     </form>
   );
 }

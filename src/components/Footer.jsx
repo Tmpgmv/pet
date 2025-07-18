@@ -1,5 +1,6 @@
 import React from "react";
 import cat from "../assets/images/cat.svg";
+import Button from "./Button";
 
 function Footer() {
   return (
@@ -27,9 +28,7 @@ function Footer() {
                 <div id="emailFeedback" className="invalid-feedback">
                   Подписка уже оформлена.
                 </div>
-                <button className="btn btn-primary mt-3" type="submit">
-                  Подписаться
-                </button>
+                <Button btnText="Подписаться" aClassName="mt-3" />                
               </form>
             </li>
           </ul>

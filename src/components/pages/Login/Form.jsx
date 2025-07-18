@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../Button";
 
 function Form(props) {
   return (
@@ -30,12 +31,14 @@ function Form(props) {
         id="password"
         required=""
       />
-      <button className="btn btn-primary mt-3" type="submit">
-        Отправить
-      </button>
-      
-      <Link to="/register" className="ms-5">Регистрация</Link>
 
+      <div className="d-flex align-items-center mt-3">
+        
+        <Button btnText="Войти" />
+
+        <Link to="/register" className="ms-5">Регистрация</Link>
+      </div>
+      
     </form>
   );
 }
