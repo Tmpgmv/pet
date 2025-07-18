@@ -1,17 +1,19 @@
 import React from 'react';
 
-function AdvancedSearchForm(props) {
+function AdvancedSearchForm() {
     return (
             <form
                 id="advanced-search"
                 className="mt-4 col-md-6 mx-auto"
                 method="post"
             >
-                <div className="error text-danger">
+            
+            <div className="error text-danger">
                 Выберите район, вид или и то, и другое.
-                </div>
-                <label htmlFor="district">Район:</label>
-                <select className="form-select mb-2" id="district" defaultValue="">
+            </div>
+            
+            <label htmlFor="district">Район:</label>
+            <select className="form-select mb-2" id="district" defaultValue="">
                 <option value="">---</option>
                 <option>Адмиралтейский</option>
                 <option>Василеостровский</option>
@@ -31,17 +33,17 @@ function AdvancedSearchForm(props) {
                 <option>Пушкинский</option>
                 <option>Фрунзенский</option>
                 <option>Центральный</option>
-                </select>
-                <div className="mt-3">
+            </select>
+            <div className="mt-3">
                 <label htmlFor="kind" className="form-label">
                     Вид животного (кошка, собака и т.п.)
                 </label>
                 <input type="text" className="form-control" id="kind" />
-                </div>
-                <button className="btn btn-primary mt-3" type="submit">
-                Поиск
-                </button>
-            </form>
+            </div>
+            <button className="btn btn-primary mt-3" type="submit">
+            Поиск
+            </button>
+        </form>
     );
 }
 
