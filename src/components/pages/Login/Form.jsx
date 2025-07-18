@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Form(props) {
   return (
@@ -32,9 +33,9 @@ function Form(props) {
       <button className="btn btn-primary mt-3" type="submit">
         Отправить
       </button>
-      <a href="#" className="ms-5">
-        Регистрация
-      </a>
+      
+      <Link to="/register" className="ms-5">Регистрация</Link>
+
     </form>
   );
 }
