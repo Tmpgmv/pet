@@ -6,10 +6,10 @@ import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
 
-function Form() {
+function Form({ formId }) {
   return (
     <form
-      id="registration-form"
+      id={formId}
       method="post"
       className="row g-3 mt-2 col-12 col-md-6 mx-auto"
     >
@@ -19,7 +19,7 @@ function Form() {
 
       <EmailInput />
 
-      <PasswordInput extendedLabel={true}/>
+      <PasswordInput extendedLabel={true} />
 
       <PasswordConfirmationInput />
 

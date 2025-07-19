@@ -9,11 +9,11 @@ function PasswordConfirmationInput() {
       </label>
       <input
         type="password"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerPasswordConfirmation"
         aria-describedby="passwordConfirmationError"
-        name="passwordConfirmation"
-        required=""
+        name="password_confirmation"
+        required={true}
       />
       <div id="passwordConfirmationError" className="invalid-feedback">
         Пароли не совпадают.

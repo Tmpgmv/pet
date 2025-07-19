@@ -3,7 +3,7 @@ function CheckboxInput({ name, label, errorMessage, isRequired = false }) {
     <div>
       <div className="form-check">
         <input
-          className="form-check-input is-invalid"
+          className="form-check-input"
           type="checkbox"
           defaultValue=""
           id={`validationServer${name}`}

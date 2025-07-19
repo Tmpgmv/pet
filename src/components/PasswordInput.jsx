@@ -9,12 +9,12 @@ function PasswordInput({ extendedLabel = false }) {
       </label>
       <input
         type="password"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerPassword"
         aria-describedby="passwordError"
         name="password"
         pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).{7,}"
-        required=""
+        required={true}
       />
       <div id="passwordError" className="invalid-feedback">
         Введите корректный пароль.

@@ -6,12 +6,12 @@ function PhoneInput() {
       </label>
       <input
         type="tel"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerPhone"
         aria-describedby="phoneError"
         name="phone"
         pattern="^\+?\d+$"
-        required=""
+        required={true}
       />
       <div id="phoneError" className="invalid-feedback">
         Введите корректный телефон.

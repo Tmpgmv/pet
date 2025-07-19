@@ -1,7 +1,7 @@
 function Button({ btnText, aClassName = null }) {
   return (
     <button
-      type="button"
+      type="submit"
       className={`btn btn-primary ${aClassName ? " " + aClassName : ""}`}
     >
       {btnText}

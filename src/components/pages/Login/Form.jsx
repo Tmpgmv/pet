@@ -16,7 +16,7 @@ function Form(props) {
       <div className="d-flex align-items-center mt-3">
         <Button btnText="Войти" />
 
-        <Link to="/register" className="ms-5">
+        <Link to="/register" className="ms-5 text-primary">
           Регистрация
         </Link>
       </div>

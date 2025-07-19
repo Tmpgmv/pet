@@ -6,11 +6,11 @@ function EmailInput() {
       </label>
       <input
         type="email"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerEmail"
         aria-describedby="emailError"
         name="email"
-        required=""
+        required={true}
       />
       <div id="emailError" className="invalid-feedback">
         Адрес электронной почты уже занят.

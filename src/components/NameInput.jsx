@@ -6,12 +6,12 @@ function NameInput() {
       </label>
       <input
         type="text"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerName"
         aria-describedby="nameError"
         name="name"
         pattern="[А-Яа-яЁё\s\-]+"
-        required=""
+        required={true}
       />
       <div id="nameError" className="invalid-feedback">
         Введите корректное имя.
