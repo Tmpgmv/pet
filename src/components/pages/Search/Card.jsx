@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import calendar from "../../../assets/images/calendar.svg";
 import geo from "../../../assets/images/geo.svg";
 import Button from "../../Button";
@@ -5,7 +6,7 @@ import Img from "../../Img";
 
 function Card({ h2, src }) {
   return (
-    <>
+    <Link to="/card">
       <div className="col">
         <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">
           <div className="card-header py-3 border-primary bs-primary-bg-subtle">
@@ -32,11 +33,10 @@ function Card({ h2, src }) {
             </div>
 
             <Button aClassName="w-100" btnText="Подробнее" />
-
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 }
 
