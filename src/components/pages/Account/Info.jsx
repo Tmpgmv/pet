@@ -1,5 +1,5 @@
 import H1 from "../../H1";
-import Row from "./Row";
+import InfoRow from "../../InfoRow";
 
 function Info() {
   return (
@@ -7,11 +7,12 @@ function Info() {
       <H1 h1="Информация о пользователе" />
 
       <div className="container text-start info col col-md-8 mt-4">
-        <Row caption="Имя" value="Иван" />
-        <Row caption="Email" value="info@example.com" isEmail={true} />
-        <Row caption="Зарегистрирован" value="01-01-1970" />
-        <Row caption="Количество объявлений" value="4" />
-        <Row caption="Найдено животных" value="2" />
+        <InfoRow caption="Имя" value="Иван" />
+        <InfoRow caption="Email" value="info@example.com" isEmail={true} />
+        <InfoRow caption="Телефон" value="8 (911) 234-56-78" isPhone={true}/>
+        <InfoRow caption="Зарегистрирован" value="01-01-1970" />
+        <InfoRow caption="Количество объявлений" value="4" />
+        <InfoRow caption="Найдено животных" value="2" />
       </div>
     </section>
   );
