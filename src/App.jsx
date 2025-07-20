@@ -2,11 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import "./components/Header";
 import Account from "./components/pages/Account";
 import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
+import Login from "./components/pages/Login/Index";
 import NewPost from "./components/pages/NewPost";
 import Register from "./components/pages/Register";
 import Search from "./components/pages/Search";
 import Card from "./components/pages/Card";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path={"/post/new"} element={<NewPost />} />
         <Route path={"/search"} element={<Search />} />
         <Route path={"/register"} element={<Register />} />
-        <Route path={"/card"} element={<Card />} />
+        <Route path={"/card"} element={<Card />} />        
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

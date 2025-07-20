@@ -9,6 +9,7 @@ import { API_URL_REGISTRATION_PATH } from "../../constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 
+
 function clear() {
   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
   $(".alert").addClass("d-none");
@@ -38,7 +39,9 @@ function Form({ formId }) {
     });
 
     request.done(function (data, textStatus, jqXHR) {
-      navigate("/login");
+      navigate("/login", {
+        state: { toast: "Пользователь успешно зарегистрирован." }
+      });
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
