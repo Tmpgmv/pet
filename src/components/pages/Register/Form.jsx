@@ -18,44 +18,48 @@ function showAlert() {
   $(".alert").removeClass("d-none");
 }
 
-function handleSubmit(event, formId) {
-  event.preventDefault();
-  clear();  
-
-  let formData = $("#" + formId).serialize();
-
-  let request = $.ajax({
-    url: API_URL_REGISTRATION_PATH,
-    method: "POST",
-    data: formData,
-    dataType: "html",
-  });
-
-  request.done(function (data, textStatus, jqXHR) {
-    let history = useNavigate();
-    //history.push('/login');
-  });
-
-  request.fail(function (jqXHR, textStatus, errorThrown) {
-    showAlert();
-
-    let responseText = jqXHR.responseText;
-
-    if (responseText) {
-      let responseTextJson = $.parseJSON(responseText);
-      let errors = responseTextJson.error.error;
-
-      $.each(errors, function (key, data) {
-        let unitedErrorText = data.join();
-        $("#validationServerEmail").addClass("is-invalid");
-        let selector = "#" + key + "Error";
-        $(selector).text(unitedErrorText);
-      });
-    }
-  });
-}
-
 function Form({ formId }) {
+
+
+  const navigate = useNavigate();
+
+
+  function handleSubmit(event, formId) {
+    event.preventDefault();
+    clear();
+
+    let formData = $("#" + formId).serialize();
+
+    let request = $.ajax({
+      url: API_URL_REGISTRATION_PATH,
+      method: "POST",
+      data: formData,
+      dataType: "html",
+    });
+
+    request.done(function (data, textStatus, jqXHR) {
+      navigate("/login");
+    });
+
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+      showAlert();
+
+      let responseText = jqXHR.responseText;
+
+      if (responseText) {
+        let responseTextJson = $.parseJSON(responseText);
+        let errors = responseTextJson.error.error;
+
+        $.each(errors, function (key, data) {
+          let unitedErrorText = data.join();
+          $("#validationServerEmail").addClass("is-invalid");
+          let selector = "#" + key + "Error";
+          $(selector).text(unitedErrorText);
+        });
+      }
+    });
+  }
+
   return (
     <form
       id={formId}
