@@ -5,6 +5,56 @@ import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
+import { API_URL_REGISTRATION_PATH } from "../../constants";
+import $ from "jquery";
+import { useNavigate } from "react-router-dom";
+
+function clear() {
+  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+  $(".alert").addClass("d-none");
+}
+
+function showAlert() {
+  $(".alert").removeClass("d-none");
+}
+
+function handleSubmit(event, formId) {
+  event.preventDefault();
+  clear();
+  debugger;
+
+  let formData = $("#" + formId).serialize();
+
+  let request = $.ajax({
+    url: API_URL_REGISTRATION_PATH,
+    method: "POST",
+    data: formData,
+    dataType: "html",
+  });
+
+  request.done(function (data, textStatus, jqXHR) {
+    let history = useNavigate();
+    //history.push('/login');
+  });
+
+  request.fail(function (jqXHR, textStatus, errorThrown) {
+    showAlert();
+
+    let responseText = jqXHR.responseText;
+
+    if (responseText) {
+      let responseTextJson = $.parseJSON(responseText);
+      let errors = responseTextJson.error.error;
+
+      $.each(errors, function (key, data) {
+        let unitedErrorText = data.join();
+        $("#validationServerEmail").addClass("is-invalid");
+        let selector = "#" + key + "Error";
+        $(selector).text(unitedErrorText);
+      });
+    }
+  });
+}
 
 function Form({ formId }) {
   return (
@@ -12,6 +62,7 @@ function Form({ formId }) {
       id={formId}
       method="post"
       className="row g-3 mt-2 col-12 col-md-6 mx-auto"
+      onSubmit={(event) => handleSubmit(event, formId)}
     >
       <NameInput />
 

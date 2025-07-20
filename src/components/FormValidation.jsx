@@ -1,14 +1,11 @@
 import $ from "jquery";
 
-function clearValidationErrors() {
-  $(".is-invalid").removeClass("is-invalid");
-  $(".is-valid").removeClass("is-valid");
+function clearValidationErrors($input) {
+  $input.removeClass("is-valid is-invalid");  
 }
 
 function validatePasswordConfirmation($input) {
-  debugger;
-
-  let password = $("#password").val();
+  let password = $("#validationServerPassword").val();
   let password_confirmation = $input.val();
 
   if (password_confirmation !== password) {
@@ -19,7 +16,7 @@ function validatePasswordConfirmation($input) {
 }
 
 function validateField($input) {  
-  clearValidationErrors();  
+  clearValidationErrors($input);
 
   if ($input.attr("name") === "password_confirmation") {
     validatePasswordConfirmation($input);

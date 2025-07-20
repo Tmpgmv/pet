@@ -5,7 +5,7 @@ function CheckboxInput({ name, label, errorMessage, isRequired = false }) {
         <input
           className="form-check-input"
           type="checkbox"
-          defaultValue=""
+          defaultValue="1"
           id={`validationServer${name}`}
           aria-describedby={`${name}Error`}
           name={name}

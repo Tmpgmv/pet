@@ -13,7 +13,7 @@ function EmailInput() {
         required={true}
       />
       <div id="emailError" className="invalid-feedback">
-        Адрес электронной почты уже занят.
+        Введите корректный адрес электронной почты.
       </div>
     </div>
   );

@@ -1,16 +1,21 @@
+import Alert from "../../Alert";
 import Footer from "../../Footer";
+import FormValidation from "../../FormValidation";
 import Header from "../../Header";
 import Main from "./Main";
-import FormValidation from "../../FormValidation";
 
 function index() {
-
   let formId = "registration-form";
 
   return (
     <div>
       <Header />
-      <Main formId={formId}/>
+      <Alert
+        message="Не удалось зарегистрировать пользователя"
+        success={false}        
+        dNone={true}
+      />
+      <Main formId={formId} />
       <Footer />
       <FormValidation formId={formId} />
     </div>
