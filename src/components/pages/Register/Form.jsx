@@ -8,22 +8,20 @@ import PhoneInput from "../../PhoneInput";
 import { API_URL_REGISTRATION_PATH } from "../../constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function clear() {
-  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-  $(".alert").addClass("d-none");
+  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");  
 }
 
-function showAlert() {
-  $(".alert").removeClass("d-none");
-}
+
 
 function Form({ formId }) {
 
 
   const navigate = useNavigate();
-
+  const notifyFailure = () => toast.error("Не удалось зарегистрировать пользователя!");
 
   function handleSubmit(event, formId) {
     event.preventDefault();
@@ -45,7 +43,7 @@ function Form({ formId }) {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      showAlert();
+      notifyFailure();
 
       let responseText = jqXHR.responseText;
 

@@ -10,11 +10,6 @@ function index() {
   return (
     <div>
       <Header />
-      <Alert
-        message="Не удалось зарегистрировать пользователя"
-        success={false}        
-        dNone={true}
-      />
       <Main formId={formId} />
       <Footer />
       <FormValidation formId={formId} />
