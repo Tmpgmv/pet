@@ -6,8 +6,7 @@ import Info from "./Info";
 
 function Main() {
   return (
-    <main>
-      <Alert message="Изменения сохранены" />
+    <main>      
       <Info />
       <ChangePhone />
       <ChangeEmail />

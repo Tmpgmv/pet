@@ -8,7 +8,7 @@ import PhoneInput from "../../PhoneInput";
 import { API_URL_REGISTRATION_PATH } from "../../constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 function clear() {
