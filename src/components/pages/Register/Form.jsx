@@ -20,8 +20,7 @@ function showAlert() {
 
 function handleSubmit(event, formId) {
   event.preventDefault();
-  clear();
-  debugger;
+  clear();  
 
   let formData = $("#" + formId).serialize();
 
