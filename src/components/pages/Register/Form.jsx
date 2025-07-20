@@ -33,7 +33,7 @@ function Form({ formId }) {
       url: API_URL_REGISTRATION_PATH,
       method: "POST",
       data: formData,
-      dataType: "html",
+      dataType: "json",
     });
 
     request.done(function (data, textStatus, jqXHR) {
