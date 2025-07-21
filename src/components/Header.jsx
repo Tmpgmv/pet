@@ -8,6 +8,7 @@ import account from "../assets/images/account.svg";
 import application from "../assets/images/application.svg";
 import cat from "../assets/images/cat.svg";
 import login from "../assets/images/login.svg";
+import logout from "../assets/images/logout.svg";
 import search from "../assets/images/search.svg";
 import MainMenuItem from "./MainMenuItem.jsx";
 
@@ -27,7 +28,8 @@ function Header() {
           <MainMenuItem to="/post/new" imgSrc={application} alt="new post" />
           <MainMenuItem to="/search" imgSrc={search} alt="search" />
           <MainMenuItem to="/account" imgSrc={account} alt="person" />
-          <MainMenuItem to="/login" imgSrc={login} alt="person" />
+          <MainMenuItem to="/login" imgSrc={login} alt="login" />
+          <MainMenuItem to="/logout" imgSrc={logout} alt="logout" />
         </nav>
       </div>
     </header>
