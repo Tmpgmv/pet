@@ -6,8 +6,7 @@ import Photos from "./Photos";
 
 function Main() {
   return (
-    <main>
-      <Alert message="Изменения сохранены." />
+    <main>      
       <section id="info-section" className="mt-5">
         <H1 h1="Найденное животное" />
         <EditDelete />

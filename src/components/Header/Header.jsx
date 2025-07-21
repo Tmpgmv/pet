@@ -11,6 +11,8 @@ import login from "../../assets/images/login.svg";
 import logout from "../../assets/images/logout.svg";
 import search from "../../assets/images/search.svg";
 import MainMenuItem from "../MainMenuItem";
+import FormSingleAction from "../FormSingleAction";
+
 
 function Header() {
   return (
@@ -29,7 +31,7 @@ function Header() {
           <MainMenuItem to="/search" imgSrc={search} alt="search" />
           <MainMenuItem to="/account" imgSrc={account} alt="person" />
           <MainMenuItem to="/login" imgSrc={login} alt="login" />
-          <MainMenuItem to="/logout" imgSrc={logout} alt="logout" />
+          <FormSingleAction id="logout" className="py-2 d-flex link-body-emphasis text-decoration-none ps-3 pe-3" />
         </nav>
       </div>
     </header>
