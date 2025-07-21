@@ -1,7 +1,7 @@
 import Alert from "../../Alert";
 import Footer from "../../Footer/Footer";
 import FormValidation from "../../FormValidation";
-import Header from "../../Header";
+import Header from "../../Header/Header";
 import Main from "./Main";
 
 function index() {

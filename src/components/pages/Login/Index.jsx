@@ -1,5 +1,5 @@
 import Footer from "../../Footer/Footer";
-import Header from "../../Header";
+import Header from "../../Header/Header";
 import Main from "./Main";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";

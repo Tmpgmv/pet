@@ -1,13 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import "./components/Header";
+import { ToastContainer } from "react-toastify";
 import Account from "./components/pages/Account/Index";
+import Card from "./components/pages/Card";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login/Index";
 import NewPost from "./components/pages/NewPost";
 import Register from "./components/pages/Register";
 import Search from "./components/pages/Search";
-import Card from "./components/pages/Card";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
