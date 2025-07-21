@@ -31,7 +31,7 @@ function Header() {
           <MainMenuItem to="/search" imgSrc={search} alt="search" />
           <MainMenuItem to="/account" imgSrc={account} alt="person" />
           <MainMenuItem to="/login" imgSrc={login} alt="login" />
-          <FormSingleAction id="logout" formClassName="py-2 d-flex link-body-emphasis text-decoration-none ps-3 pe-3" inputClassName="ps-3 pe-3"/>
+          <FormSingleAction id="logout" formClassName="py-2 d-flex link-body-emphasis text-decoration-none" inputClassName="my-auto ps-3 pe-3"/>
         </nav>
       </div>
     </header>
