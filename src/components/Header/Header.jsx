@@ -10,11 +10,14 @@ import cat from "../../assets/images/cat.svg";
 import login from "../../assets/images/login.svg";
 import logout from "../../assets/images/logout.svg";
 import search from "../../assets/images/search.svg";
-import MainMenuItem from "../MainMenuItem";
+import LinkWithImg from "../LinkWithImg";
 import FormSingleAction from "../FormSingleAction";
 
 
 function Header() {
+
+  const LINK_CLASS_NAME = "py-2 link-body-emphasis text-decoration-none ps-3 pe-3";
+
   return (
     <header>
       <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -27,10 +30,10 @@ function Header() {
         </Link>
 
         <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-          <MainMenuItem to="/post/new" imgSrc={application} alt="new post" />
-          <MainMenuItem to="/search" imgSrc={search} alt="search" />
-          <MainMenuItem to="/account" imgSrc={account} alt="person" />
-          <MainMenuItem to="/login" imgSrc={login} alt="login" />
+          <LinkWithImg to="/post/new" imgSrc={application} alt="new post" className={LINK_CLASS_NAME}/>
+          <LinkWithImg to="/search" imgSrc={search} alt="search" className={LINK_CLASS_NAME}/>
+          <LinkWithImg to="/account" imgSrc={account} alt="person" className={LINK_CLASS_NAME}/>
+          <LinkWithImg to="/login" imgSrc={login} alt="login" className={LINK_CLASS_NAME}/>
           <FormSingleAction id="logout" formClassName="py-2 d-flex link-body-emphasis text-decoration-none" inputClassName="my-auto ps-3 pe-3"/>
         </nav>
       </div>
