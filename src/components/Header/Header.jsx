@@ -9,8 +9,8 @@ import application from "../../assets/images/application.svg";
 import cat from "../../assets/images/cat.svg";
 import login from "../../assets/images/login.svg";
 import search from "../../assets/images/search.svg";
-import FormSingleAction from "../FormSingleAction";
 import LinkWithImg from "../LinkWithImg";
+import Logout from "./Logout";
 
 
 function Header() {
@@ -33,7 +33,7 @@ function Header() {
           <LinkWithImg to="/search" imgSrc={search} alt="search" className={LINK_CLASS_NAME}/>
           <LinkWithImg to="/account" imgSrc={account} alt="person" className={LINK_CLASS_NAME}/>
           <LinkWithImg to="/login" imgSrc={login} alt="login" className={LINK_CLASS_NAME}/>
-          <FormSingleAction id="logout" formClassName="py-2 d-flex link-body-emphasis text-decoration-none" inputClassName="my-auto ps-3 pe-3 allUnset"/>
+          <Logout />
         </nav>
       </div>
     </header>
