@@ -44,6 +44,7 @@ function Form(props) {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
+      
       notifyFailure();
 
       let responseText = jqXHR.responseText;
@@ -53,8 +54,11 @@ function Form(props) {
         let errors = responseTextJson.error.error;
 
         $.each(errors, function (key, data) {
-          let unitedErrorText = data.join();
+          let unitedErrorText = data;
           $("#validationServerEmail").addClass("is-invalid");
+          
+          key = "email"// Временно. Баг в API: слали email, а прилетел ответ про phone.
+
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);
         });

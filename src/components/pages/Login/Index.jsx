@@ -11,7 +11,7 @@ function Index(props) {
   useEffect(() => {
     if (location.state?.toast) {
       toast.success(location.state.toast, {
-        toastId: "user-registration-success",
+        toastId: "success",
       });
     }
   }, [location.state]);
