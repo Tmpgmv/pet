@@ -32,8 +32,7 @@ function Form(props) {
       dataType: "html",
     });
 
-    request.done(function (data, textStatus, jqXHR) {
-      debugger;
+    request.done(function (data, textStatus, jqXHR) {      
       let dataJson = JSON.parse(data);
       let token = dataJson.data.token;
       saveToken(token)

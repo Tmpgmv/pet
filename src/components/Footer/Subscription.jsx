@@ -49,13 +49,17 @@ function Subscription() {
     });
   }
 
+
+  const ID = "subscription";
+
   return (
+
     <div className="col-12 col-md">
       <h5>Новости</h5>
       <ul className="list-unstyled text-small">
         <li className="mb-1">
-          <form id="subscription" method="post" onSubmit={(event) => handleSubmit(event, "subscription")}>
-            <EmailInput />
+          <form id={ID} method="post" onSubmit={(event) => handleSubmit(event, "subscription")}>
+            <EmailInput id={ID}/>
             <Button btnText="Подписаться" aClassName="mt-3" />
           </form>
         </li>

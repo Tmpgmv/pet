@@ -17,8 +17,7 @@ function Logout() {
         });
     }
 
-    function handleSubmit(event) {
-        debugger;
+    function handleSubmit(event) {        
         event.preventDefault();
         clearToken();
         redirect();
