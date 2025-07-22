@@ -18,10 +18,13 @@
   background-color: var(--bs-secondary-bg);
 }
 
+.allUnset {
+  all: unset;
+}
+
 .delete,
 .edit,
-.logout {
-  all: unset;
+.logout {    
   background-repeat: no-repeat;
   border: none;
   background-color: transparent;
@@ -41,4 +44,8 @@
 
 .logout {
   background-image: url(../images/logout.svg);
+}
+
+.pointer {
+  cursor: pointer;
 }
