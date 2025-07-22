@@ -8,10 +8,9 @@ import account from "../../assets/images/account.svg";
 import application from "../../assets/images/application.svg";
 import cat from "../../assets/images/cat.svg";
 import login from "../../assets/images/login.svg";
-import logout from "../../assets/images/logout.svg";
 import search from "../../assets/images/search.svg";
-import LinkWithImg from "../LinkWithImg";
 import FormSingleAction from "../FormSingleAction";
+import LinkWithImg from "../LinkWithImg";
 
 
 function Header() {
