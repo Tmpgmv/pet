@@ -5,13 +5,14 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function Index(props) {
+function Index() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.toast) {
-      toast.success(location.state.toast, {
-        toastId: "success",
+    const toastData = location.state?.toast;
+    if (toastData && toastData.message && toastData.type) {
+      toast[toastData.type](toastData.message, {
+        toastId: "login",
       });
     }
   }, [location.state]);

@@ -1,5 +1,6 @@
+import { LOGIN } from "../../general/constants";
 import FormSingleAction from "../FormSingleAction";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FORM_ID = "logout";
 
@@ -10,11 +11,18 @@ function clearToken() {
 function Logout() {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     function redirect() {
-        navigate("/login", {
-            state: { toast: "Вы вышли из личного кабинета." }
-        });
+      navigate(LOGIN, {
+        state: {
+          toast: {
+            type: "success",
+            message: "Вы вошли.",
+          },
+          from: location,
+        },
+      });
     }
 
     function handleSubmit(event) {        

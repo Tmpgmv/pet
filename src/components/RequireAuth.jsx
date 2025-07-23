@@ -11,14 +11,20 @@ function RequireAuth({ children }) {
     const token = getToken();
     if (!token) {
       navigate(LOGIN, {
-        state: { toast: "Выполните вход.", from: location },
+        state: {
+          toast: {
+            type: "error",
+            message: "Выполните вход.",
+          },
+          from: location,
+        },
       });
     }
   }, [navigate, location]);
 
   const token = getToken();
-  
-  return token ? children : null; // Не рендерить ничего, если пользователь не авторизован. 
+
+  return token ? children : null; // Не рендерить ничего, если пользователь не авторизован.
 }
 
 export default RequireAuth;

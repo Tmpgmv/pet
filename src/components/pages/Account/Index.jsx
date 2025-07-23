@@ -11,9 +11,10 @@ function Index() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.toast) {
-      toast.success(location.state.toast, {
-        toastId: "user-login-success",
+    const toastData = location.state?.toast;
+    if (toastData && toastData.message && toastData.type) {
+      toast[toastData.type](toastData.message, {
+        toastId: "account",
       });
     }
   }, [location.state]);

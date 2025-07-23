@@ -33,7 +33,7 @@ function showPosts(dataJson) {
 }
 
 function Info() {
-  const navigate = useNavigate();
+  
 
   function requestInfo() {
     let token = getToken();
@@ -52,13 +52,8 @@ function Info() {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {      
-      if (jqXHR.status === 401) {
-        navigate("/login", {
-          state: { toast: "Выполните вход." },
-        });
 
-        return;
-      }
+      debugger;
 
       let responseText = jqXHR.responseText;
 
@@ -97,13 +92,7 @@ function Info() {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      if (jqXHR.status === 401) {
-        navigate("/login", {
-          state: { toast: "Выполните вход." },
-        });
-
-        return;
-      }
+      debugger;
 
 
       notifyFailure();
