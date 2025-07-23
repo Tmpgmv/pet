@@ -75,7 +75,7 @@ function ChangePhone() {
       <form
         id="change-phone-form"
         className="mx-auto col col-md-8 mt-4"
-        method="post"
+        method="patch"
         onSubmit={(event) => handleSubmit(event)}
       >
         <PhoneInput />

@@ -57,8 +57,8 @@ const Info = () => {
       },
       dataType: "json",
     })
-      .done((data) => {
-        // Do something with posts if needed
+      .done((dataJson) => {
+        debugger;
       })
       .fail(() => {
         toast.error("Не удалось получить данные с сервера!");
