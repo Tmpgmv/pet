@@ -1,4 +1,3 @@
-import Alert from "../../Alert";
 import Adverts from "./Adverts";
 import ChangeEmail from "./ChangeEmail";
 import ChangePhone from "./ChangePhone";

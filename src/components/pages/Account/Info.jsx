@@ -1,123 +1,69 @@
 import H1 from "../../H1";
 import InfoRow from "../../InfoRow";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {
   API_URL_USERS_PATH,
   API_URL_USERS_POSTS,
 } from "../../../general/constants";
-import $ from "jquery";
 import getToken from "../../../general/getToken.js";
-import { useNavigate } from "react-router-dom";
+import $ from "jquery";
 
-const NAME = "name";
-const USER_EMAIL = "userEmail";
-const USER_PHONE = "userPhone";
-const REGISTERED_ON = "registeredOn";
-const NUMBER_OF_POSTS = "numberOfposts";
-const NUMBER_OF_FOUND_PETS = "numberOfFoundPets";
-
-function showInfoData(dataJson) {
-  $("#" + NAME).text(dataJson.name);
-  $("#" + USER_PHONE).text(dataJson.phone);
-  $("#" + USER_EMAIL).text(dataJson.email);
-  $("#" + REGISTERED_ON).text(dataJson.registrationDate);
-  $("#" + NUMBER_OF_POSTS).text(dataJson.ordersCount);
-  $("#" + NUMBER_OF_FOUND_PETS).text(dataJson.petsCount);
-}
-
-function showPosts(dataJson) {
-  let posts = dataJson.orders;
-
-  debugger;
-}
-
-function Info() {
-  
+const Info = () => {
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    registrationDate: "",
+    ordersCount: "",
+    petsCount: "",
+  });
 
   function requestInfo() {
-    let token = getToken();
+    const token = getToken();
 
-    let request = $.ajax({
+    $.ajax({
       url: API_URL_USERS_PATH,
       method: "GET",
-      beforeSend: function (xhr) {
+      beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
       },
       dataType: "json",
-    });
-
-    request.done(function (data, textStatus, jqXHR) {
-      showInfoData(data);
-    });
-
-    request.fail(function (jqXHR, textStatus, errorThrown) {      
-
-      debugger;
-
-      let responseText = jqXHR.responseText;
-
-      if (responseText) {
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
-
-        $.each(errors, function (key, data) {
-          let unitedErrorText = data;
-          $("#validationServerEmail").addClass("is-invalid");
-
-          key = "email"; // Временно. Баг в API: слали email, а прилетел ответ про phone.
-
-          let selector = "#" + key + "Error";
-          $(selector).text(unitedErrorText);
+    })
+      .done((data) => {
+        setUserInfo({
+          name: data.name || "",
+          email: data.email || "",
+          phone: data.phone || "",
+          registrationDate: data.registrationDate || "",
+          ordersCount: data.ordersCount || "",
+          petsCount: data.petsCount || "",
         });
-      }
-    });
+      })
+      .fail((jqXHR) => {
+        toast.error("Не удалось получить данные с сервера!");
+        // Optional: handle error fields here if needed
+      });
   }
 
   function requestPosts() {
-    // Объявления, добавленные пользователем.
-    let token = getToken();
+    const token = getToken();
 
-    let request = $.ajax({
+    $.ajax({
       url: API_URL_USERS_POSTS,
       method: "GET",
-      beforeSend: function (xhr) {
+      beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
       },
       dataType: "json",
-    });
-
-    request.done(function (data, textStatus, jqXHR) {
-      showPosts(data);
-    });
-
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-      debugger;
-
-
-      notifyFailure();
-
-      let responseText = jqXHR.responseText;
-
-      if (responseText) {
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
-
-        $.each(errors, function (key, data) {
-          let unitedErrorText = data;
-          $("#validationServerEmail").addClass("is-invalid");
-
-          key = "email"; // Временно. Баг в API: слали email, а прилетел ответ про phone.
-
-          let selector = "#" + key + "Error";
-          $(selector).text(unitedErrorText);
-        });
-      }
-    });
+    })
+      .done((data) => {
+        // Do something with posts if needed
+      })
+      .fail(() => {
+        toast.error("Не удалось получить данные с сервера!");
+      });
   }
-
-  const notifyFailure = () =>
-    toast.error("Не удалось получить данные с сервера!");
 
   useEffect(() => {
     requestInfo();
@@ -127,39 +73,38 @@ function Info() {
   return (
     <section id="info-section" className="mt-5">
       <H1 h1="Информация о пользователе" />
-
       <div className="container text-start info col col-md-8 mt-4">
-        <InfoRow id={NAME} caption="Имя" value="Иван" />
+        <InfoRow id="name" caption="Имя" value={userInfo.name} />
         <InfoRow
-          id={USER_EMAIL}
+          id="userEmail"
           caption="Email"
-          value="info@example.com"
+          value={userInfo.email}
           isEmail={true}
         />
         <InfoRow
-          id={USER_PHONE}
+          id="userPhone"
           caption="Телефон"
-          value="8 (911) 234-56-78"
+          value={userInfo.phone}
           isPhone={true}
         />
         <InfoRow
-          id={REGISTERED_ON}
+          id="registeredOn"
           caption="Зарегистрирован"
-          value="01-01-1970"
+          value={userInfo.registrationDate}
         />
         <InfoRow
-          id={NUMBER_OF_POSTS}
+          id="numberOfposts"
           caption="Количество объявлений"
-          value="4"
+          value={userInfo.ordersCount}
         />
         <InfoRow
-          id={NUMBER_OF_FOUND_PETS}
+          id="numberOfFoundPets"
           caption="Найдено животных"
-          value="2"
+          value={userInfo.petsCount}
         />
       </div>
     </section>
   );
-}
+};
 
 export default Info;
