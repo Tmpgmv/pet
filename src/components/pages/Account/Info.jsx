@@ -2,9 +2,13 @@ import H1 from "../../H1";
 import InfoRow from "../../InfoRow";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { API_URL_USERS_PATH, API_URL_USERS_POSTS } from "../../../general/constants";
+import {
+  API_URL_USERS_PATH,
+  API_URL_USERS_POSTS,
+} from "../../../general/constants";
 import $ from "jquery";
 import getToken from "../../../general/getToken.js";
+import { useNavigate } from "react-router-dom";
 
 const NAME = "name";
 const USER_EMAIL = "userEmail";
@@ -22,15 +26,14 @@ function showInfoData(dataJson) {
   $("#" + NUMBER_OF_FOUND_PETS).text(dataJson.petsCount);
 }
 
-
 function showPosts(dataJson) {
   let posts = dataJson.orders;
-  
-  debugger;
 
+  debugger;
 }
 
 function Info() {
+  const navigate = useNavigate();
 
   function requestInfo() {
     let token = getToken();
@@ -48,9 +51,14 @@ function Info() {
       showInfoData(data);
     });
 
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-      debugger;
-      notifyFailure();
+    request.fail(function (jqXHR, textStatus, errorThrown) {      
+      if (jqXHR.status === 401) {
+        navigate("/login", {
+          state: { toast: "Выполните вход." },
+        });
+
+        return;
+      }
 
       let responseText = jqXHR.responseText;
 
@@ -71,7 +79,6 @@ function Info() {
     });
   }
 
-
   function requestPosts() {
     // Объявления, добавленные пользователем.
     let token = getToken();
@@ -90,7 +97,15 @@ function Info() {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      debugger;
+      if (jqXHR.status === 401) {
+        navigate("/login", {
+          state: { toast: "Выполните вход." },
+        });
+
+        return;
+      }
+
+
       notifyFailure();
 
       let responseText = jqXHR.responseText;

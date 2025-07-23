@@ -7,18 +7,23 @@ import Login from "./components/pages/Login/Index";
 import NewPost from "./components/pages/NewPost";
 import Register from "./components/pages/Register";
 import Search from "./components/pages/Search";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
     <div className="container py-3">
       <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/account"} element={<Account />} />
         <Route path={"/login"} element={<Login />} />
-        <Route path={"/post/new"} element={<NewPost />} />
+        <Route path={"/"} element={<Home />} />
         <Route path={"/search"} element={<Search />} />
+        <Route path={"/card"} element={<Card />} />
         <Route path={"/register"} element={<Register />} />
-        <Route path={"/card"} element={<Card />} />        
+        
+        {/* Только для авторизованных пользователей */}
+        
+        <Route path={"/account"} element={<RequireAuth><Account /></RequireAuth>} />
+        <Route path={"/post/new"} element={<RequireAuth><NewPost /></RequireAuth>} />
+        
       </Routes>
       <ToastContainer />
     </div>

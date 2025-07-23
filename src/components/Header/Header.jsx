@@ -13,8 +13,8 @@ import LinkWithImg from "../LinkWithImg";
 import Logout from "./Logout";
 import getToken from "../../general/getToken";
 
-function isLoggedIn() {
-  let token = getToken;
+function isLoggedIn() {  
+  let token = getToken();
   let result = (token != undefined);
   return result;
 }
@@ -23,6 +23,7 @@ function Header() {
   const LINK_CLASS_NAME =
     "py-2 link-body-emphasis text-decoration-none ps-3 pe-3";
   const loggedIn = isLoggedIn();
+  
 
   return (
     <header>
