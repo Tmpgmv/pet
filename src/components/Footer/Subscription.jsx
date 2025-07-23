@@ -23,7 +23,7 @@ function Subscription() {
       url: API_URL_SUBSCRIPTION_PATH,
       method: "POST",
       data: formData,
-      dataType: "html",
+      dataType: "json",
     });
 
     request.done(function (data, textStatus, jqXHR) {

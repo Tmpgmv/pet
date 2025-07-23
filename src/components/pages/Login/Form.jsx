@@ -12,7 +12,7 @@ function clear() {
   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
 }
 
-function saveToken(token){
+function saveToken(token) {
   localStorage.setItem("token", token);
 }
 
@@ -31,14 +31,12 @@ function Form(props) {
       url: API_URL_LOGIN_PATH,
       method: "POST",
       data: formData,
-      dataType: "html",
+      dataType: "json",
     });
 
-    request.done(function (data, textStatus, jqXHR) {      
-      let dataJson = JSON.parse(data);
+    request.done(function (dataJson, textStatus, jqXHR) {
       let token = dataJson.data.token;
-      saveToken(token)
-
+      saveToken(token);
 
       navigate(ACCOUNT, {
         state: {
@@ -49,25 +47,23 @@ function Form(props) {
           from: location,
         },
       });
-
-
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      
       notifyFailure();
 
       let responseText = jqXHR.responseText;
 
       if (responseText) {
+        debugger;
         let responseTextJson = $.parseJSON(responseText);
         let errors = responseTextJson.error.error;
 
         $.each(errors, function (key, data) {
           let unitedErrorText = data;
           $("#validationServerEmail").addClass("is-invalid");
-          
-          key = "email"// Временно. Баг в API: слали email, а прилетел ответ про phone.
+
+          key = "email"; // Временно. Баг в API: слали email, а прилетел ответ про phone.
 
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);

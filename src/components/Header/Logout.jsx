@@ -18,7 +18,7 @@ function Logout() {
         state: {
           toast: {
             type: "success",
-            message: "Вы вошли.",
+            message: "Вы вышли.",
           },
           from: location,
         },
