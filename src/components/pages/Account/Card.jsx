@@ -4,8 +4,14 @@ import geo from "../../../assets/images/geo.svg";
 import status from "../../../assets/images/status.svg";
 import Button from "../../Button";
 import Img from "../../Img";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { API_URL_USERS_PATH } from "../../../general/constants";
+import $ from "jquery";
 
-function Card({ src, alt, date, district }) {
+
+function Card({ src, alt, date, district }) { 
+
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">

@@ -1,4 +1,4 @@
-function capitalizeFirstLetter(str) {
+export default function capitalizeFirstLetter(str) {
   if (str.length === 0) {
     return ""; // Обработка пустой строки.
   }
@@ -7,5 +7,3 @@ function capitalizeFirstLetter(str) {
 
   return result;
 }
-
-export default capitalizeFirstLetter;

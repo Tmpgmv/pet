@@ -5,7 +5,7 @@ import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
-import { API_URL_REGISTRATION_PATH } from "../../constants";
+import { API_URL_REGISTRATION_PATH } from "../../../general/constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';

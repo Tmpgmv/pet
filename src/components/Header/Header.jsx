@@ -11,9 +11,11 @@ import login from "../../assets/images/login.svg";
 import search from "../../assets/images/search.svg";
 import LinkWithImg from "../LinkWithImg";
 import Logout from "./Logout";
+import getToken from "../../general/getToken";
 
 function isLoggedIn() {
-  let result = localStorage.getItem("token");
+  let token = getToken;
+  let result = (token != undefined);
   return result;
 }
 

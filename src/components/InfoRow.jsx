@@ -16,7 +16,7 @@ function prepareValue(value, isPhone, isEmail){
   return toBeDisplayed;
 }
 
-function InfoRow({ caption, value, isPhone = false, isEmail = false }) {
+function InfoRow({ id, caption, value, isPhone = false, isEmail = false }) {
 
   let toBeDisplayed = prepareValue(value, isPhone, isEmail)
 
@@ -24,7 +24,7 @@ function InfoRow({ caption, value, isPhone = false, isEmail = false }) {
   return (
     <div className="row">
       <div className="col fw-bold">{caption}</div>
-      <div className="col">
+      <div id={id} className="col">
         {toBeDisplayed}
       </div>
     </div>

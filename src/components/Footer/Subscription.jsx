@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button";
 import EmailInput from "../EmailInput";
-import {API_URL_SUBSCRIPTION_PATH} from "../constants";
+import { API_URL_SUBSCRIPTION_PATH } from "../../general/constants";
 import $ from "jquery";
 import { toast } from 'react-toastify';
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../../Button";
 import EmailInput from "../../EmailInput";
 import PasswordInput from "../../PasswordInput";
-import { API_URL_LOGIN_PATH } from "../../constants";
+import { API_URL_LOGIN_PATH } from "../../../general/constants";
 import $ from "jquery";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

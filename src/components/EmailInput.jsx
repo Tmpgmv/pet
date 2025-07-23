@@ -1,4 +1,4 @@
-import capitalizeFirstLetter from "../assets/general/general";
+import capitalizeFirstLetter from "../general/capitalizeFirstLetter";
 
 function EmailInput({id="email"}) {
   /* Для формы подписки на события обязательно задать id="subscription".
