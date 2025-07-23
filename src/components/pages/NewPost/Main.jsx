@@ -15,6 +15,7 @@ import ImageInput from "./ImageInput";
 import MarkInput from "./MarkInput";
 
 import { toast } from "react-toastify";
+import DistrictInput from "../../DistrictInput";
 
 function clear() {
   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
@@ -87,6 +88,8 @@ function Main() {
         className="row g-3 mt-2 col-12 col-md-6 mx-auto"
         onSubmit={(event) => handleSubmit(event)}
       >
+        <DistrictInput />
+
         <NameInput />
 
         <PhoneInput />
