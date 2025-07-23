@@ -6,7 +6,7 @@ function KindInput({ aClassName = null }) {
       </label>
       <input
         type="text"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerKind"
         aria-describedby="kindError"
         name="kind"

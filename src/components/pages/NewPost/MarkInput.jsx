@@ -7,11 +7,10 @@ function MarkInput() {
       </label>
       <input
         type="text"
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerMark"
         aria-describedby="markError"
-        name="mark"
-        required=""
+        name="mark"        
       />
       <div id="markError" className="invalid-feedback">
         Введите корректный электронный чип.

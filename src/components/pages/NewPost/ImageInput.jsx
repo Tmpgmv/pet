@@ -1,16 +1,16 @@
 
-function ImageInput({aLabel=false}) {
+function ImageInput({id, aLabel=false}) {
   return (
     <div>
       
       {aLabel ? <label htmlFor="formPhoto1" className="form-label">  Изображения</label> : undefined}
 
       <input
-        className="form-control is-invalid"
+        className="form-control"
         type="file"
         accept="image/*"
-        id="formPhoto1"
-        name="photo1"
+        id={id}
+        name={id}
         aria-describedby="validationServerPhoto1Feedback"
         required=""
       />

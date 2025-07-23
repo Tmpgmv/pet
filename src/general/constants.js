@@ -2,6 +2,8 @@ export const LOGIN = "/login";
 export const ACCOUNT = "/account";
 export const CHANGE_EMAIL = "/email";
 export const CHANGE_PHONE = "/phone";
+export const NEW_POST = "/pets";
+
 
 export const API_URL = "https://pets.сделай.site/api";
 export const API_URL_REGISTRATION_PATH = API_URL + "/register";
@@ -11,3 +13,4 @@ export const API_URL_USERS_PATH = API_URL + "/users";
 export const API_URL_USERS_POSTS = API_URL_USERS_PATH +"/orders"; // Объявления, добавленные пользователем.
 export const API_CHANGE_EMAIL_URL = API_URL_USERS_PATH + CHANGE_EMAIL;
 export const API_CHANGE_PHONE_URL = API_URL_USERS_PATH + CHANGE_PHONE;
+export const API_NEW_POST_URL = API_URL + NEW_POST;

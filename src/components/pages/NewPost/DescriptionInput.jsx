@@ -6,7 +6,7 @@ function DescriptionInput() {
         Описание
       </label>
       <textarea
-        className="form-control is-invalid"
+        className="form-control"
         id="validationServerDescription"
         aria-describedby="descriptionError"
         name="description"

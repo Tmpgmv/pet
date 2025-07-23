@@ -1,4 +1,4 @@
-function PasswordInput({ extendedLabel = false }) {
+function PasswordInput({ required=true, extendedLabel = false }) {
   return (
     <div>
       <label htmlFor="validationServerPassword" className="form-label">
@@ -14,7 +14,7 @@ function PasswordInput({ extendedLabel = false }) {
         aria-describedby="passwordError"
         name="password"
         pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).{7,}"
-        required={true}
+        required={required}
       />
       <div id="passwordError" className="invalid-feedback">
         Введите корректный пароль.
