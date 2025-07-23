@@ -36,8 +36,8 @@ const Info = () => {
           email: data.email || "",
           phone: data.phone || "",
           registrationDate: data.registrationDate || "",
-          ordersCount: data.ordersCount || "",
-          petsCount: data.petsCount || "",
+          ordersCount: data.ordersCount || 0,
+          petsCount: data.petsCount || 0,
         });
       })
       .fail((jqXHR) => {
