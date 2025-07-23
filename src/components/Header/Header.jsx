@@ -12,10 +12,15 @@ import search from "../../assets/images/search.svg";
 import LinkWithImg from "../LinkWithImg";
 import Logout from "./Logout";
 
+function isLoggedIn() {
+  let result = localStorage.getItem("token");
+  return result;
+}
 
 function Header() {
-
-  const LINK_CLASS_NAME = "py-2 link-body-emphasis text-decoration-none ps-3 pe-3";
+  const LINK_CLASS_NAME =
+    "py-2 link-body-emphasis text-decoration-none ps-3 pe-3";
+  const loggedIn = isLoggedIn();
 
   return (
     <header>
@@ -29,11 +34,39 @@ function Header() {
         </Link>
 
         <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-          <LinkWithImg to="/post/new" imgSrc={application} alt="new post" className={LINK_CLASS_NAME}/>
-          <LinkWithImg to="/search" imgSrc={search} alt="search" className={LINK_CLASS_NAME}/>
-          <LinkWithImg to="/account" imgSrc={account} alt="person" className={LINK_CLASS_NAME}/>
-          <LinkWithImg to="/login" imgSrc={login} alt="login" className={LINK_CLASS_NAME}/>
-          <Logout />
+          <LinkWithImg
+            to="/search"
+            imgSrc={search}
+            alt="search"
+            className={LINK_CLASS_NAME}
+          />
+
+          {loggedIn && (
+            <>
+              <LinkWithImg
+                to="/post/new"
+                imgSrc={application}
+                alt="new post"
+                className={LINK_CLASS_NAME}
+              />
+              <LinkWithImg
+                to="/account"
+                imgSrc={account}
+                alt="person"
+                className={LINK_CLASS_NAME}
+              />
+              <Logout />
+            </>
+          )}
+
+          {!loggedIn && (
+            <LinkWithImg
+              to="/login"
+              imgSrc={login}
+              alt="login"
+              className={LINK_CLASS_NAME}
+            />
+          )}
         </nav>
       </div>
     </header>
