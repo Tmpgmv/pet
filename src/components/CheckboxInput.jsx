@@ -1,4 +1,4 @@
-function CheckboxInput({ name, label, errorMessage, isRequired = false }) {
+function CheckboxInput({ name, label, errorMessage, isRequired = false, onChange=null }) {
   return (
     <div>
       <div className="form-check">
@@ -6,12 +6,13 @@ function CheckboxInput({ name, label, errorMessage, isRequired = false }) {
           className="form-check-input"
           type="checkbox"
           defaultValue="1"
-          id={`validationServer${name}`}
+          id={name}
           aria-describedby={`${name}Error`}
           name={name}
           required={isRequired ? true : undefined}
+          onChange={onChange ? onChange : undefined}
         />
-        <label className="form-check-label" htmlFor={`validationServer${name}`}>
+        <label className="form-check-label" htmlFor={name}>
           {label}
         </label>
         <div id={`${name}Error`} className="invalid-feedback">

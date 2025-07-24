@@ -36,6 +36,7 @@ import PhoneInput from "../../PhoneInput";
 import DescriptionInput from "./DescriptionInput";
 import ImageInput from "./ImageInput";
 import MarkInput from "./MarkInput";
+import { useState } from "react";
 
 import { toast } from "react-toastify";
 import DistrictInput from "../../DistrictInput";
@@ -44,17 +45,22 @@ function clear() {
   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
 }
 
-function Main({formId}) {
+function Main({ formId }) {
   const location = useLocation();
-  const TOKEN = getToken();  
+  const TOKEN = getToken();
   const navigate = useNavigate();
   const notifyFailure = () =>
     toast.error("Не удалось опубликовать объявление!");
 
+  const [isRegister, setIsRegister] = useState(false);
+
+  function handleRegisterChange(event) {    
+    setIsRegister(event.target.checked);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    clear();
-    debugger;
+    clear();    
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
@@ -137,12 +143,16 @@ function Main({formId}) {
           name="register"
           label="Пройти автоматическую регистрацию"
           errorMessage="Проблема на сервере."
+          onChange={handleRegisterChange}
         />
 
         <div id="passwords">
-          <PasswordInput required={false} />
-
-          <PasswordConfirmationInput required={false} />
+          {isRegister && (
+            <>
+              <PasswordInput required={false} />
+              <PasswordConfirmationInput required={false} />
+            </>
+          )}
         </div>
 
         <div className="col">
