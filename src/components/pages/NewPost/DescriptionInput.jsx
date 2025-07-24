@@ -11,7 +11,7 @@ function DescriptionInput() {
         aria-describedby="descriptionError"
         name="description"
         rows={3}
-        required=""
+        required={true}
         defaultValue={""}
       />
       <div id="descriptionError" className="invalid-feedback">

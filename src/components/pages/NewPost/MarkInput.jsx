@@ -3,7 +3,7 @@ function MarkInput() {
   return (
     <div>
       <label htmlFor="validationServerMark" className="form-label">
-        Электронный чип (латиница, дефис, цифры)
+        Электронный чип
       </label>
       <input
         type="text"

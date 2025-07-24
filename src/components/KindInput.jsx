@@ -11,7 +11,7 @@ function KindInput({ aClassName = null }) {
         aria-describedby="kindError"
         name="kind"
         pattern="[а-яёА-ЯЁ\s\-]+"
-        required=""
+        required={true}
       />
       <div id="kindError" className="invalid-feedback">
         Введите корректный вид животного.

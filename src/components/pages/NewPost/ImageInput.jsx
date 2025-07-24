@@ -1,5 +1,5 @@
 
-function ImageInput({id, aLabel=false}) {
+function ImageInput({id, required=false, aLabel=false}) {
   return (
     <div>
       
@@ -12,7 +12,7 @@ function ImageInput({id, aLabel=false}) {
         id={id}
         name={id}
         aria-describedby="validationServerPhoto1Feedback"
-        required=""
+        required={required}
       />
       <div id="validationServerPhoto1Feedback" className="invalid-feedback">
         Проблема с изображением.

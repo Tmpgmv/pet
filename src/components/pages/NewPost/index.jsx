@@ -11,7 +11,7 @@ function index(props) {
       <Header />
       <Main formId={FORM_ID}/>
       <Footer />
-      {/* <FormValidation formId={FORM_ID} /> */}
+      <FormValidation formId={FORM_ID} />
     </div>
   );
 }

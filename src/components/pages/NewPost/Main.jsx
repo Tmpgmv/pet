@@ -126,7 +126,7 @@ function Main({ formId }) {
 
         <DescriptionInput />
 
-        <ImageInput id="photos1" aLabel={true} />
+        <ImageInput id="photos1" aLabel={true} required={true}/>
 
         <ImageInput id="photos2" />
 

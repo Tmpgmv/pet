@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 function clearValidationErrors($input) {
-  $input.removeClass("is-valid is-invalid");  
+  $input.removeClass("is-valid is-invalid");
 }
 
 function validatePasswordConfirmation($input) {
@@ -15,7 +15,7 @@ function validatePasswordConfirmation($input) {
   }
 }
 
-function validateField($input) {  
+function validateField($input) {
   clearValidationErrors($input);
 
   if ($input.attr("name") === "password_confirmation") {
@@ -30,7 +30,9 @@ function validateField($input) {
 }
 
 function attachBlurEventHandler(formId) {
-  $("#" + formId + " input").on("blur", function () {
+  $(
+    "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
+  ).on("blur", function () {
     validateField($(this));
   });
 }
