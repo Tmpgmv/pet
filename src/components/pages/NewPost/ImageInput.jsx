@@ -3,7 +3,7 @@ function ImageInput({id, aLabel=false}) {
   return (
     <div>
       
-      {aLabel ? <label htmlFor="formPhoto1" className="form-label">  Изображения</label> : undefined}
+      {aLabel ? <label htmlFor={id} className="form-label">  Изображения</label> : undefined}
 
       <input
         className="form-control"

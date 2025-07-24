@@ -5,14 +5,14 @@ import Header from "../../Header/Header";
 import Main from "./Main";
 
 function index() {
-  let formId = "registration-form";
+  const FORM_ID = "registration-form";
 
   return (
     <div>
       <Header />
-      <Main formId={formId} />
+      <Main formId={FORM_ID} />
       <Footer />
-      <FormValidation formId={formId} />
+      <FormValidation formId={FORM_ID} />
     </div>
   );
 }

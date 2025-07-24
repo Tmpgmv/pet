@@ -1,3 +1,24 @@
+/*
+Если флаг register не взведен, просто емейла недостаточно 
+для отнесения объявления к пользователю. Это будет анонимное объявление. 
+Как свое ни один пользователь не сможет его увидеть (отредактировать / удалить).
+
+Если флаг Register взведен, то требуются пароль и подтверждение.
+Если флаг Register после этого снят, то можно допустить логическую ошибку, скрыв блок. Т.е. форма по факту
+будет заполнена, но скрыта. Это будет логическая ошибка. Потому что флаг Register на сервер не отправляется.
+Сервер получит пароли со всеми вытекающими последствиями.
+
+Правильный прием: средствами Js надо обязательно удалить эти поля. Не очистить эти поля, а именно удалить.
+Потому что иначе эти поля на сервер будут отправлены пустыми.
+
+Если пароли на сервер отправлены, то будет попытка аутентификации.
+Т.е. и зарегистрированный пользователь тоже должен отправить пароль.
+Причина: Bearer + токен на сервер не отправляются.
+
+Если пользователь не аутентифицирован, будет выполнена попытка 
+зарегистрировать пользователя. И сразу отнести объявление к нему.
+*/
+
 import $ from "jquery";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ACCOUNT, API_NEW_POST_URL } from "../../../general/constants";
@@ -21,10 +42,9 @@ function clear() {
   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
 }
 
-function Main() {
+function Main({formId}) {
   const location = useLocation();
-  const TOKEN = getToken();
-  const FORM_ID = "change-phone-form";
+  const TOKEN = getToken();  
   const navigate = useNavigate();
   const notifyFailure = () =>
     toast.error("Не удалось опубликовать объявление!");
@@ -33,7 +53,7 @@ function Main() {
     event.preventDefault();
     clear();
     debugger;
-    let theForm = document.getElementById(FORM_ID);
+    let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
       url: API_NEW_POST_URL,
@@ -52,7 +72,7 @@ function Main() {
         state: {
           toast: {
             type: "success",
-            message: "Телефон изменен.",
+            message: "Объявление опубликовано.",
           },
           from: location,
         },
@@ -61,20 +81,16 @@ function Main() {
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
       notifyFailure();
+      let responseJson = jqXHR.responseJSON;
 
-      let responseText = jqXHR.responseText;
+      let errors = responseJson.error.errors;
 
-      if (responseText) {
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
-
-        $.each(errors, function (key, data) {
-          let unitedErrorText = data.join();
-          $("#validationServerPhone").addClass("is-invalid");
-          let selector = "#" + key + "Error";
-          $(selector).text(unitedErrorText);
-        });
-      }
+      $.each(errors, function (key, data) {
+        let unitedErrorText = data.join();
+        $("#validationServerPhone").addClass("is-invalid");
+        let selector = "#" + key + "Error";
+        $(selector).text(unitedErrorText);
+      });
     });
   }
 
@@ -82,7 +98,7 @@ function Main() {
     <section id="new-post-section" className="mt-5">
       <h1 className="text-center  line-hight-08">Новое объявление</h1>
       <form
-        id={FORM_ID}
+        id={formId}
         method="post"
         encType="multipart/form-data"
         className="row g-3 mt-2 col-12 col-md-6 mx-auto"
@@ -102,11 +118,11 @@ function Main() {
 
         <DescriptionInput />
 
-        <ImageInput id="photo-1" aLabel={true} />
+        <ImageInput id="photos1" aLabel={true} />
 
-        <ImageInput id="photo-2" />
+        <ImageInput id="photos2" />
 
-        <ImageInput id="photo-3" />
+        <ImageInput id="photos3" />
 
         <CheckboxInput
           name="confirm"

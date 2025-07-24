@@ -1,13 +1,14 @@
 import React from "react";
 
-function DistrictInput({ required = true, selectClassName = undefined }) {
+function DistrictInput({ required = true, selectClassName = null }) {
   return (
-    <>
-      <label htmlFor="district">Район:</label>
+    <div>
+      <label htmlFor="district" className="form-label" >Район:</label>
       <select
-        className={selectClassName ? selectClassName : undefined}
+        className={`form-control ${selectClassName ? selectClassName : ""}`}
         id="district"
         defaultValue=""
+        name="district"
         required={required}
       >
         <option value="">---</option>
@@ -30,7 +31,11 @@ function DistrictInput({ required = true, selectClassName = undefined }) {
         <option>Фрунзенский</option>
         <option>Центральный</option>
       </select>
-    </>
+
+    <div className = "invalid-feedback">
+      Выберите район.
+    </div>
+    </div>
   );
 }
 
