@@ -24,7 +24,7 @@ function FoundAnimalCard({ kind, src, alt, date, district }) {
             </div>
             <div className="w-75 my-auto text-start fw-bold ">{district}</div>
           </div>
-          <Link to="/card">
+          <Link to="/card/1">
             <Button btnText="Подробнее" aClassName="w-100" />
           </Link>
         </div>

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Account from "./components/pages/Account/Index";
-import Card from "./components/pages/Card";
+import Card from "./components/pages/Card/Index";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login/Index";
 import NewPost from "./components/pages/NewPost";
@@ -19,7 +19,7 @@ function App() {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/"} element={<Home />} />
         <Route path={"/search"} element={<Search />} />
-        <Route path={"/card"} element={<Card />} />
+        <Route path="/card/:cardId" element={<Card />} />
         <Route path={"/register"} element={<Register />} />
         
         {/* Только для авторизованных пользователей */}

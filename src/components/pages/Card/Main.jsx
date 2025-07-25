@@ -4,7 +4,8 @@ import EditDelete from "./EditDelete";
 import Info from "./Info";
 import Photos from "./Photos";
 
-function Main() {
+function Main({cardId}) {
+  debugger;
   return (
     <main>      
       <section id="info-section" className="mt-5">
