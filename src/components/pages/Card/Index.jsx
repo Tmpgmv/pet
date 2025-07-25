@@ -37,8 +37,7 @@ function Index({petId}) {
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {
-        debugger;
+      .done((dataJson) => {        
         setCardInfo({
           id: dataJson.data.pet.id || "",
           kind: dataJson.data.pet.name || "",
