@@ -8,8 +8,10 @@ import {
 } from "../../../general/constants";
 import getToken from "../../../general/getToken.js";
 import $ from "jquery";
+import { useLocation, useParams } from "react-router-dom";
 
 const Info = () => {
+  const location = useLocation();
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -18,6 +20,8 @@ const Info = () => {
     ordersCount: "",
     petsCount: "",
   });
+
+
 
   function requestInfo() {
     const token = getToken();
@@ -41,33 +45,16 @@ const Info = () => {
         });
       })
       .fail((jqXHR) => {
-        toast.error("Не удалось получить данные с сервера!");
-        // Optional: handle error fields here if needed
+        const toastData = location.state?.toast;
+        toast["error"]("Не удалось получить данные с сервера!", {
+          toastId: "info",
+        });
       });
   }
 
-  function requestPosts() {
-    const token = getToken();
-
-    $.ajax({
-      url: API_URL_USERS_POSTS,
-      method: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      dataType: "json",
-    })
-      .done((dataJson) => {
-        debugger;
-      })
-      .fail(() => {
-        toast.error("Не удалось получить данные с сервера!");
-      });
-  }
 
   useEffect(() => {
     requestInfo();
-    requestPosts();
   }, []);
 
   return (

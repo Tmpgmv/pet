@@ -10,8 +10,7 @@ import { API_URL_USERS_PATH } from "../../../general/constants";
 import $ from "jquery";
 
 
-function Card({ src, alt, date, district }) { 
-
+function Card({ id, src, alt, date, district }) {   
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">

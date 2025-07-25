@@ -3,7 +3,7 @@ import calendar from "../../../assets/images/calendar.svg";
 import geo from "../../../assets/images/geo.svg";
 import Button from "../../Button";
 
-function FoundAnimalCard({ kind, src, alt, date, district }) {
+function FoundAnimalCard({ id, kind, src, alt, date, district }) {
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">
@@ -13,18 +13,18 @@ function FoundAnimalCard({ kind, src, alt, date, district }) {
         <div className="card-body">
           <img className="w-100" src={src} alt={alt} />
           <div className="row mt-2">
-            <div className="w-25 text-end">
+            <div className="w-25 my-auto">
               <img src={calendar} height={30} alt="calendar" />
             </div>
             <div className="w-75 my-auto text-start fw-bold">{date}</div>
           </div>
           <div className="row mb-2 mh-3em">
-            <div className="w-25 text-end">
+            <div className="w-25 my-auto">
               <img src={geo} height={30} alt="geo" />
             </div>
             <div className="w-75 my-auto text-start fw-bold ">{district}</div>
           </div>
-          <Link to="/pets/1">
+          <Link to={`/pets/${id}`}>
             <Button btnText="Подробнее" aClassName="w-100" />
           </Link>
         </div>
