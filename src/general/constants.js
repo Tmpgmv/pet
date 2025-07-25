@@ -4,8 +4,8 @@ export const CHANGE_EMAIL = "/email";
 export const CHANGE_PHONE = "/phone";
 export const PETS = "/pets";
 
-
-export const API_URL = "https://pets.сделай.site/api";
+export const SERVER_URL = "https://pets.сделай.site"
+export const API_URL = SERVER_URL + "/api";
 export const API_URL_REGISTRATION_PATH = API_URL + "/register";
 export const API_URL_SUBSCRIPTION_PATH = API_URL + "/subscription";
 export const API_URL_LOGIN_PATH = API_URL + "/login";
