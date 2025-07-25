@@ -6,6 +6,7 @@ import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import Main from "./Main";
 import { useLocation, useParams } from "react-router-dom";
+import DeleteConfirmation from "./DeleteConfirmation"
 
 function Index() {
   const params = useParams();
@@ -65,7 +66,8 @@ function Index() {
     <>
       <Header />
       <Main cardInfo={cardInfo} />
-      <Footer />
+      <DeleteConfirmation />
+      <Footer />      
     </>
   );
 }
