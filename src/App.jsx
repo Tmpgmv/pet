@@ -19,8 +19,8 @@ function App() {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/"} element={<Home />} />
         <Route path={"/search"} element={<Search />} />
-        <Route path="/card/:cardId" element={<Card />} />
-        <Route path={"/register"} element={<Register />} />
+        <Route path="/pets/:petId" element={<Card />} />
+        <Route path={"/register"} element={<Register />} />        
         
         {/* Только для авторизованных пользователей */}
         

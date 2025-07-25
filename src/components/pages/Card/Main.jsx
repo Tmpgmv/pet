@@ -5,13 +5,12 @@ import Info from "./Info";
 import Photos from "./Photos";
 
 function Main({cardId}) {
-  debugger;
   return (
     <main>      
       <section id="info-section" className="mt-5">
         <H1 h1="Найденное животное" />
         <EditDelete />
-        <Info />
+        <Info cardId={cardId}/>
       </section>
       <Photos />
     </main>

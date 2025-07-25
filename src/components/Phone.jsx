@@ -1,8 +1,11 @@
 import React from 'react';
 
 function prepareAttributeValue(phone){
-  // Убрать пробелы, дефисы, скобки.
-  let tmp = phone.replace(/[\-\(\)\s]/g, "");
+  // Убрать все кроме цифр и знака плюс. По спецификации
+  // сервер ничего другого ответить не должен.
+  // Но на всякий случай санируем данные сервера.
+  
+  let tmp = phone.replace(/[^\d+]/g, "");
   return tmp;
 }
 

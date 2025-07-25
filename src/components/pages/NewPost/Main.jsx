@@ -23,7 +23,7 @@
 
 import $ from "jquery";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ACCOUNT, API_NEW_POST_URL } from "../../../general/constants";
+import { PETS, API_PETS_URL } from "../../../general/constants";
 import getToken from "../../../general/getToken";
 import Button from "../../Button";
 import CheckboxInput from "../../CheckboxInput";
@@ -61,11 +61,12 @@ function Main({ formId }) {
 
 
   function handleSubmit(event) {    
+    debugger;
     event.preventDefault();        
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
-      url: API_NEW_POST_URL,
+      url: API_PETS_URL,
       method: "POST",
       data: formData,
       beforeSend: function (xhr) {
@@ -76,8 +77,8 @@ function Main({ formId }) {
       dataType: "json",
     });
 
-    request.done(function (data, textStatus, jqXHR) {
-      navigate(ACCOUNT, {
+    request.done(function (dataJson, textStatus, jqXHR) {      
+      navigate(PETS+"/"+dataJson.data.id, {
         state: {
           toast: {
             type: "success",
