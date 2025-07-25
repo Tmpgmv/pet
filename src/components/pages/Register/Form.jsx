@@ -9,11 +9,11 @@ import { API_URL_REGISTRATION_PATH } from "../../../general/constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import {clear} from '../../FormValidation';
 
-
-function clear() {
-  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");  
-}
+// function clear() {
+//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");  
+// }
 
 
 

@@ -38,12 +38,10 @@ import ImageInput from "./ImageInput";
 import MarkInput from "./MarkInput";
 import { useState } from "react";
 
+
 import { toast } from "react-toastify";
 import DistrictInput from "../../DistrictInput";
 
-function clear() {
-  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-}
 
 function Main({ formId }) {
   const location = useLocation();
@@ -53,14 +51,17 @@ function Main({ formId }) {
     toast.error("Не удалось опубликовать объявление!");
 
   const [isRegister, setIsRegister] = useState(false);
+  
 
   function handleRegisterChange(event) {    
     setIsRegister(event.target.checked);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    clear();        
+
+
+
+  function handleSubmit(event) {    
+    event.preventDefault();        
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({

@@ -4,10 +4,11 @@ import EmailInput from "../EmailInput";
 import { API_URL_SUBSCRIPTION_PATH } from "../../general/constants";
 import $ from "jquery";
 import { toast } from 'react-toastify';
+import {clear} from "../FormValidation";
 
-function clear() {
-  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-}
+// function clear() {
+//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+// }
 
 function Subscription() {
   const notifyFailure = () => toast.error("Не удалось подписаться!");

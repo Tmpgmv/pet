@@ -37,32 +37,32 @@ function attachBlurEventHandler(formId) {
   });
 }
 
-function validateAllFields(formId) {
-  debugger;
+function attachInvalidEventHandler(formId) {
   $(
     "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
-  ).each(function () {
-    debugger;
-    validateField($(this));
+  ).on("invalid", function (event) {
+    $(this).addClass("is-invalid");
   });
 }
 
-function attachSubmitEventHandler(formId) {    
-  $("#" + formId).on("submit", function (event) {    
-    event.preventDefault();
-    validateAllFields(formId);
-  });
+function attachEventHandlers(formId) {
+  attachBlurEventHandler(formId);
 }
 
-function attachEventHandlers(formId) {  
+function FormValidation({ formId }) {
   $(document).ready(function () {
-    attachBlurEventHandler(formId);
-    attachSubmitEventHandler(formId);
+    attachEventHandlers(formId);
+    attachInvalidEventHandler(formId);
   });
-}
-
-function FormValidation({ formId }) {  
-  attachEventHandlers(formId);
 }
 
 export default FormValidation;
+
+export function clear() {
+  // Очистка сообщений об ошибках. Т.е. на клиенте перед отправкой
+  // выполнены все возможные проверки. Теперь форму очищаем от сообщений об ошибках.
+  // Форма отправляется на сервер. Но сервер тоже может вернуть ошибки.
+  // И показывать их надо на форме, очищенной от предыдущих сообщений.
+
+  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+}

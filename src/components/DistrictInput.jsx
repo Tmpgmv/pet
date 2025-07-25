@@ -10,7 +10,7 @@ function DistrictInput({ required = true, selectClassName = null }) {
         defaultValue=""
         name="district"
         required={required}
-        pattern={required ? "(?!(---))" : undefined}
+        pattern={required ? "(?!(---))" : undefined}        
       >
         <option value="">---</option>
         <option>Адмиралтейский</option>

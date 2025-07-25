@@ -7,10 +7,11 @@ import $ from "jquery";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import {clear} from "../../FormValidation"
 
-function clear() {
-  $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-}
+// function clear() {
+//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+// }
 
 function saveToken(token) {
   localStorage.setItem("token", token);
