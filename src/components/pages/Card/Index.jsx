@@ -7,7 +7,7 @@ import Header from "../../Header/Header";
 import Main from "./Main";
 import { useLocation, useParams } from "react-router-dom";
 
-function Index({petId}) {
+function Index() {
   const params = useParams();
   const location = useLocation();
 
