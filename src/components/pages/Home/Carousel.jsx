@@ -5,6 +5,11 @@ import { API_CAROUSEL_URL, SERVER_URL } from "../../../general/constants";
 import CarouselButton from "./CarouselButton";
 import CarouselIndicator from "./CarouselIndicator";
 import CarouselItem from "./CarouselItem";
+import Spinner from "./Spinner";
+
+function deletePreloader(){
+  $("#spinner").remove();
+}
 
 function Carousel() {
 
@@ -17,6 +22,7 @@ function Carousel() {
       dataType: "json",
     })
       .done((dataJson) => {
+        deletePreloader();
         let carouselItemsJson = dataJson.data.pets;
 
         setCarouselItems(carouselItemsJson);
@@ -36,6 +42,7 @@ function Carousel() {
     <section id="carousel-section" className="mt-5">
       <h2 className="text-center line-hight-08">Недавно вернулись домой</h2>
       <div id="carousel" className="carousel slide">
+        <Spinner />
         <div className="carousel-indicators">
 
         {carouselItems.map((item, index) => (
