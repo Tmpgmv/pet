@@ -60,7 +60,7 @@ function Main({ formId }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    clear();    
+    clear();        
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
@@ -126,11 +126,11 @@ function Main({ formId }) {
 
         <DescriptionInput />
 
-        <ImageInput id="photos1" aLabel={true} required={true}/>
+        <ImageInput id="photo1" aLabel={true} required={true}/>
 
-        <ImageInput id="photos2" />
+        <ImageInput id="photo2" />
 
-        <ImageInput id="photos3" />
+        <ImageInput id="photo3" />
 
         <CheckboxInput
           name="confirm"

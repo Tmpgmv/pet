@@ -37,15 +37,32 @@ function attachBlurEventHandler(formId) {
   });
 }
 
-function validateForm(formId) {
-  $(document).ready(function () {
-    attachBlurEventHandler(formId);
+function validateAllFields(formId) {
+  debugger;
+  $(
+    "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
+  ).each(function () {
+    debugger;
+    validateField($(this));
   });
 }
 
-function FormValidation({ formId }) {
-  validateForm(formId);
-  return <></>;
+function attachSubmitEventHandler(formId) {    
+  $("#" + formId).on("submit", function (event) {    
+    event.preventDefault();
+    validateAllFields(formId);
+  });
+}
+
+function attachEventHandlers(formId) {  
+  $(document).ready(function () {
+    attachBlurEventHandler(formId);
+    attachSubmitEventHandler(formId);
+  });
+}
+
+function FormValidation({ formId }) {  
+  attachEventHandlers(formId);
 }
 
 export default FormValidation;
