@@ -9,48 +9,58 @@ function QuickSearch({ nameOfClass = null }) {
   const ID = "quick-search-input";
   const [availableVariants, setAvailableVariants] = useState([]);
 
-  function renewAvailableVariants(){
-    $( "#" + ID).autocomplete({
-      source: availableVariants
+  function refreshAvailableVariants() {
+    $("#" + ID).autocomplete({
+      source: availableVariants,
+      minLength: 4
     });
   }
 
-  function requestAvailableVariants() {
+  function requestAvailableVariants(query = null) {
+    
+
+    let url = API_SEARCH_URL;
+    if (query) {
+      // Очень важно не написать
+      // += "/?query=" + query;
+      // Иначе будет редирект, а результата не будет.
+        url += "?query=" + query;
+      }
+
+    
     $.ajax({
-      url: API_SEARCH_URL,
+      url: url,
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {        
+      .done((dataJson) => {
         let allAnimals = dataJson.data.orders;
 
-        let tmpAvailableVariants = allAnimals.map((item)=>item.description)
-        let tmpAvailableVariantsWithoutDuplicates = [...new Set(tmpAvailableVariants)];
+        let tmpAvailableVariants = allAnimals.map((item) => item.description);
+        let tmpAvailableVariantsWithoutDuplicates = [
+          ...new Set(tmpAvailableVariants),
+        ];
 
         setAvailableVariants(tmpAvailableVariantsWithoutDuplicates);
+        refreshAvailableVariants();
       })
-      .fail(() => {        
+      .fail((data) => {
         toast["error"]("Не удалось получить данные с сервера!", {
           toastId: "foundAnimals",
         });
       });
   }
 
+    useEffect(() => {
+      requestAvailableVariants();
+    }, []);
+
   useEffect(() => {
-    requestAvailableVariants();    
-  }, []);
+    if (availableVariants.length > 0) {
+      refreshAvailableVariants();
+    }
+  }, [availableVariants]);
 
-
-  useEffect(() => {
-  if (availableVariants.length > 0) {
-    $("#" + ID).autocomplete({
-      source: availableVariants
-    });
-  }
-}, [availableVariants]);
-      
-
-  debugger;
   return (
     <div id="search-wrap">
       <form
@@ -66,6 +76,13 @@ function QuickSearch({ nameOfClass = null }) {
             placeholder="Кого ищем?"
             aria-describedby="button-addon2"
             required={true}
+            onChange={(e) =>
+              setTimeout(() => {
+                let userInput = e.target.value;
+                if (userInput.length > 3)
+                  requestAvailableVariants(e.target.value);
+              }, 1000)
+            }
           />
 
           <Button btnText="Поиск" />
