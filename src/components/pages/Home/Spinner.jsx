@@ -1,7 +1,3 @@
-import React from "react";
-import $ from "jquery";
-
-
 function Spinner({aClassName=null}) {
   return (
     <div id="spinner" className={`spinner-grow d-flex text-success mx-auto ${aClassName ? aClassName : ""}`} role="status">
