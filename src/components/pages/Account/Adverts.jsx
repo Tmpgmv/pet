@@ -29,7 +29,7 @@ function Adverts() {
       })
       .fail(() => {
         const toastData = location.state?.toast;
-        toast["error"]("Не удалось получить данные с сервера!", {
+        toast["error"]("Не удалось получить с сервера данные объявлениях пользователя!", {
           toastId: "adverts",
         });
       });

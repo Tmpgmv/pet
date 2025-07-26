@@ -38,7 +38,7 @@ function QuickSearch({ nameOfClass = null }) {
         setAvailableVariants(uniqueDescriptions);
       })
       .fail(() => {
-        toast.error("Не удалось получить данные с сервера!", {
+        toast.error("Не удалось получить с сервера данные для поисковых подсказок!", {
           toastId: "availableVariantsError",
         });
       });

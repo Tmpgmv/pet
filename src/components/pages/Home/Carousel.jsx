@@ -26,7 +26,7 @@ function Carousel() {
       })
       .fail(() => {        
         toast["error"]("Не удалось получить с сервера данные о вернувшихся домой животных!", {
-          toastId: "foundAnimals",
+          toastId: "carousel",
         });
       }).always(function() {         
         setIsLoading(false);
