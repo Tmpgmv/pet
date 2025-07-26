@@ -1,20 +1,20 @@
-function KindInput({ aClassName = null }) {
+function KindInput({ aClassName = null, required=false, errorMessage="Введите вид животного." }) {
   return (
     <div className={aClassName ?? undefined}>
-      <label htmlFor="validationServerKind" className="form-label">
+      <label htmlFor="kind" className="form-label">
         Вид животного (кириллица, пробел, дефис)
       </label>
       <input
         type="text"
         className="form-control"
-        id="validationServerKind"
+        id="kind"
         aria-describedby="kindError"
         name="kind"
         pattern="[а-яёА-ЯЁ\s\-]+"
-        required={true}
+        required={required}
       />
       <div id="kindError" className="invalid-feedback">
-        Введите корректный вид животного.
+        {errorMessage}
       </div>
     </div>
   );

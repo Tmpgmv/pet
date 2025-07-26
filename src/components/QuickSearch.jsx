@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom"; 
+import { clearSeachResult } from "../general/clearSearchResult";
+import { showSpinner } from "../components/pages/Home/Spinner";
 
 
 function QuickSearch({ nameOfClass = null }) {
@@ -69,6 +71,9 @@ function QuickSearch({ nameOfClass = null }) {
 
   function getSearchResults(event){
     event.preventDefault();
+    clearSeachResult();
+    debugger;
+    showSpinner();
     let formData = $("#" + FORM_ID).serialize();
         $.ajax({
       url: API_SEARCH_URL,
@@ -94,7 +99,7 @@ function QuickSearch({ nameOfClass = null }) {
       <form
         id={FORM_ID}
         className={nameOfClass ?? undefined}
-        method="post"
+        method="get"
         onSubmit={function(event){getSearchResults(event);}}
       >
         <div className="input-group mb-3">

@@ -4,6 +4,7 @@ import Pagination from "../../Pagination";
 import Card from "./Card";
 import { SERVER_URL } from "../../../general/constants";
 import { useLocation } from "react-router-dom";
+import Spinner from "../Home/Spinner";
 
 
 function SearchResult() {
@@ -27,6 +28,8 @@ function SearchResult() {
   return (
     <section id="search-result-section" className="mt-5">
       <H1 h1="Результаты поиска" />
+
+      <Spinner aClassName="d-none"/>
 
       {srchResult.length === 0 && (
         <div id="nothing-found" className="text-danger text-center mt-4">

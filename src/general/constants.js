@@ -5,6 +5,7 @@ export const CHANGE_PHONE = "/phone";
 export const PETS = "/pets";
 export const CAROUSEL = "/slider";
 export const SEARCH = "/search";
+export const ADVANCED_SEARCH = "/order"
 
 export const SERVER_URL = "https://pets.сделай.site"
 export const API_URL = SERVER_URL + "/api";
@@ -18,4 +19,5 @@ export const API_CHANGE_PHONE_URL = API_URL_USERS_PATH + CHANGE_PHONE;
 export const API_PETS_URL = API_URL + PETS;
 export const API_CAROUSEL_URL = API_PETS_URL + CAROUSEL;
 export const API_SEARCH_URL = API_URL + SEARCH;
+export const API_ADVANCED_SEARCH_URL = API_URL + SEARCH + ADVANCED_SEARCH;
 
