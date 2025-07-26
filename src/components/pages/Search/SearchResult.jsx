@@ -5,9 +5,8 @@ import Card from "./Card";
 import { SERVER_URL } from "../../../general/constants";
 
 function SearchResult() {
-  const [srchResult, setSearchResult] = useState([]);
+  const [srchResult, setSearchResult] = useState([]);  
   
-  debugger;
   useEffect(() => {
     setSearchResult([
       {
@@ -182,9 +181,11 @@ function SearchResult() {
     <section id="search-result-section" className="mt-5">
       <H1 h1="Результаты поиска" />
 
+    {srchResult.length === 0 && (
       <div id="nothing-found" className="text-danger text-center mt-4">
         Ничего не найдено.
       </div>
+    )}
 
       <div
         id="search-result"
