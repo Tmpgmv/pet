@@ -2,7 +2,7 @@ import React from 'react';
 import Img from '../../Img';
 import trash from "../../../assets/images/trash.svg";
 
-function DeleteConfirmation() {
+function DeleteConfirmation({cardId}) {
   // https://getbootstrap.com/docs/5.3/components/modal/#live-demo
   // 1. Ctrl + h, deleteConfirmationModal -> deleteConfirmationModal
   // 2. Crtl + h Modal title -> Внимание!
@@ -13,6 +13,8 @@ function DeleteConfirmation() {
   // 7. ... -> Подтверждаете удаление?
 
   // По обстановке.
+
+    debugger;
 
     return (
 

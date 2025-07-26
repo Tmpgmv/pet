@@ -66,7 +66,7 @@ function Index() {
     <>
       <Header />
       <Main cardInfo={cardInfo} />
-      <DeleteConfirmation />
+      <DeleteConfirmation cardId={cardInfo.id}/>
       <Footer />      
     </>
   );

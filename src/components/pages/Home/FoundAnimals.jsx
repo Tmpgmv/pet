@@ -22,7 +22,7 @@ function FoundAnimals(props) {
         setFoundAnimals(recentlyFoundAnimals);
       })
       .fail(() => {        
-        toast["error"]("Не удалось получить данные с сервера!", {
+        toast["error"]("Не удалось получить с сервера данные о животных, ожидающих хозяев!", {
           toastId: "foundAnimals",
         });
       });
@@ -34,7 +34,7 @@ function FoundAnimals(props) {
 
   return (
     <section id="card-section" className="mt-5">
-      <H2 h2="Найденные животные" />
+      <H2 h2="Ожидают хозяев" />
 
       <div className="row row-cols-1 row-cols-md-3 mt-4 mb-3 text-center">
         {foundAnimals.map((item) => (

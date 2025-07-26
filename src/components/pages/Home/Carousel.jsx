@@ -28,7 +28,7 @@ function Carousel() {
         setCarouselItems(carouselItemsJson);
       })
       .fail(() => {        
-        toast["error"]("Не удалось получить данные с сервера!", {
+        toast["error"]("Не удалось получить с сервера данные о вернувшихся домой животных!", {
           toastId: "foundAnimals",
         });
       });
