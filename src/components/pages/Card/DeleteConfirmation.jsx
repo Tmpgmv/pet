@@ -1,9 +1,10 @@
 import $ from "jquery";
 import { useLocation, useNavigate } from "react-router-dom";
 import trash from "../../../assets/images/trash.svg";
-import { ACCOUNT, API_ADVANCED_SEARCH_URL } from "../../../general/constants";
+import { ACCOUNT, API_URL_USERS_POSTS } from "../../../general/constants";
 import getToken from "../../../general/getToken";
 import Img from "../../Img";
+import { toast } from "react-toastify";
 
 function DeleteConfirmation({ cardId }) {
   // https://getbootstrap.com/docs/5.3/components/modal/#live-demo
@@ -21,10 +22,13 @@ function DeleteConfirmation({ cardId }) {
   const location = useLocation();
 
   function handleSubmit(event) {
+    debugger;
     event.preventDefault();
 
+    const deleteCardUrl = API_URL_USERS_POSTS + "/" + cardId;
+
     let request = $.ajax({
-      url: API_ADVANCED_SEARCH_URL + "/" + { cardId },
+      url: deleteCardUrl,
       method: "DELETE",
       beforeSend: function (xhr) {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -32,7 +36,7 @@ function DeleteConfirmation({ cardId }) {
       dataType: "json",
     });
 
-    request.done(function (dataJson, textStatus, jqXHR) {
+    request.done(function (dataJson, textStatus, jqXHR) {      
       navigate(ACCOUNT, {
         state: {
           toast: {
@@ -44,16 +48,13 @@ function DeleteConfirmation({ cardId }) {
       });
     });
 
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-      navigate(API_ADVANCED_SEARCH_URL + "/" + { cardId }, {
-        state: {
-          toast: {
-            type: "error",
-            message: "Не удалось удалить объявление.",
-          },
-          from: location,
-        },
-      });
+    request.fail(function (jqXHR, textStatus, errorThrown) {      
+      toast["error"](
+        "Не удалось удалить объявление!",
+        {
+          toastId: "deleteCard",
+        }
+      );
     });
   }
 
@@ -87,12 +88,12 @@ function DeleteConfirmation({ cardId }) {
             >
               Отмена
             </button>
-            <form id="delete" method="delete">
-              <button
-                type="submit"
-                onDelete={(event) => handleSubmit(event)}
-                className="btn btn-danger"
-              >
+            <form
+              id="delete"
+              method="delete"
+              onSubmit={(event) => handleSubmit(event)}
+            >
+              <button type="submit" className="btn btn-danger">
                 Удалить
               </button>
             </form>
