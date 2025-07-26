@@ -27,9 +27,7 @@ function SearchResult() {
 
   return (
     <section id="search-result-section" className="mt-5">
-      <H1 h1="Результаты поиска" />
-
-      <Spinner aClassName="d-none"/>
+      <H1 h1="Результаты поиска" />      
 
       {srchResult.length === 0 && (
         <div id="nothing-found" className="text-danger text-center mt-4">

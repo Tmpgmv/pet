@@ -7,13 +7,12 @@ import CarouselIndicator from "./CarouselIndicator";
 import CarouselItem from "./CarouselItem";
 import Spinner from "./Spinner";
 
-function deletePreloader(){
-  $("#spinner").remove();
-}
 
 function Carousel() {
 
   const [carouselItems, setCarouselItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   function requestCarouselCards() {
     $.ajax({
@@ -21,17 +20,17 @@ function Carousel() {
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {
-        deletePreloader();
+      .done((dataJson) => {        
         let carouselItemsJson = dataJson.data.pets;
-
         setCarouselItems(carouselItemsJson);
       })
       .fail(() => {        
         toast["error"]("Не удалось получить с сервера данные о вернувшихся домой животных!", {
           toastId: "foundAnimals",
         });
-      });
+      }).always(function() {         
+        setIsLoading(false);
+      });           
   }
 
   useEffect(() => {
@@ -41,8 +40,13 @@ function Carousel() {
   return (
     <section id="carousel-section" className="mt-5">
       <h2 className="text-center line-hight-08">Недавно вернулись домой</h2>
+      
+      {/* Показать спиннер, пока загружаются результаты поиска.*/}
+      {isLoading && <Spinner />}
+
       <div id="carousel" className="carousel slide">
-        <Spinner />
+        
+
         <div className="carousel-indicators">
 
         {carouselItems.map((item, index) => (
