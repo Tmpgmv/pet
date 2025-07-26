@@ -6,7 +6,7 @@ import { SERVER_URL } from "../../../general/constants";
 
 function SearchResult() {
   const [srchResult, setSearchResult] = useState([]);
-  // const [cards, setCards] = useState([]);
+  
   debugger;
   useEffect(() => {
     setSearchResult([
