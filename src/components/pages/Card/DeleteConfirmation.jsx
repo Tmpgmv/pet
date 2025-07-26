@@ -5,6 +5,7 @@ import { ACCOUNT, API_URL_USERS_POSTS } from "../../../general/constants";
 import getToken from "../../../general/getToken";
 import Img from "../../Img";
 import { toast } from "react-toastify";
+import { Modal } from 'bootstrap';
 
 function DeleteConfirmation({ cardId }) {
   // https://getbootstrap.com/docs/5.3/components/modal/#live-demo
@@ -17,6 +18,22 @@ function DeleteConfirmation({ cardId }) {
   // 7. ... -> Подтверждаете удаление?
 
   // По обстановке.
+
+
+function closeModal(){    
+  const modalEl = document.getElementById("deleteConfirmationModal");
+  const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
+
+  modal.hide();
+
+  // Force cleanup in case Bootstrap didn't do it
+  setTimeout(() => {
+    document.body.classList.remove("modal-open");
+    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+  }, 300); // Wait for animation to finish
+}
+
+
   const token = getToken();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +41,7 @@ function DeleteConfirmation({ cardId }) {
   function handleSubmit(event) {
     debugger;
     event.preventDefault();
+    closeModal();
 
     const deleteCardUrl = API_URL_USERS_POSTS + "/" + cardId;
 
@@ -55,10 +73,6 @@ function DeleteConfirmation({ cardId }) {
           toastId: "deleteCard",
         }
       );
-
-      // Закрыть форму, сымитировав нажатие кнопки "Отмена".
-      $("#cancel").trigger("click");
-
     });
   }
 

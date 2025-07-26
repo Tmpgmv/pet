@@ -8,7 +8,7 @@ function ImageInput({id, required=false, aLabel=false}) {
       <input
         className="form-control"
         type="file"
-        accept="image/*"
+        accept="image/png"
         id={id}
         name={id}
         aria-describedby="validationServerPhoto1Feedback"

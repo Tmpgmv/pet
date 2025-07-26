@@ -32,7 +32,7 @@ function validateField($input) {
 function attachBlurEventHandler(formId) {
   $(
     "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
-  ).on("blur", function () {
+  ).on("blur", function () {    
     validateField($(this));
   });
 }
