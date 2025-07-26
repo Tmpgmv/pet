@@ -1,12 +1,11 @@
 import $ from "jquery";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_URL_USERS_POSTS, SERVER_URL } from "../../../general/constants";
 import getToken from "../../../general/getToken.js";
 import H2 from "../../H2";
-import Pagination from "../../Pagination";
 import Card from "./Card";
-import { useLocation, useParams } from "react-router-dom";
 
 function Adverts() {
   const location = useLocation();
@@ -44,19 +43,23 @@ function Adverts() {
       <H2 h2="Мои объявления" />
 
       <div className="row row-cols-1 row-cols-md-3 mt-4 mb-3 text-center">
-        {userPosts.map((item) => (
-          <Card
-            id={item.id}
-            src={SERVER_URL + item.photos}
-            alt={item.kind}
-            date={item.date}
-            district={item.district}
-            aStatus={item.status}
-          />
-        ))}
+        {userPosts.length > 0 ? (
+          userPosts.map((item) => (
+            <Card
+              key={item.id}
+              id={item.id}
+              src={SERVER_URL + item.photos}
+              alt={item.kind}
+              date={item.date}
+              district={item.district}
+              aStatus={item.status}
+            />
+          ))
+        ) : (
+          <div id="nothing-found" class="text-danger mx-auto mt-4">Ничего не найдено.</div>
+        )}
       </div>
-
-      {/* <Pagination /> */}
+      
     </section>
   );
 }
