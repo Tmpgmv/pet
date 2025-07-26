@@ -17,7 +17,7 @@ function saveToken(token) {
   localStorage.setItem("token", token);
 }
 
-function Form(props) {
+function Form() {
   const navigate = useNavigate();
   const location = useLocation();
   const notifyFailure = () => toast.error("Не удалось войти!");

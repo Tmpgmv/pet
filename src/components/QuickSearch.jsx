@@ -6,20 +6,21 @@ import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
 
 function QuickSearch({ nameOfClass = null }) {
-  const ID = "quick-search-input";
+  
+  const FORM_ID = "quick-search";
+  const INPUT_ID = "quick-search-input";
   const [availableVariants, setAvailableVariants] = useState([]);
 
   function refreshAvailableVariants() {
-    $("#" + ID).autocomplete({
+    $("#" + INPUT_ID).autocomplete({
       source: availableVariants,
       minLength: 4
     });
   }
 
-  function requestAvailableVariants(query = null) {
-    
-
+  function requestAvailableVariants(query = null) {    
     let url = API_SEARCH_URL;
+    
     if (query) {
       // Очень важно не написать
       // += "/?query=" + query;
@@ -61,19 +62,45 @@ function QuickSearch({ nameOfClass = null }) {
     }
   }, [availableVariants]);
 
+
+
+  function getSearchResults(event){
+    event.preventDefault();
+    let formData = $("#" + FORM_ID).serialize();
+        $.ajax({
+      url: API_SEARCH_URL,
+      data: formData,
+      method: "GET",
+      dataType: "json",
+    })
+      .done((dataJson) => {
+        debugger;
+      })
+      .fail((data) => {
+        debugger;
+        toast["error"]("Не удалось получить данные с сервера!", {
+          toastId: "foundAnimals",
+        });
+      });
+
+  }
+
+
   return (
     <div id="search-wrap">
       <form
-        id="quick-search"
+        id={FORM_ID}
         className={nameOfClass ?? undefined}
         method="post"
+        onSubmit={function(event){getSearchResults(event);}}
       >
         <div className="input-group mb-3">
           <input
-            id={ID}
-            type="text"
+            id={INPUT_ID}
+            type="text"            
             className="form-control"
             placeholder="Кого ищем?"
+            name="query"
             aria-describedby="button-addon2"
             required={true}
             onChange={(e) =>
