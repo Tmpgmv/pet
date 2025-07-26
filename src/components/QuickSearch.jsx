@@ -4,62 +4,48 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom"; 
-import { clearSeachResult } from "../general/clearSearchResult";
-import { showSpinner } from "../components/pages/Home/Spinner";
-
+import { useNavigate } from "react-router-dom";
 
 function QuickSearch({ nameOfClass = null }) {
-  
   const FORM_ID = "quick-search";
   const INPUT_ID = "quick-search-input";
+
   const [availableVariants, setAvailableVariants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   function refreshAvailableVariants() {
     $("#" + INPUT_ID).autocomplete({
       source: availableVariants,
-      minLength: 4
+      minLength: 4,
     });
   }
 
-  function requestAvailableVariants(query = null) {    
+  function requestAvailableVariants(query = null) {
     let url = API_SEARCH_URL;
-    
-    if (query) {
-      // Очень важно не написать
-      // += "/?query=" + query;
-      // Иначе будет редирект, а результата не будет.
-        url += "?query=" + query;
-      }
+    if (query) url += "?query=" + query;
 
-    
     $.ajax({
       url: url,
       method: "GET",
       dataType: "json",
     })
       .done((dataJson) => {
-        let allAnimals = dataJson.data.orders;
-
-        let tmpAvailableVariants = allAnimals.map((item) => item.description);
-        let tmpAvailableVariantsWithoutDuplicates = [
-          ...new Set(tmpAvailableVariants),
-        ];
-
-        setAvailableVariants(tmpAvailableVariantsWithoutDuplicates);
-        refreshAvailableVariants();
+        const descriptions = dataJson.data.orders.map((item) => item.description);
+        const uniqueDescriptions = [...new Set(descriptions)];
+        setAvailableVariants(uniqueDescriptions);
       })
-      .fail((data) => {
-        toast["error"]("Не удалось получить данные с сервера!", {
-          toastId: "foundAnimals",
+      .fail(() => {
+        toast.error("Не удалось получить данные с сервера!", {
+          toastId: "availableVariantsError",
         });
       });
   }
 
-    useEffect(() => {
-      requestAvailableVariants();
-    }, []);
+  // Initial autocomplete load
+  useEffect(() => {
+    requestAvailableVariants();
+  }, []);
 
   useEffect(() => {
     if (availableVariants.length > 0) {
@@ -67,32 +53,30 @@ function QuickSearch({ nameOfClass = null }) {
     }
   }, [availableVariants]);
 
-
-
-  function getSearchResults(event){
+  async function getSearchResults(event) {
     event.preventDefault();
-    clearSeachResult();
-    debugger;
-    showSpinner();
-    let formData = $("#" + FORM_ID).serialize();
-        $.ajax({
+    setIsLoading(true);
+
+    const formData = $("#" + FORM_ID).serialize();
+
+    $.ajax({
       url: API_SEARCH_URL,
       data: formData,
       method: "GET",
       dataType: "json",
     })
       .done((dataJson) => {
-        const items = dataJson.data.orders; 
+        const items = dataJson.data.orders;
+        setIsLoading(false);
         navigate("/search", { state: { items } });
       })
-      .fail((data) => {        
-        toast["error"]("Не удалось получить данные с сервера!", {
-          toastId: "foundAnimals",
+      .fail(() => {
+        setIsLoading(false);
+        toast.error("Не удалось получить данные с сервера!", {
+          toastId: "searchFail",
         });
       });
-
   }
-
 
   return (
     <div id="search-wrap">
@@ -100,29 +84,36 @@ function QuickSearch({ nameOfClass = null }) {
         id={FORM_ID}
         className={nameOfClass ?? undefined}
         method="get"
-        onSubmit={function(event){getSearchResults(event);}}
+        onSubmit={getSearchResults}
       >
         <div className="input-group mb-3">
           <input
             id={INPUT_ID}
-            type="text"            
+            type="text"
             className="form-control"
             placeholder="Кого ищем?"
             name="query"
             aria-describedby="button-addon2"
-            required={true}
-            onChange={(e) =>
-              setTimeout(() => {
-                let userInput = e.target.value;
-                if (userInput.length > 3)
-                  requestAvailableVariants(e.target.value);
-              }, 1000)
-            }
+            required
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value.length > 3) {
+                setTimeout(() => requestAvailableVariants(value), 1000);
+              }
+            }}
           />
-
           <Button btnText="Поиск" />
         </div>
       </form>
+
+      {/* Показать спиннер, пока загружаются результаты поиска.*/}
+      {isLoading && (
+        <div className="spinner-wrap">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Загрузка...</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -33,12 +33,12 @@ function AdvancedSearchForm() {
   const FORM_ID = "advanced-search";
   const navigate = useNavigate();
 
-  function getSearchResults(event) {
+  async function getSearchResults(event) {
     event.preventDefault();
 
     clearSeachResult();
     clear();
-    showSpinner();
+    await showSpinner();
 
     if (!areAllInputFieldsValid()) {
       return;
