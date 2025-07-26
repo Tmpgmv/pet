@@ -60,8 +60,7 @@ function Main({ formId }) {
 
 
 
-  function handleSubmit(event) {    
-    debugger;
+  function handleSubmit(event) {        
     event.preventDefault();        
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);

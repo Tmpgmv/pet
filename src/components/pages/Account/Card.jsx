@@ -1,16 +1,30 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import calendar from "../../../assets/images/calendar.svg";
-import geo from "../../../assets/images/geo.svg";
-import status from "../../../assets/images/status.svg";
+import geoImg from "../../../assets/images/geo.svg";
+import cardStatusImg from "../../../assets/images/cardStatus.svg"
 import Button from "../../Button";
 import Img from "../../Img";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { API_URL_USERS_PATH } from "../../../general/constants";
-import $ from "jquery";
 
 
-function Card({ id, src, alt, date, district }) {   
+function Card({ id, src, alt, date, district, aStatus }) {   
+
+  const [cardStatus, setCardStatus] = useState(getStatus());
+
+  function getStatus(){
+    const statuses = {
+      "active": "Активное",
+      "wasFound": "Хозяин найден",
+      "onModeration": "На модерации",
+      "archive": "В архиве"
+    }
+
+    return statuses[aStatus];
+    
+  }
+
+
+
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm border-primary border-solid">
@@ -28,17 +42,17 @@ function Card({ id, src, alt, date, district }) {
           </div>
           <div className="row mt-2 mh-3em">
             <div className="w-25 my-auto text-end">
-              <Img src={geo} height="30" alt="geo" />
+              <Img src={geoImg} height="30" alt="geo" />
             </div>
             <div className="w-75 text-start my-auto fw-bold ">{district}</div>
           </div>
           <div className="row mt-2 mb-2">
             <div className="w-25 text-end">
-              <img src={status} height="30" alt="status" />
+              <img src={cardStatusImg} height="30" alt="status" />
             </div>
-            <div className="w-75 text-start my-auto fw-bold">Активное</div>
+            <div className="w-75 text-start my-auto fw-bold">{cardStatus}</div>
           </div>
-          <Link to="/card">
+          <Link to={`/pets/${id}`}>
             <Button btnText="Подробнее" aClassName="w-100" />
           </Link>
         </div>

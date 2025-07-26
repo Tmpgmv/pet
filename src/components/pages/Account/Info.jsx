@@ -34,7 +34,7 @@ const Info = () => {
       },
       dataType: "json",
     })
-      .done((data) => {
+      .done((data) => {        
         setUserInfo({
           name: data.name || "",
           email: data.email || "",

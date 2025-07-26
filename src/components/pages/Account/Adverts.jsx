@@ -1,9 +1,7 @@
 import $ from "jquery";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import {
-  API_URL_USERS_POSTS
-} from "../../../general/constants";
+import { API_URL_USERS_POSTS, SERVER_URL } from "../../../general/constants";
 import getToken from "../../../general/getToken.js";
 import H2 from "../../H2";
 import Pagination from "../../Pagination";
@@ -16,7 +14,6 @@ function Adverts() {
   const [userPosts, setUserPosts] = useState([]);
 
   function requestPosts() {
-    debugger;
     const token = getToken();
 
     $.ajax({
@@ -28,7 +25,7 @@ function Adverts() {
       dataType: "json",
     })
       .done((dataJson) => {
-        setUserPosts(dataJson);
+        setUserPosts(dataJson.data.orders);
       })
       .fail(() => {
         const toastData = location.state?.toast;
@@ -40,26 +37,26 @@ function Adverts() {
 
   useEffect(() => {
     requestPosts();
-  }, []);  
+  }, []);
 
-  debugger;
-  return (    
+  return (
     <section id="adverts" className="mt-5">
       <H2 h2="Мои объявления" />
 
       <div className="row row-cols-1 row-cols-md-3 mt-4 mb-3 text-center">
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
-        <Card id="1" src="https://placebear.com/674/400" alt="cat" date="30 июня 2025 г." district="Кировский район"/>
+        {userPosts.map((item) => (
+          <Card
+            id={item.id}
+            src={SERVER_URL + item.photos}
+            alt={item.kind}
+            date={item.date}
+            district={item.district}
+            aStatus={item.status}
+          />
+        ))}
       </div>
 
-      <Pagination />
+      {/* <Pagination /> */}
     </section>
   );
 }
