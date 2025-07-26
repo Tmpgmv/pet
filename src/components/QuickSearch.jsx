@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom"; 
+
 
 function QuickSearch({ nameOfClass = null }) {
   
   const FORM_ID = "quick-search";
   const INPUT_ID = "quick-search-input";
   const [availableVariants, setAvailableVariants] = useState([]);
+  const navigate = useNavigate();
 
   function refreshAvailableVariants() {
     $("#" + INPUT_ID).autocomplete({
@@ -74,10 +77,10 @@ function QuickSearch({ nameOfClass = null }) {
       dataType: "json",
     })
       .done((dataJson) => {
-        debugger;
+        const items = dataJson.data.orders; 
+        navigate("/search", { state: { items } });
       })
-      .fail((data) => {
-        debugger;
+      .fail((data) => {        
         toast["error"]("Не удалось получить данные с сервера!", {
           toastId: "foundAnimals",
         });
