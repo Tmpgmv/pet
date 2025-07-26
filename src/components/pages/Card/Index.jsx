@@ -41,7 +41,7 @@ function Index() {
       .done((dataJson) => {        
         setCardInfo({
           id: dataJson.data.pet.id || "",
-          kind: dataJson.data.pet.name || "",
+          kind: dataJson.data.pet.kind || "",
           mark: dataJson.data.pet.mark || "",
           district: dataJson.data.pet.district || "",
           date: dataJson.data.pet.date || "",

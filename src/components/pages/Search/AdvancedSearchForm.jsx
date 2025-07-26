@@ -8,7 +8,8 @@ import KindInput from "../../KindInput";
 import { API_ADVANCED_SEARCH_URL } from "../../../general/constants";
 import { clearSeachResult } from "../../../general/clearSearchResult";
 import { clear } from "../../FormValidation";
-import { showSpinner } from "../Home/Spinner";
+import { useState } from "react";
+import Spinner from "../../pages/Home/Spinner";
 
 function areAllInputFieldsValid() {
   let result = false;
@@ -25,20 +26,17 @@ function areAllInputFieldsValid() {
   return result;
 }
 
-
-
-
-
 function AdvancedSearchForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const FORM_ID = "advanced-search";
   const navigate = useNavigate();
 
-  async function getSearchResults(event) {
+  function getSearchResults(event) {
     event.preventDefault();
+    setIsLoading(true);
 
-    clearSeachResult();
+    
     clear();
-    await showSpinner();
 
     if (!areAllInputFieldsValid()) {
       return;
@@ -51,36 +49,44 @@ function AdvancedSearchForm() {
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {
+      .done((dataJson) => {        
         const items = dataJson.data.orders;
         navigate("/search", { state: { items } });
       })
-      .fail((data) => {
+      .fail((data) => {        
         toast["error"]("Не удалось получить данные с сервера!", {
           toastId: "foundAnimals",
         });
-      });
+      }).always(function() { 
+        setIsLoading(false);
+      });     
+      
   }
 
   return (
-    <form
-      id={FORM_ID}
-      className="mt-4 col-md-6 mx-auto"
-      method="get"
-      onSubmit={function (event) {
-        getSearchResults(event);
-      }}
-    >
-      <DistrictInput required={false} selectClassName="form-select mb-2" />
+    <>
+      <form
+        id={FORM_ID}
+        className="mt-4 col-md-6 mx-auto"
+        method="get"
+        onSubmit={function (event) {
+          getSearchResults(event);
+        }}
+      >
+        <DistrictInput required={false} selectClassName="form-select mb-2" />
 
-      <KindInput
-        aClassName="mt-3"
-        required={false}
-        errorMessage="Выберите район, вид или и то, и другое."
-      />
+        <KindInput
+          aClassName="mt-3"
+          required={false}
+          errorMessage="Выберите район, вид или и то, и другое."
+        />
 
-      <Button aClassName="mt-3" btnText="Поиск" />
-    </form>
+        <Button aClassName="mt-3" btnText="Поиск" />
+      </form>
+
+      {/* Показать спиннер, пока загружаются результаты поиска.*/}
+      {isLoading && <Spinner />}
+    </>
   );
 }
 

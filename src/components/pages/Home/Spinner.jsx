@@ -1,21 +1,21 @@
 import React from "react";
 import $ from "jquery";
 
-export function showSpinner() {
-  $("#spinner").removeClass("d-none");
+// export function showSpinner() {
+//   $("#spinner").removeClass("d-none");
 
-  // Выключить кнопки на период ожидания.
-  $("form button").prop("disabled", true);
+//   // Выключить кнопки на период ожидания.
+//   $("form button").prop("disabled", true);
 
-  // Показать спиннер на время, затем скрыть.
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      $("#spinner").addClass("d-none");
-      $("form button").prop("disabled", false);
-      resolve(); // This tells the caller that the spinner is now hidden
-    }, 1000);
-  });
-}
+//   // Показать спиннер на время, затем скрыть.
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       $("#spinner").addClass("d-none");
+//       $("form button").prop("disabled", false);
+//       resolve(); // This tells the caller that the spinner is now hidden
+//     }, 1000);
+//   });
+// }
 
 function Spinner({aClassName=null}) {
   return (

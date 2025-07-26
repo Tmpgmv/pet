@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./pages/Home/Spinner";
+import { clear } from "../components/FormValidation";
 
 function QuickSearch({ nameOfClass = null }) {
   const FORM_ID = "quick-search";
@@ -41,8 +43,7 @@ function QuickSearch({ nameOfClass = null }) {
         });
       });
   }
-
-  // Initial autocomplete load
+  
   useEffect(() => {
     requestAvailableVariants();
   }, []);
@@ -53,9 +54,10 @@ function QuickSearch({ nameOfClass = null }) {
     }
   }, [availableVariants]);
 
-  async function getSearchResults(event) {
+  function getSearchResults(event) {
     event.preventDefault();
     setIsLoading(true);
+    clear();
 
     const formData = $("#" + FORM_ID).serialize();
 
@@ -66,15 +68,15 @@ function QuickSearch({ nameOfClass = null }) {
       dataType: "json",
     })
       .done((dataJson) => {
-        const items = dataJson.data.orders;
-        setIsLoading(false);
+        const items = dataJson.data.orders;        
         navigate("/search", { state: { items } });
       })
-      .fail(() => {
-        setIsLoading(false);
+      .fail(() => {        
         toast.error("Не удалось получить данные с сервера!", {
           toastId: "searchFail",
         });
+      }).always(function() { 
+        setIsLoading(false);
       });
   }
 
@@ -107,12 +109,8 @@ function QuickSearch({ nameOfClass = null }) {
       </form>
 
       {/* Показать спиннер, пока загружаются результаты поиска.*/}
-      {isLoading && (
-        <div className="spinner-wrap">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Загрузка...</span>
-          </div>
-        </div>
+      {isLoading && (        
+        <Spinner />
       )}
     </div>
   );
