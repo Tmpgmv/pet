@@ -1,14 +1,13 @@
-import H1 from "../../H1";
-import InfoRow from "../../InfoRow";
+import $ from "jquery";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
-  API_URL_USERS_PATH,
-  API_URL_USERS_POSTS,
+  API_URL_USERS_PATH
 } from "../../../general/constants";
 import getToken from "../../../general/getToken.js";
-import $ from "jquery";
-import { useLocation, useParams } from "react-router-dom";
+import H1 from "../../H1";
+import InfoRow from "../../InfoRow";
 
 const Info = () => {
   const location = useLocation();
@@ -34,19 +33,20 @@ const Info = () => {
       },
       dataType: "json",
     })
-      .done((data) => {        
+      .done((data) => {  
+        debugger;      
         setUserInfo({
-          name: data.name || "",
-          email: data.email || "",
-          phone: data.phone || "",
-          registrationDate: data.registrationDate || "",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          registrationDate: data.registrationDate,
           ordersCount: data.ordersCount || 0,
           petsCount: data.petsCount || 0,
         });
       })
       .fail((jqXHR) => {
         const toastData = location.state?.toast;
-        toast["error"]("Не удалось получить данные с сервера!", {
+        toast["error"]("Не удалось получить с сервера данные о пользователе!", {
           toastId: "info",
         });
       });
