@@ -48,13 +48,17 @@ function DeleteConfirmation({ cardId }) {
       });
     });
 
-    request.fail(function (jqXHR, textStatus, errorThrown) {      
+    request.fail(function (jqXHR, textStatus, errorThrown) {            
       toast["error"](
         "Не удалось удалить объявление!",
         {
           toastId: "deleteCard",
         }
       );
+
+      // Закрыть форму, сымитировав нажатие кнопки "Отмена".
+      $("#cancel").trigger("click");
+
     });
   }
 
@@ -82,6 +86,7 @@ function DeleteConfirmation({ cardId }) {
           <div className="modal-body">Удалить объявление?</div>
           <div className="modal-footer">
             <button
+              id="cancel"
               type="button"
               className="btn btn-success"
               data-bs-dismiss="modal"
