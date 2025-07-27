@@ -4,7 +4,7 @@ import Pagination from "../../Pagination";
 import Card from "./Card";
 import { SERVER_URL } from "../../../general/constants";
 import { useLocation } from "react-router-dom";
-import Spinner from "../Home/Spinner";
+
 
 
 function SearchResult() {
@@ -25,6 +25,8 @@ function SearchResult() {
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentItems = srchResult.slice(indexOfFirst, indexOfLast);
 
+
+  
   return (
     <section id="search-result-section" className="mt-5">
       <H1 h1="Результаты поиска" />      

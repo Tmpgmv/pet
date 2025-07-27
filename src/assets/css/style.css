@@ -53,3 +53,16 @@
 ul {
   list-style-type: none;  
 }
+
+
+/* Глобально скрыть jQuery UI autocomplete live region 
+Иначе где-то - предположительно, в левом нижнем углу - будут появляться
+надписи наподобие:
+
+“X results are available, use up and down arrow keys to navigate.”
+
+“No search results.”
+*/
+.ui-helper-hidden-accessible {
+  display: none !important;
+}

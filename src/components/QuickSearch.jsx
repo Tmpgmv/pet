@@ -8,7 +8,17 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "./pages/Home/Spinner";
 import { clear } from "../components/FormValidation";
 
-function QuickSearch({ nameOfClass = null }) {
+
+/*
+
+ВАЖНО: при работе с jQuery UI autocomplete необходимо 
+скрытьв вспомогательные сообщения. 
+
+см. в style.css ui-helper-hidden-accessible
+
+*/
+
+function QuickSearch({ nameOfClass = null }) {  
   const FORM_ID = "quick-search";
   const INPUT_ID = "quick-search-input";
 
@@ -23,7 +33,7 @@ function QuickSearch({ nameOfClass = null }) {
     });
   }
 
-  function requestAvailableVariants(query = null) {
+  function requestAvailableVariants(query = null) {    
     let url = API_SEARCH_URL;
     if (query) url += "?query=" + query;
 
@@ -32,12 +42,12 @@ function QuickSearch({ nameOfClass = null }) {
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {
+      .done((dataJson) => {        
         const descriptions = dataJson.data.orders.map((item) => item.description);
         const uniqueDescriptions = [...new Set(descriptions)];
         setAvailableVariants(uniqueDescriptions);
       })
-      .fail(() => {
+      .fail(() => {        
         toast.error("Не удалось получить с сервера данные для поисковых подсказок!", {
           toastId: "availableVariantsError",
         });
@@ -67,7 +77,7 @@ function QuickSearch({ nameOfClass = null }) {
       method: "GET",
       dataType: "json",
     })
-      .done((dataJson) => {
+      .done((dataJson) => {        
         const items = dataJson.data.orders;        
         navigate("/search", { state: { items } });
       })
@@ -99,7 +109,7 @@ function QuickSearch({ nameOfClass = null }) {
             required
             onChange={(e) => {
               const value = e.target.value;
-              if (value.length > 3) {
+              if (value.length > 3) {                
                 setTimeout(() => requestAvailableVariants(value), 1000);
               }
             }}

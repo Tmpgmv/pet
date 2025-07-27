@@ -1,8 +1,9 @@
 function PasswordConfirmationInput() {
+  
   return (
     <div>
       <label
-        htmlFor="passwordConfirmation"
+        htmlFor="password_confirmation"
         className="form-label"
       >
         Повтор пароля
@@ -10,12 +11,12 @@ function PasswordConfirmationInput() {
       <input
         type="password"
         className="form-control"
-        id="passwordConfirmation"
-        aria-describedby="passwordConfirmationError"
+        id="password_confirmation"
+        aria-describedby="password_confirmationError"
         name="password_confirmation"
         required={true}
       />
-      <div id="passwordConfirmationError" className="invalid-feedback">
+      <div id="password_confirmationError" className="invalid-feedback">
         Пароли не совпадают.
       </div>
     </div>

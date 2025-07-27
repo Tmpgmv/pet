@@ -8,17 +8,13 @@ import PhoneInput from "../../PhoneInput";
 import { API_URL_REGISTRATION_PATH } from "../../../general/constants";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import {clear} from '../../FormValidation';
-
-
-
+import { toast } from "react-toastify";
+import { clear } from "../../FormValidation";
 
 function Form({ formId }) {
-
-
   const navigate = useNavigate();
-  const notifyFailure = () => toast.error("Не удалось зарегистрировать пользователя!");
+  const notifyFailure = () =>
+    toast.error("Не удалось зарегистрировать пользователя!");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -35,7 +31,7 @@ function Form({ formId }) {
 
     request.done(function (data, textStatus, jqXHR) {
       navigate("/login", {
-        state: { toast: "Пользователь успешно зарегистрирован." }
+        state: { toast: "Пользователь успешно зарегистрирован." },
       });
     });
 
@@ -45,12 +41,14 @@ function Form({ formId }) {
       let responseText = jqXHR.responseText;
 
       if (responseText) {
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
+        notifyFailure();
+        let responseJson = jqXHR.responseJSON;
+
+        let errors = responseJson.error.errors;
 
         $.each(errors, function (key, data) {
           let unitedErrorText = data.join();
-          $("#validationServerEmail").addClass("is-invalid");
+          $("#" + key).addClass("is-invalid");
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);
         });

@@ -13,7 +13,7 @@ function PasswordInput({ extendedLabel = false }) {
         id="password"
         aria-describedby="passwordError"
         name="password"
-        pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).{7,}"
+        pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-Za-zА-Яа-яЁё\d]{7,}"
         required={true}
       />
       <div id="passwordError" className="invalid-feedback">
