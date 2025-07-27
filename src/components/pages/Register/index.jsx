@@ -1,4 +1,3 @@
-import Alert from "../../Alert";
 import Footer from "../../Footer/Footer";
 import FormValidation from "../../FormValidation";
 import Header from "../../Header/Header";

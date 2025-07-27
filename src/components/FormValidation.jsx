@@ -8,8 +8,7 @@ function clearValidationErrors($input) {
   $input.removeClass("is-valid is-invalid");
 }
 
-function validatePasswordConfirmation($input) {
-  debugger;
+function validatePasswordConfirmation($input) {  
   let password = $("#password").val();
   let passwordConfirmation = $input.val();
 
@@ -20,12 +19,42 @@ function validatePasswordConfirmation($input) {
   }
 }
 
-function validateField($input) {
-  debugger;
+
+function validateFileInput($input) {
+  const files = $input[0].files;
+
+  // Если файла нет, то проверим,
+  // требуется ли он. Если он не требуется,
+  // дальнейшие проверки не нужны.
+  if (files.length === 0) {    
+    if ($input.prop("required")) {
+      $input.addClass("is-invalid");
+    }
+    return;
+  }
+
+
+  // Разрешены только файлы .png.  
+  const file = files[0];
+  const validTypes = ["image/png"];
+
+  if (!validTypes.includes(file.type)) {
+    $input.addClass("is-invalid");
+  } else {
+    $input.addClass("is-valid");
+  }
+}
+
+
+function validateField($input) {  
   clearValidationErrors($input);
 
   if ($input.attr("name") === "password_confirmation") {
     validatePasswordConfirmation($input);
+  }
+
+  if ($input.attr("type") === "file") {
+    validateFileInput($input);    
   }
 
   if ($input[0].checkValidity()) {

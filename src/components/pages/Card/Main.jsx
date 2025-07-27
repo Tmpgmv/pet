@@ -1,4 +1,3 @@
-import Alert from "../../Alert";
 import H1 from "../../H1";
 import EditDelete from "./EditDelete";
 import Info from "./Info";

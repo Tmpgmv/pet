@@ -11,10 +11,10 @@ function ImageInput({id, required=false, aLabel=false}) {
         accept="image/png"
         id={id}
         name={id}
-        aria-describedby="validationServerPhoto1Feedback"
+        aria-describedby={`${id}Feedback"`}
         required={required}
       />
-      <div id="validationServerPhoto1Feedback" className="invalid-feedback">
+      <div id={`${id}Feedback"`} className="invalid-feedback">
         Проблема с изображением.
       </div>
     </div>
