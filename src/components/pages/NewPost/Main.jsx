@@ -33,9 +33,9 @@ import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
-import DescriptionInput from "./DescriptionInput";
-import ImageInput from "./ImageInput";
-import MarkInput from "./MarkInput";
+import DescriptionInput from "../../DescriptionInput";
+import ImageInput from "../../ImageInput";
+import MarkInput from "../../MarkInput";
 import { useState } from "react";
 
 

@@ -1,5 +1,5 @@
 
-function MarkInput() {
+function MarkInput({defaultValue =null}) {
   return (
     <div>
       <label htmlFor="validationServerMark" className="form-label">
@@ -10,7 +10,8 @@ function MarkInput() {
         className="form-control"
         id="validationServerMark"
         aria-describedby="markError"
-        name="mark"        
+        name="mark"
+        defaultValue={defaultValue ? defaultValue : undefined}        
       />
       <div id="markError" className="invalid-feedback">
         Введите корректный электронный чип.

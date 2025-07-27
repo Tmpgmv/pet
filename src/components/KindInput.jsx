@@ -1,4 +1,9 @@
-function KindInput({ aClassName = null, required=false, errorMessage="Введите вид животного." }) {
+function KindInput({
+  aClassName = null,
+  required = false, // Для поиска эта строка тоже применяется. И там это не обязательный параметр.
+  errorMessage = "Введите вид животного.",
+  defaultValue = null
+}) {
   return (
     <div className={aClassName ?? undefined}>
       <label htmlFor="kind" className="form-label">
@@ -12,6 +17,7 @@ function KindInput({ aClassName = null, required=false, errorMessage="Введи
         name="kind"
         pattern="[а-яёА-ЯЁ\s\-]+"
         required={required}
+        defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id="kindError" className="invalid-feedback">
         {errorMessage}

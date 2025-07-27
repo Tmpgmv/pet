@@ -1,16 +1,21 @@
-import React from "react";
 
-function DistrictInput({ required = true, selectClassName = null }) {
+function DistrictInput({
+  required = true,
+  selectClassName = null,
+  defaultValue = null,
+}) {
   return (
     <div>
-      <label htmlFor="district" className="form-label" >Район:</label>
+      <label htmlFor="district" className="form-label">
+        Район:
+      </label>
       <select
         className={`form-control ${selectClassName ? selectClassName : ""}`}
         id="district"
-        defaultValue=""
+        defaultValue={defaultValue ? defaultValue : undefined}
         name="district"
         required={required}
-        pattern={required ? "(?!(---))" : undefined}        
+        pattern={required ? "(?!(---))" : undefined}
       >
         <option value="">---</option>
         <option value="Адмиралтейский">Адмиралтейский</option>
@@ -33,7 +38,7 @@ function DistrictInput({ required = true, selectClassName = null }) {
         <option value="Центральный">Центральный</option>
       </select>
 
-      <div className = "invalid-feedback">
+      <div className="invalid-feedback">
         Выберите район, вид или и то, и другое.
       </div>
     </div>

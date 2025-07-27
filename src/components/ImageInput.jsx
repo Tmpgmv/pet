@@ -1,9 +1,17 @@
-
-function ImageInput({id, required=false, aLabel=false}) {
+function ImageInput({
+  id,
+  required = false,
+  aLabel = false,
+  defaultValue = null,
+}) {
   return (
     <div>
-      
-      {aLabel ? <label htmlFor={id} className="form-label">  Изображения</label> : undefined}
+      {aLabel ? (
+        <label htmlFor={id} className="form-label">
+          {" "}
+          Изображения
+        </label>
+      ) : undefined}
 
       <input
         className="form-control"
@@ -13,6 +21,7 @@ function ImageInput({id, required=false, aLabel=false}) {
         name={id}
         aria-describedby={`${id}Feedback"`}
         required={required}
+        defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id={`${id}Feedback"`} className="invalid-feedback">
         Проблема с изображением.

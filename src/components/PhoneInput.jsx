@@ -1,4 +1,4 @@
-function PhoneInput() {
+function PhoneInput({ defaultValue=null}) {
   return (
     <div>
       <label htmlFor="validationServerPhone" className="form-label">
@@ -12,6 +12,7 @@ function PhoneInput() {
         name="phone"
         pattern="^\+?\d+$"
         required={true}
+        defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id="phoneError" className="invalid-feedback">
         Введите корректный телефон.

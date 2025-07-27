@@ -1,4 +1,4 @@
-function NameInput() {
+function NameInput({ defaultValue = null }) {
   return (
     <div>
       <label htmlFor="validationServerName" className="form-label">
@@ -12,6 +12,7 @@ function NameInput() {
         name="name"
         pattern="[А-Яа-яЁё\s\-]+"
         required={true}
+        defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id="nameError" className="invalid-feedback">
         Введите корректное имя.

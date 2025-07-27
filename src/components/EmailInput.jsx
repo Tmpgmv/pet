@@ -1,6 +1,6 @@
 import capitalizeFirstLetter from "../general/capitalizeFirstLetter";
 
-function EmailInput({id="email"}) {
+function EmailInput({id="email", defaultValue=""}) {
   /* Для формы подписки на события обязательно задать id="subscription".
   * Для остальных случаев - пользоваться id по умолчанию.
   * Причина: надо избежать дублирования id. На странице с формой в <main> будет
@@ -23,6 +23,7 @@ function EmailInput({id="email"}) {
         aria-describedby={`${id}Error`}
         name="email"
         required={true}
+        defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id={`${id}Error`} className="invalid-feedback">
         Введите корректный адрес электронной почты.

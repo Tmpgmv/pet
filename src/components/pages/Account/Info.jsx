@@ -33,8 +33,7 @@ const Info = () => {
       },
       dataType: "json",
     })
-      .done((data) => {  
-        debugger;      
+      .done((data) => {               
         setUserInfo({
           name: data.name,
           email: data.email,
