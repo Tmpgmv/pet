@@ -1,8 +1,8 @@
-function PasswordConfirmationInput({required=true}) {
+function PasswordConfirmationInput() {
   return (
     <div>
       <label
-        htmlFor="validationServerPasswordConfirmation"
+        htmlFor="passwordConfirmation"
         className="form-label"
       >
         Повтор пароля
@@ -10,10 +10,10 @@ function PasswordConfirmationInput({required=true}) {
       <input
         type="password"
         className="form-control"
-        id="validationServerPasswordConfirmation"
+        id="passwordConfirmation"
         aria-describedby="passwordConfirmationError"
         name="password_confirmation"
-        required={required}
+        required={true}
       />
       <div id="passwordConfirmationError" className="invalid-feedback">
         Пароли не совпадают.

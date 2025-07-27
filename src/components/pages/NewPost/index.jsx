@@ -5,7 +5,7 @@ import FormValidation from "../../FormValidation";
 
 const FORM_ID = "new-post-form";
 
-function index(props) {
+function index() {
   return (
     <div>
       <Header />

@@ -150,8 +150,8 @@ function Main({ formId }) {
         <div id="passwords">
           {isRegister && (
             <>
-              <PasswordInput required={false} />
-              <PasswordConfirmationInput required={false} />
+              <PasswordInput />
+              <PasswordConfirmationInput />
             </>
           )}
         </div>

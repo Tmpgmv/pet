@@ -11,9 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import {clear} from '../../FormValidation';
 
-// function clear() {
-//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");  
-// }
 
 
 
@@ -23,7 +20,7 @@ function Form({ formId }) {
   const navigate = useNavigate();
   const notifyFailure = () => toast.error("Не удалось зарегистрировать пользователя!");
 
-  function handleSubmit(event, formId) {
+  function handleSubmit(event) {
     event.preventDefault();
     clear();
 
@@ -66,7 +63,7 @@ function Form({ formId }) {
       id={formId}
       method="post"
       className="row g-3 mt-2 col-12 col-md-6 mx-auto"
-      onSubmit={(event) => handleSubmit(event, formId)}
+      onSubmit={(event) => handleSubmit(event)}
     >
       <NameInput />
 

@@ -1,14 +1,19 @@
 import $ from "jquery";
 
 function clearValidationErrors($input) {
+  // Очистка сообщения об ошибке для конкретного
+  // поля ввода. При этом сообщения об ошибках для 
+  // остальных полей не заторнуты.
+  
   $input.removeClass("is-valid is-invalid");
 }
 
 function validatePasswordConfirmation($input) {
-  let password = $("#validationServerPassword").val();
-  let password_confirmation = $input.val();
+  debugger;
+  let password = $("#password").val();
+  let passwordConfirmation = $input.val();
 
-  if (password_confirmation !== password) {
+  if (passwordConfirmation !== password) {
     $input.addClass("is-invalid");
   } else {
     $input.addClass("is-valid");
@@ -16,6 +21,7 @@ function validatePasswordConfirmation($input) {
 }
 
 function validateField($input) {
+  debugger;
   clearValidationErrors($input);
 
   if ($input.attr("name") === "password_confirmation") {
@@ -30,17 +36,29 @@ function validateField($input) {
 }
 
 function attachBlurEventHandler(formId) {
-  $(
-    "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
-  ).on("blur", function () {    
+  // Очень важно обработчик события прикрепить на форму.
+  // Т.е. не на поле, а на его родителя.
+  // Потому что мы сами писали, что события прикрепляем
+  // в момент, когда докмент отрендерится см. function FormValidation({ formId }).
+  // Но поля потом могут добавляться динамически.
+  // В нашем случае это будут поля для
+  // Вввода пароля и подтверждения пароля.
+  // Если же применить наш прием,
+  // то у родителя появляется обработчик событий,
+  // и при этом упомянуты селекотры.
+
+
+  const $form = $("#" + formId);
+  $form.on("blur", "input, select, textarea", function () {
     validateField($(this));
   });
 }
 
 function attachInvalidEventHandler(formId) {
-  $(
-    "#" + formId + " input, #" + formId + " select, #" + formId + " textarea"
-  ).on("invalid", function (event) {
+  // См. комментарий к attachBlurEventHandler.
+
+  const $form = $("#" + formId);
+  $form.on("invalid", "input, select, textarea", function () {
     $(this).addClass("is-invalid");
   });
 }
@@ -59,7 +77,7 @@ function FormValidation({ formId }) {
 export default FormValidation;
 
 export function clear() {
-  // Очистка сообщений об ошибках. Т.е. на клиенте перед отправкой
+  // Очистка всех сообщений об ошибках. Т.е. на клиенте перед отправкой
   // выполнены все возможные проверки. Теперь форму очищаем от сообщений об ошибках.
   // Форма отправляется на сервер. Но сервер тоже может вернуть ошибки.
   // И показывать их надо на форме, очищенной от предыдущих сообщений.
