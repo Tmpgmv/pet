@@ -56,7 +56,7 @@ function Adverts() {
             />
           ))
         ) : (
-          <div id="nothing-found" class="text-danger mx-auto mt-4">Ничего не найдено.</div>
+          <div id="nothing-found" className="text-danger mx-auto mt-4">Ничего не найдено.</div>
         )}
       </div>
       

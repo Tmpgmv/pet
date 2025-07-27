@@ -1,13 +1,13 @@
 function NameInput({ defaultValue = null }) {
   return (
     <div>
-      <label htmlFor="validationServerName" className="form-label">
+      <label htmlFor="name" className="form-label">
         Имя (кириллица, пробел, дефис)
       </label>
       <input
         type="text"
         className="form-control"
-        id="validationServerName"
+        id="name"
         aria-describedby="nameError"
         name="name"
         pattern="[А-Яа-яЁё\s\-]+"

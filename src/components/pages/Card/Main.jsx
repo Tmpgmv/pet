@@ -8,7 +8,7 @@ function Main({cardInfo}) {
     <main>      
       <section id="info-section" className="mt-5">
         <H1 h1="Найденное животное" />
-        <EditDelete />
+        <EditDelete petId={cardInfo.id}/>
         <Info cardInfo={cardInfo}/>
       </section>
       <Photos cardInfo={cardInfo}/>

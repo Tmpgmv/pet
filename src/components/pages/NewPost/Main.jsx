@@ -22,25 +22,23 @@
 */
 
 import $ from "jquery";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { PETS, API_PETS_URL } from "../../../general/constants";
+import { toast } from "react-toastify";
+import { API_PETS_URL, PETS } from "../../../general/constants";
 import getToken from "../../../general/getToken";
 import Button from "../../Button";
 import CheckboxInput from "../../CheckboxInput";
+import DescriptionInput from "../../DescriptionInput";
+import DistrictInput from "../../DistrictInput";
 import EmailInput from "../../EmailInput";
+import ImageInput from "../../ImageInput";
 import KindInput from "../../KindInput";
+import MarkInput from "../../MarkInput";
 import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
-import DescriptionInput from "../../DescriptionInput";
-import ImageInput from "../../ImageInput";
-import MarkInput from "../../MarkInput";
-import { useState } from "react";
-
-
-import { toast } from "react-toastify";
-import DistrictInput from "../../DistrictInput";
 
 
 function Main({ formId }) {
@@ -96,7 +94,7 @@ function Main({ formId }) {
 
       $.each(errors, function (key, data) {
         let unitedErrorText = data.join();
-        $("#validationServerPhone").addClass("is-invalid");
+        $("#" + key).addClass("is-invalid");
         let selector = "#" + key + "Error";
         $(selector).text(unitedErrorText);
       });

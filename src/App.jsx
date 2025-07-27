@@ -9,6 +9,7 @@ import Register from "./components/pages/Register";
 import Search from "./components/pages/Search";
 import RequireAuth from "./components/RequireAuth";
 import { useLocation } from "react-router-dom";
+import EditPost from "./components/pages/EditPost/Index";
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function App() {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/"} element={<Home />} />
         <Route path={"/search"} element={<Search />} />
-        <Route path="/pets/:petId" element={<Card />} />
+        <Route path="/pets/:petId" element={<Card />} />        
         <Route path={"/register"} element={<Register />} />        
         
         {/* Только для авторизованных пользователей */}
@@ -38,6 +39,7 @@ function App() {
         */}
         <Route path={"/account"} element={<RequireAuth><Account key={location.key}/></RequireAuth>} />
         <Route path={"/post/new"} element={<RequireAuth><NewPost /></RequireAuth>} />
+        <Route path={"/post/edit/:postId"} element={<EditPost />} />
         
       </Routes>
       <ToastContainer />

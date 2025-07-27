@@ -1,4 +1,5 @@
 import $ from "jquery";
+import {DEBUG} from "../general/constants";
 
 function clearValidationErrors($input) {
   // Очистка сообщения об ошибке для конкретного
@@ -98,7 +99,12 @@ function attachEventHandlers(formId) {
 }
 
 function FormValidation({ formId }) {
-  $(document).ready(function () {
+  
+  if (DEBUG) {
+    return;
+  }
+
+  $(document).ready(function () {    
     attachEventHandlers(formId);
     attachInvalidEventHandler(formId);
   });

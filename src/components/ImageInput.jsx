@@ -19,11 +19,11 @@ function ImageInput({
         accept="image/png"
         id={id}
         name={id}
-        aria-describedby={`${id}Feedback"`}
+        aria-describedby={`${id}Feedback`}
         required={required}
         defaultValue={defaultValue ? defaultValue : undefined}
       />
-      <div id={`${id}Feedback"`} className="invalid-feedback">
+      <div id={`${id}Feedback`} className="invalid-feedback">
         Проблема с изображением.
       </div>
     </div>

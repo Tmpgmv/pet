@@ -21,3 +21,5 @@ export const API_CAROUSEL_URL = API_PETS_URL + CAROUSEL;
 export const API_SEARCH_URL = API_URL + SEARCH;
 export const API_ADVANCED_SEARCH_URL = API_URL + SEARCH + ADVANCED_SEARCH;
 
+export const DEBUG = false;
+
