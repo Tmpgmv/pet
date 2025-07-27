@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pet/static/css/main.c58eff9c.css",
-    "main.js": "/pet/static/js/main.a2edd404.js",
+    "main.css": "/pet/static/css/main.e29c37fe.css",
+    "main.js": "/pet/static/js/main.3f5eb4ee.js",
     "static/media/calendar.svg": "/pet/static/media/calendar.eb3797b856b8cfab4ba273eac6cbfbf4.svg",
     "static/media/logout.svg": "/pet/static/media/logout.3ce458f48de3066f267b.svg",
     "static/media/login.svg": "/pet/static/media/login.90bd6b4a172e5f83788bc66b518fd98f.svg",
@@ -14,11 +14,11 @@
     "static/media/account.svg": "/pet/static/media/account.1c8a6907be2e425e90a8db7a3eaff1bf.svg",
     "static/media/search.svg": "/pet/static/media/search.3f8a58b4fa31d9bbbaabc2082699a1ca.svg",
     "static/media/geo.svg": "/pet/static/media/geo.65c56800b67f00ff5851f23ef7c74e42.svg",
-    "main.c58eff9c.css.map": "/pet/static/css/main.c58eff9c.css.map",
-    "main.a2edd404.js.map": "/pet/static/js/main.a2edd404.js.map"
+    "main.e29c37fe.css.map": "/pet/static/css/main.e29c37fe.css.map",
+    "main.3f5eb4ee.js.map": "/pet/static/js/main.3f5eb4ee.js.map"
   },
   "entrypoints": [
-    "static/css/main.c58eff9c.css",
-    "static/js/main.a2edd404.js"
+    "static/css/main.e29c37fe.css",
+    "static/js/main.3f5eb4ee.js"
   ]
 }
