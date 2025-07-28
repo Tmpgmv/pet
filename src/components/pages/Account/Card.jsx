@@ -7,6 +7,8 @@ import Button from "../../Button";
 import Img from "../../Img";
 
 
+
+
 function Card({ id, src, alt, date, district, aStatus }) {   
 
   const [cardStatus, setCardStatus] = useState(getStatus());
@@ -52,7 +54,25 @@ function Card({ id, src, alt, date, district, aStatus }) {
             </div>
             <div className="w-75 text-start my-auto fw-bold">{cardStatus}</div>
           </div>
-          <Link to={`/pets/${id}`}>
+
+
+          {/* Т.е. по техническому заданию НЕТ иного способа узнать, 
+          добавлено ли объявление пользователем,
+          кроме как сделав специальный запрос (см. Объявления, добавленные пользователем).
+          
+          Этот запрос у нас был сделан на странице с информацией о 
+          пользователе. Поэтому мы пробросим эту информацию дальше.
+
+          Иначе говоря, если перешли на страницу подробной информации
+          о животном из личного кабинета, то увидим
+          кнопки для удаления и редактирования объявления.
+
+          Если как-то иначе (из поиска, с главной страницы или
+          непосредственно по URL - не увидим кнопок удаления и редактирования).
+          */}
+
+
+          <Link to={`/pets/${id}`} state={{ belongsToCurrentUser: true }}>
             <Button btnText="Подробнее" aClassName="w-100" />
           </Link>
         </div>

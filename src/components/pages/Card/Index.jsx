@@ -11,6 +11,13 @@ import DeleteConfirmation from "./DeleteConfirmation"
 function Index() {
   const params = useParams();
   const location = useLocation();
+  
+
+  // См. комментарий к тегу Link в components/pages/Account/Card.
+  if (location.state){
+      var belongsToCurrentUser = location.state.belongsToCurrentUser || false;
+  }
+  
 
   useEffect(() => {
     requestData();
@@ -65,8 +72,8 @@ function Index() {
   return (
     <>
       <Header />
-      <Main cardInfo={cardInfo} />
-      <DeleteConfirmation cardId={cardInfo.id}/>
+      <Main cardInfo={cardInfo} belongsToCurrentUser={belongsToCurrentUser}/>      
+      <DeleteConfirmation cardId={cardInfo.id}/> {/* См. комментарий к тегу Link в components/pages/Account/Card. */}
       <Footer />      
     </>
   );

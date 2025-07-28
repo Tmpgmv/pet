@@ -22,6 +22,7 @@ function App() {
         <Route path={"/search"} element={<Search />} />
         <Route path="/pets/:petId" element={<Card />} />        
         <Route path={"/register"} element={<Register />} />        
+        <Route path={"/post/new"} element={<NewPost />} />
         
         {/* Только для авторизованных пользователей */}
         
@@ -37,8 +38,7 @@ function App() {
         
         Т.е. это позволят выполнять перезагрузку страницы через navigate.               
         */}
-        <Route path={"/account"} element={<RequireAuth><Account key={location.key}/></RequireAuth>} />
-        <Route path={"/post/new"} element={<RequireAuth><NewPost /></RequireAuth>} />
+        <Route path={"/account"} element={<RequireAuth><Account key={location.key}/></RequireAuth>} />        
         <Route path={"/post/edit/:postId"} element={<EditPost />} />
         
       </Routes>
