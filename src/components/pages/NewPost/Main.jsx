@@ -40,6 +40,7 @@ import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
 import { DebugWrap } from "../../DebugWrapper";
+import {clear} from "../../../components/FormValidation";
 
 function Main({ formId }) {
   const location = useLocation();
@@ -48,14 +49,16 @@ function Main({ formId }) {
   const notifyFailure = () =>
     toast.error("Не удалось опубликовать объявление!");
 
-  const [isRegister, setIsRegister] = useState(false);
+  // Управление флагом автоматической регистарции.
+  const [doRegister, setDoRegister] = useState(false);
 
   function handleRegisterChange(event) {
-    setIsRegister(event.target.checked);
+    setDoRegister(event.target.checked);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    clear();
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
@@ -142,7 +145,7 @@ function Main({ formId }) {
         />
 
         <div id="passwords">
-          {isRegister && (
+          {doRegister && (
             <>
               <PasswordInput />
               <PasswordConfirmationInput />
