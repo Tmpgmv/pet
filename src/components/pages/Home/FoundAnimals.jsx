@@ -39,6 +39,7 @@ function FoundAnimals(props) {
       <div className="row row-cols-1 row-cols-md-3 mt-4 mb-3 text-center">
         {foundAnimals.map((item) => (
           <FoundAnimalCard
+            key={item.id}
             id={item.id}
             kind={item.kind}
             src={SERVER_URL + item.photos}

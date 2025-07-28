@@ -10,7 +10,7 @@ function ImageInput({
 
   // Debug {
     required = attr({debugValue: false, prodValue: required});
-    var accept = attr({debugValue: "*", prodValue: "image/png"});
+    var accept = attr({debugValue: "image/*", prodValue: "image/png"});
   // } Debug
 
   return (

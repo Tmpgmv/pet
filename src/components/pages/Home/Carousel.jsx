@@ -51,6 +51,7 @@ function Carousel() {
 
         {carouselItems.map((item, index) => (
           <CarouselIndicator
+            key={`indicator${index}`}
             slideTo={index}
             label={`Slide ${index + 1}`}
             active={index === 0 ? true : undefined}
@@ -71,6 +72,7 @@ function Carousel() {
 
         {carouselItems.map((item, index) => (
           <CarouselItem
+            key={`item${index}`}
             src={SERVER_URL + item.image}
             h5={item.kind}
             p={item.description}

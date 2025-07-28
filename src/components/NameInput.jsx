@@ -3,7 +3,7 @@ import {attr} from "../general/debugFunctions";
 function NameInput({ defaultValue = null }) {
   {
     var required = attr({ debugValue: false, prodValue: required });
-    var pattern = attr({ debugValue: "*", prodValue: "[А-Яа-яЁё\s\-]+" });
+    var pattern = attr({ debugValue: ".*", prodValue: "[А-Яа-яЁё\s\-]+" });
   }
 
   return (

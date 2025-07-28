@@ -59,8 +59,7 @@ function Main({ formId }) {
 
 
   const [userInfo, setUserInfo] = useState(getUserInfo());
-  debugger;
-
+  
   function handleSubmit(event) {
     event.preventDefault();
     clear();
