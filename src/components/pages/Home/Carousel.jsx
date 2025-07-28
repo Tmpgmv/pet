@@ -5,7 +5,7 @@ import { API_CAROUSEL_URL, SERVER_URL } from "../../../general/constants";
 import CarouselButton from "./CarouselButton";
 import CarouselIndicator from "./CarouselIndicator";
 import CarouselItem from "./CarouselItem";
-import Spinner from "./Spinner";
+import Spinner from "../../Spinner";
 
 
 function Carousel() {

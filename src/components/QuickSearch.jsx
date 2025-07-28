@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { API_SEARCH_URL } from "../general/constants";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import Spinner from "./pages/Home/Spinner";
+import Spinner from "../components/Spinner";
 import { clear } from "../components/FormValidation";
 
 

@@ -9,7 +9,7 @@ import { API_ADVANCED_SEARCH_URL } from "../../../general/constants";
 import { clearSeachResult } from "../../../general/clearSearchResult";
 import { clear } from "../../FormValidation";
 import { useState } from "react";
-import Spinner from "../../pages/Home/Spinner";
+import Spinner from "../../../components/Spinner";
 
 function areAllInputFieldsValid() {
   let result = false;
