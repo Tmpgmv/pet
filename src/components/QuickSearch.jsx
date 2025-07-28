@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 
 /*
 
-1. ВАЖНО: при работе с jQuery UI autocomplete необходимо 
+ВАЖНО: при работе с jQuery UI autocomplete необходимо 
 скрытьв вспомогательные сообщения. 
 
 см. в style.css ui-helper-hidden-accessible
