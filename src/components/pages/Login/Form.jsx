@@ -7,11 +7,8 @@ import $ from "jquery";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import {clear} from "../../FormValidation"
-
-// function clear() {
-//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-// }
+import { clear } from "../../FormValidation";
+import { API_URL_USERS_PATH } from "../../../general/constants";
 
 function saveToken(token) {
   localStorage.setItem("token", token);
@@ -27,47 +24,72 @@ function Form() {
     clear();
 
     let formData = $("#" + formId).serialize();
+    function saveUserInfo(data) {
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("phone", data.phone);
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("registrationDate", data.registrationDate);
+      localStorage.setItem("ordersCount", data.ordersCount);
+      localStorage.setItem("petsCount", data.petsCount);
+    }
 
-    let request = $.ajax({
+    function requestUserInfo(token) {
+      $.ajax({
+        url: API_URL_USERS_PATH,
+        method: "GET",
+        beforeSend: (xhr) => {
+          xhr.setRequestHeader("Authorization", "Bearer " + token);
+        },
+        dataType: "json",
+      })
+        .done((data) => {
+          saveUserInfo(data);
+          navigate(ACCOUNT, {
+            state: {
+              toast: {
+                type: "success",
+                message: "Вы вошли.",
+              },
+              from: location,
+            },
+          });
+        })
+        .fail((jqXHR) => {
+          throw new Error(
+            "Не удалось получить с сервера данные о пользователе!"
+          );
+        });
+    }
+
+    $.ajax({
       url: API_URL_LOGIN_PATH,
       method: "POST",
       data: formData,
       dataType: "json",
-    });
+    })
+      .done(function (dataJson, textStatus, jqXHR) {
+        let token = dataJson.data.token;
+        saveToken(token);
+        requestUserInfo(token);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        notifyFailure();
 
-    request.done(function (dataJson, textStatus, jqXHR) {
-      let token = dataJson.data.token;
-      saveToken(token);
+        let responseText = jqXHR.responseText;
 
-      navigate(ACCOUNT, {
-        state: {
-          toast: {
-            type: "success",
-            message: "Вы вошли.",
-          },
-          from: location,
-        },
+        if (responseText) {
+          let responseTextJson = $.parseJSON(responseText);
+          let errors = responseTextJson.error.error;
+
+          $.each(errors, function (key, data) {
+            let unitedErrorText = data;
+            $("#validationServerEmail").addClass("is-invalid");
+
+            let selector = "#" + key + "Error";
+            $(selector).text(unitedErrorText);
+          });
+        }
       });
-    });
-
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-      notifyFailure();
-
-      let responseText = jqXHR.responseText;
-
-      if (responseText) {        
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
-
-        $.each(errors, function (key, data) {
-          let unitedErrorText = data;
-          $("#validationServerEmail").addClass("is-invalid");          
-
-          let selector = "#" + key + "Error";
-          $(selector).text(unitedErrorText);
-        });
-      }
-    });
   }
 
   return (

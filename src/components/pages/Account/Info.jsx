@@ -2,59 +2,34 @@ import $ from "jquery";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  API_URL_USERS_PATH
-} from "../../../general/constants";
+import { API_URL_USERS_PATH } from "../../../general/constants";
 import getToken from "../../../general/getToken.js";
 import H1 from "../../H1";
 import InfoRow from "../../InfoRow";
+import {getUserInfo} from "../../../general/getUserInfo.js"
 
 const Info = () => {
   const location = useLocation();
+  let user = getUserInfo();
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    registrationDate: "",
-    ordersCount: "",
-    petsCount: "",
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    registrationDate: user.registrationDate,
+    ordersCount: user.ordersCount,
+    petsCount: user.petsCount,
   });
 
-
-
-  function requestInfo() {
-    const token = getToken();
-
-    $.ajax({
-      url: API_URL_USERS_PATH,
-      method: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      dataType: "json",
-    })
-      .done((data) => {               
-        setUserInfo({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          registrationDate: data.registrationDate,
-          ordersCount: data.ordersCount || 0,
-          petsCount: data.petsCount || 0,
-        });
-      })
-      .fail((jqXHR) => {
-        const toastData = location.state?.toast;
-        toast["error"]("Не удалось получить с сервера данные о пользователе!", {
-          toastId: "info",
-        });
-      });
-  }
-
-
-  useEffect(() => {
-    requestInfo();
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     getUserInfo();
+  //   } catch (e) {
+  //     const toastData = location.state?.toast;
+  //     toast["error"](e.message, {
+  //       toastId: "info",
+  //     });
+  //   }
+  // }, []);
 
   return (
     <section id="info-section" className="mt-5">

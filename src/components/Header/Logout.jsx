@@ -4,9 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const FORM_ID = "logout";
 
-function clearToken() {
-    localStorage.removeItem("token");
-}
 
 function Logout() {
 
@@ -27,7 +24,7 @@ function Logout() {
 
     function handleSubmit(event) {        
         event.preventDefault();
-        clearToken();
+        localStorage.clear();
         redirect();
     }
 
