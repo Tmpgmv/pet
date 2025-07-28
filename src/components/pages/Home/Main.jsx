@@ -2,6 +2,7 @@ import QuickSearch from "../../QuickSearch";
 import About from "./About";
 import Carousel from "./Carousel";
 import FoundAnimals from "./FoundAnimals";
+import Subscription from "./Subscription"
 
 function Main() {
   return (
@@ -13,6 +14,7 @@ function Main() {
 
       <Carousel />
       <FoundAnimals />
+      <Subscription />
     </main>
   );
 }

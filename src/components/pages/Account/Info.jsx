@@ -20,21 +20,11 @@ const Info = () => {
     petsCount: user.petsCount,
   });
 
-  // useEffect(() => {
-  //   try {
-  //     getUserInfo();
-  //   } catch (e) {
-  //     const toastData = location.state?.toast;
-  //     toast["error"](e.message, {
-  //       toastId: "info",
-  //     });
-  //   }
-  // }, []);
 
   return (
     <section id="info-section" className="mt-5">
       <H1 h1="Информация о пользователе" />
-      <div className="container text-start info col col-md-8 mt-4">
+      <div className="container text-start col col-md-8 mt-4 info">
         <InfoRow id="name" caption="Имя" value={userInfo.name} />
         <InfoRow
           id="userEmail"
