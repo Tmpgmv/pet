@@ -99,7 +99,7 @@ function Main({ formId }) {
       $.each(errors, function (key, data) {
         let unitedErrorText = data.join();
         $("#" + key).addClass("is-invalid");
-        let selector = "#" + key + "Feedback";
+        let selector = "#" + key + "Error";
         $(selector).text(unitedErrorText);
       });
     });

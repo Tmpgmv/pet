@@ -73,22 +73,20 @@ function Form() {
         requestUserInfo(token);
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
+        
         notifyFailure();
+        
+        let responseJson = jqXHR.responseJSON;
 
-        let responseText = jqXHR.responseText;
+        let errors = responseJson.error.errors;
+        
+        $.each(errors, function (key, data) {
+          let unitedErrorText = data.join();
+          $("#" + key).addClass("is-invalid");
+          let selector = "#" + key + "Error";
+          $(selector).text(unitedErrorText);
+        });
 
-        if (responseText) {
-          let responseTextJson = $.parseJSON(responseText);
-          let errors = responseTextJson.error.error;
-
-          $.each(errors, function (key, data) {
-            let unitedErrorText = data;
-            $("#validationServerEmail").addClass("is-invalid");
-
-            let selector = "#" + key + "Error";
-            $(selector).text(unitedErrorText);
-          });
-        }
       });
   }
 

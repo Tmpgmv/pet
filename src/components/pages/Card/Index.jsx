@@ -72,8 +72,9 @@ function Index() {
   return (
     <>
       <Header />
+      {/* См. комментарий к тегу Link в components/pages/Account/Card. */}
       <Main cardInfo={cardInfo} belongsToCurrentUser={belongsToCurrentUser}/>      
-      <DeleteConfirmation cardId={cardInfo.id}/> {/* См. комментарий к тегу Link в components/pages/Account/Card. */}
+      <DeleteConfirmation cardId={cardInfo.id}/> 
       <Footer />      
     </>
   );

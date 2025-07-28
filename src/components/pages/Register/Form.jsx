@@ -13,8 +13,9 @@ import { clear } from "../../FormValidation";
 
 function Form({ formId }) {
   const navigate = useNavigate();
-  const notifyFailure = () =>
+  function notifyFailure() {
     toast.error("Не удалось зарегистрировать пользователя!");
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +32,12 @@ function Form({ formId }) {
 
     request.done(function (data, textStatus, jqXHR) {
       navigate("/login", {
-        state: { toast: "Пользователь успешно зарегистрирован." },
+        state: {
+          toast: {
+            message: "Пользователь успешно зарегистрирован.",
+            type: "success",
+          },
+        },
       });
     });
 
@@ -41,7 +47,6 @@ function Form({ formId }) {
       let responseText = jqXHR.responseText;
 
       if (responseText) {
-        notifyFailure();
         let responseJson = jqXHR.responseJSON;
 
         let errors = responseJson.error.errors;
