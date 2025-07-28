@@ -11,16 +11,19 @@ function DistrictInput({
     required = attr({ debugValue: false, prodValue: required });
   // } Debug
 
+  const ID = "district";
+
+
   return (
     <div>
-      <label htmlFor="district" className="form-label">
+      <label htmlFor={ID} className="form-label">
         Район:
       </label>
       <select
         className={`form-control ${selectClassName ? selectClassName : ""}`}
-        id="district"
+        id={ID}
         defaultValue={defaultValue ? defaultValue : undefined}
-        name="district"
+        name={ID}
         required={required}
         pattern={required ? "(?!(---))" : undefined}
       >
@@ -45,8 +48,8 @@ function DistrictInput({
         <option value="Центральный">Центральный</option>
       </select>
 
-      <div className="invalid-feedback">
-        Выберите район, вид или и то, и другое.
+      <div id={`${ID}Error`} className="invalid-feedback">
+        Выберите район.
       </div>
     </div>
   );

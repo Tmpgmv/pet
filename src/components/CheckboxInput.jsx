@@ -6,10 +6,17 @@ function CheckboxInput({
                           errorMessage,
                           required = false,
                           onChange = null,
+                          clientOnly=false // Не отправлять на сервер. Касается флага register при добавлении нового объявления.
                         }) {
   // Debug {
-    required = attr({ prodValue: true, debugValue: false });
+  if (!clientOnly)
+  {
+    required = attr({ prodValue: required, debugValue: false });
     var type = attr({ prodValue: "checkbox", debugValue: "text" });
+  } else {
+    required = attr({ prodValue: required, debugValue: required });
+    var type = attr({ prodValue: "checkbox", debugValue: "checkbox" });
+  }
   // } Debug
 
   return (

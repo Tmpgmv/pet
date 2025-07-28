@@ -2,9 +2,8 @@ import { attr } from "../general/debugFunctions";
 
 function DescriptionInput({defaultValue}) {
   
-  // Debug {
-    var required = attr({debugValue: false, prodValue: true})    
-  // } Debug
+
+  const ID = "description";
 
   return (
     <div>
@@ -13,14 +12,13 @@ function DescriptionInput({defaultValue}) {
       </label>
       <textarea
         className="form-control"
-        id="validationServerDescription"
-        aria-describedby="descriptionError"
-        name="description"
-        rows={3}
-        required={required}
+        id={ID}
+        aria-describedby={`${ID}Error`}
+        name={ID}
+        rows={3}        
         defaultValue={defaultValue}
       />
-      <div id="descriptionError" className="invalid-feedback">
+      <div id={`${ID}Error`} className="invalid-feedback">
         Введите корректное описание.
       </div>
     </div>

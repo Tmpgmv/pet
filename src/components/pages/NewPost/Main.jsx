@@ -138,6 +138,7 @@ function Main({ formId }) {
           label="Пройти автоматическую регистрацию"
           errorMessage="Проблема на сервере."
           onChange={handleRegisterChange}
+          clientOnly={true}
         />
 
         <div id="passwords">

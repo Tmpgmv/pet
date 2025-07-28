@@ -1,5 +1,8 @@
 
 function MarkInput({defaultValue =null}) {
+
+  const ID = "mark";
+
   return (
     <div>
       <label htmlFor="validationServerMark" className="form-label">
@@ -8,12 +11,12 @@ function MarkInput({defaultValue =null}) {
       <input
         type="text"
         className="form-control"
-        id="validationServerMark"
-        aria-describedby="markError"
-        name="mark"
+        id={ID}
+        aria-describedby={`${ID}Error`}
+        name={ID}
         defaultValue={defaultValue ? defaultValue : undefined}        
       />
-      <div id="markError" className="invalid-feedback">
+      <div id={`${ID}Error`} className="invalid-feedback">
         Введите корректный электронный чип.
       </div>
     </div>

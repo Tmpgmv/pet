@@ -15,24 +15,25 @@ function EmailInput({ id = "email", defaultValue = "" }) {
     var type = attr({prodValue: "email", debugValue: "text"});
   // } Debug
 
-  let capitalizedId = capitalizeFirstLetter(id);
-  let validationServerId = "validationServer" + capitalizedId;
+  //let capitalizedId = capitalizeFirstLetter(id);
+  
+  const ID = "email";
 
   return (
     <div>
-      <label htmlFor={validationServerId} className="form-label">
+      <label htmlFor={ID} className="form-label">
         Электронная почта
       </label>
       <input
         type={type} // В дебажном режиме проверим работу с ошибками. Иначе нативное поведение формы не даст этого сделать.
         className="form-control"
-        id={validationServerId}
-        aria-describedby={`${id}Error`}
-        name="email"
+        id={ID}
+        aria-describedby={`${ID}Error`}
+        name={ID}
         required={required}
         defaultValue={defaultValue ? defaultValue : undefined}
       />
-      <div id={`${id}Error`} className="invalid-feedback">
+      <div id={`${ID}Error`} className="invalid-feedback">
         Введите корректный адрес электронной почты.
       </div>
     </div>
