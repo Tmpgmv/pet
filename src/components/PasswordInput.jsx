@@ -1,9 +1,15 @@
+import {attr} from "../general/debugFunctions";
+
 /*
 При регистрации необходимо объявить требования к паролю.
 Однако, при добавлении нового объявления требуется просто 
 ввести существующий пароль.
 */
 function PasswordInput({ extendedLabel = false }) {
+    // Debug {
+      var required = attr({ debugValue: false, prodValue: true });      
+      var pattern = attr({ debugValue: "*", prodValue: "(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-Za-zА-Яа-яЁё\d]{7,}" });
+    //} Debug
   return (
     <div>
       <label htmlFor="password" className="form-label">
@@ -18,8 +24,8 @@ function PasswordInput({ extendedLabel = false }) {
         id="password"
         aria-describedby="passwordError"
         name="password"
-        pattern="(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-Za-zА-Яа-яЁё\d]{7,}"
-        required={true}
+        pattern= {pattern}
+        required={required}
       />
       <div id="passwordError" className="invalid-feedback">
         Введите корректный пароль.

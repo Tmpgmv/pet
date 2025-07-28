@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import FormSingleAction from "../../FormSingleAction";
 
 function EditDelete({petId}) {
   // 1. Ctrl + h, deleteConfirmationModal -> deleteConfirmationModal

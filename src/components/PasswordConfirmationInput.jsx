@@ -1,6 +1,13 @@
+import {attr} from "../general/debugFunctions";
+
+
 function PasswordConfirmationInput() {
-  
-  return (
+    // Debug {
+      var required = attr({ debugValue: false, prodValue: true });      
+    // } Debug
+
+
+  return (    
     <div>
       <label
         htmlFor="password_confirmation"
@@ -14,7 +21,7 @@ function PasswordConfirmationInput() {
         id="password_confirmation"
         aria-describedby="password_confirmationError"
         name="password_confirmation"
-        required={true}
+        required={required}
       />
       <div id="password_confirmationError" className="invalid-feedback">
         Пароли не совпадают.

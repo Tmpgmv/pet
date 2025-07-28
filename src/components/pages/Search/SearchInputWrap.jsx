@@ -3,7 +3,7 @@ import AdvancedSearchForm from "./AdvancedSearchForm";
 import TabButton from "./TabButton";
 import TabPane from "./TabPane";
 
-function SearchInput(props) {
+function SearchInputWrap() {
   return (
     <div id="search-input-wrap">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -21,4 +21,4 @@ function SearchInput(props) {
   );
 }
 
-export default SearchInput;
+export default SearchInputWrap;

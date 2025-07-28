@@ -1,9 +1,16 @@
+import { attr } from "../general/debugFunctions";
+
 function KindInput({
-  aClassName = null,
-  required = false, // Для поиска эта строка тоже применяется. И там это не обязательный параметр.
-  errorMessage = "Введите вид животного.",
-  defaultValue = null
-}) {
+                    aClassName = null,
+                    required = false, // Для поиска эта строка тоже применяется. И там это не обязательный параметр.
+                    errorMessage = "Введите вид животного.",
+                    defaultValue = null,
+                  }) {
+  // Debug {
+    required = attr({ debugValue: false, prodValue: required });
+    var pattern = attr({ debugValue: "*", prodValue: "[а-яёА-ЯЁs-]+" });
+  // } Debug
+
   return (
     <div className={aClassName ?? undefined}>
       <label htmlFor="kind" className="form-label">
@@ -15,7 +22,7 @@ function KindInput({
         id="kind"
         aria-describedby="kindError"
         name="kind"
-        pattern="[а-яёА-ЯЁ\s\-]+"
+        pattern={pattern}
         required={required}
         defaultValue={defaultValue ? defaultValue : undefined}
       />

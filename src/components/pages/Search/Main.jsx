@@ -1,11 +1,11 @@
-import SearchInput from "./SearchInput";
+import SearchInputWrap from "./SearchInputWrap";
 import SearchResult from "./SearchResult";
 
 
 function Main() {
   return (
     <>
-      <SearchInput />      
+      <SearchInputWrap />      
       <SearchResult />
     </>
   );

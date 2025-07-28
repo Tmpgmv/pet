@@ -1,4 +1,11 @@
+import {attr} from "../general/debugFunctions";
+
 function NameInput({ defaultValue = null }) {
+  {
+    var required = attr({ debugValue: false, prodValue: required });
+    var pattern = attr({ debugValue: "*", prodValue: "[А-Яа-яЁё\s\-]+" });
+  }
+
   return (
     <div>
       <label htmlFor="name" className="form-label">
@@ -10,8 +17,8 @@ function NameInput({ defaultValue = null }) {
         id="name"
         aria-describedby="nameError"
         name="name"
-        pattern="[А-Яа-яЁё\s\-]+"
-        required={true}
+        pattern={pattern}
+        required={required}
         defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id="nameError" className="invalid-feedback">

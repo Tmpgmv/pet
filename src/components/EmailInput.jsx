@@ -1,19 +1,19 @@
 import capitalizeFirstLetter from "../general/capitalizeFirstLetter";
-import { DEBUG } from "../general/constants";
 // import { attr } from "../general/debugFunctions";
-import { useDebugAttr } from "./DebugWrapper";
+import { attr } from "../general/debugFunctions";
 
-function EmailInput({id="email", defaultValue=""}) {
+function EmailInput({ id = "email", defaultValue = "" }) {
   /* Для формы подписки на события обязательно задать id="subscription".
-  * Для остальных случаев - пользоваться id по умолчанию.
-  * Причина: надо избежать дублирования id. На странице с формой в <main> будет
-  * поле для ввод электронной почты, и внизу на той же странице будет поле подписки.
-  * И у них не должен совпасть Id поля ввода.
-  */
-  
-  const required = useDebugAttr("required");
-  const type = useDebugAttr("type");
+   * Для остальных случаев - пользоваться id по умолчанию.
+   * Причина: надо избежать дублирования id. На странице с формой в <main> будет
+   * поле для ввод электронной почты, и внизу на той же странице будет поле подписки.
+   * И у них не должен совпасть Id поля ввода.
+   */
 
+  // Debug {
+    var required = attr({prodValue: true, debugValue: false});
+    var type = attr({prodValue: "email", debugValue: "text"});
+  // } Debug
 
   let capitalizedId = capitalizeFirstLetter(id);
   let validationServerId = "validationServer" + capitalizedId;

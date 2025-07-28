@@ -1,9 +1,18 @@
+import {attr} from "../general/debugFunctions";
+
+
 function ImageInput({
-  id,
-  required = false,
-  aLabel = false,
-  defaultValue = null,
-}) {
+                      id,
+                      required = false,
+                      aLabel = false,
+                      defaultValue = null,
+                    }) {
+
+  // Debug {
+    required = attr({debugValue: false, prodValue: required});
+    var accept = attr({debugValue: "*", prodValue: "image/png"});
+  // } Debug
+
   return (
     <div>
       {aLabel ? (
@@ -16,7 +25,7 @@ function ImageInput({
       <input
         className="form-control"
         type="file"
-        accept="image/png"
+        accept={accept}
         id={id}
         name={id}
         aria-describedby={`${id}Feedback`}

@@ -1,9 +1,16 @@
+import { attr } from "../general/debugFunctions";
 
 function DistrictInput({
   required = true,
   selectClassName = null,
   defaultValue = null,
 }) {
+  
+
+  // Debug {
+    required = attr({ debugValue: false, prodValue: required });
+  // } Debug
+
   return (
     <div>
       <label htmlFor="district" className="form-label">

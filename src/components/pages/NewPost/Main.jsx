@@ -41,7 +41,6 @@ import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
 import { DebugWrap } from "../../DebugWrapper";
 
-
 function Main({ formId }) {
   const location = useLocation();
   const TOKEN = getToken();
@@ -50,17 +49,13 @@ function Main({ formId }) {
     toast.error("Не удалось опубликовать объявление!");
 
   const [isRegister, setIsRegister] = useState(false);
-  
 
-  function handleRegisterChange(event) {    
+  function handleRegisterChange(event) {
     setIsRegister(event.target.checked);
   }
 
-
-
-
-  function handleSubmit(event) {        
-    event.preventDefault();        
+  function handleSubmit(event) {
+    event.preventDefault();
     let theForm = document.getElementById(formId);
     let formData = new FormData(theForm);
     let request = $.ajax({
@@ -75,8 +70,8 @@ function Main({ formId }) {
       dataType: "json",
     });
 
-    request.done(function (dataJson, textStatus, jqXHR) {      
-      navigate(PETS+"/"+dataJson.data.id, {
+    request.done(function (dataJson, textStatus, jqXHR) {
+      navigate(PETS + "/" + dataJson.data.id, {
         state: {
           toast: {
             type: "success",
@@ -118,11 +113,7 @@ function Main({ formId }) {
 
         <PhoneInput />
 
-        <DebugWrap values={{ required: true, 
-                             type: "email" }}>
-          <EmailInput />
-
-        </DebugWrap>
+        <EmailInput />
 
         <KindInput />
 
@@ -130,20 +121,17 @@ function Main({ formId }) {
 
         <DescriptionInput />
 
-        <ImageInput id="photo1" aLabel={true} required={true}/>
+        <ImageInput id="photo1" aLabel={true} required={true} />
 
         <ImageInput id="photo2" />
 
         <ImageInput id="photo3" />
 
-        <DebugWrap values={{ required: true, 
-                             type: "checkbox" }}>
-          <CheckboxInput
-            name="confirm"
-            label="Согласие на обработку персональных данных"
-            errorMessage="Необходимо согласиться."            
-          />
-        </DebugWrap>  
+        <CheckboxInput
+          name="confirm"
+          label="Согласие на обработку персональных данных"
+          errorMessage="Необходимо согласиться."
+        />
 
         <CheckboxInput
           name="register"

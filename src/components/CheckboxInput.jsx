@@ -1,10 +1,16 @@
-import { useDebugAttr } from "./DebugWrapper";
+import { attr } from "../general/debugFunctions";
 
-
-function CheckboxInput({ name, label, errorMessage, required = false, onChange=null }) {
-  
-  required = useDebugAttr("required");
-  const type = useDebugAttr("type");
+function CheckboxInput({
+                          name,
+                          label,
+                          errorMessage,
+                          required = false,
+                          onChange = null,
+                        }) {
+  // Debug {
+    required = attr({ prodValue: true, debugValue: false });
+    var type = attr({ prodValue: "checkbox", debugValue: "text" });
+  // } Debug
 
   return (
     <div>
@@ -15,7 +21,7 @@ function CheckboxInput({ name, label, errorMessage, required = false, onChange=n
           defaultValue="1"
           id={name}
           aria-describedby={`${name}Error`}
-          name={name}          
+          name={name}
           required={required}
           onChange={onChange ? onChange : undefined}
         />

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { clear } from "../components/FormValidation";
 import { useLocation } from "react-router-dom";
-
+import {attr} from "../general/debugFunctions"
 
 /*
 
@@ -21,7 +21,9 @@ import { useLocation } from "react-router-dom";
 */
 
 function QuickSearch({ nameOfClass = null }) {  
-
+  // Debug {
+    var required = attr({ debugValue: false, prodValue: true });
+  // } Debug
 
 
   /* После поиска на главной странице необходимо передать
@@ -120,7 +122,7 @@ function QuickSearch({ nameOfClass = null }) {
             placeholder="Кого ищем?"
             name="query"
             aria-describedby="button-addon2"
-            required
+            required={required}
             defaultValue={query ? query : undefined} // См. комментарий к const location.
             onChange={(e) => {
               const value = e.target.value;
