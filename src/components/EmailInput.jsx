@@ -2,7 +2,7 @@ import capitalizeFirstLetter from "../general/capitalizeFirstLetter";
 // import { attr } from "../general/debugFunctions";
 import { attr } from "../general/debugFunctions";
 
-function EmailInput({ id = "email", defaultValue = "" }) {
+function EmailInput({ defaultValue = "" }) {
   /* Для формы подписки на события обязательно задать id="subscription".
    * Для остальных случаев - пользоваться id по умолчанию.
    * Причина: надо избежать дублирования id. На странице с формой в <main> будет

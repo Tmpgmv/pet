@@ -41,6 +41,7 @@ import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
 import { DebugWrap } from "../../DebugWrapper";
 import {clear} from "../../../components/FormValidation";
+import {getUserInfo} from "../../../general/getUserInfo";
 
 function Main({ formId }) {
   const location = useLocation();
@@ -55,6 +56,10 @@ function Main({ formId }) {
   function handleRegisterChange(event) {
     setDoRegister(event.target.checked);
   }
+
+
+  const [userInfo, setUserInfo] = useState(getUserInfo());
+  debugger;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -112,11 +117,11 @@ function Main({ formId }) {
       >
         <DistrictInput />
 
-        <NameInput />
+        <NameInput defaultValue={userInfo.name}/>
 
-        <PhoneInput />
+        <PhoneInput defaultValue={userInfo.phone}/>
 
-        <EmailInput />
+        <EmailInput defaultValue={userInfo.email}/>
 
         <KindInput />
 
