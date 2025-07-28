@@ -39,7 +39,7 @@ function closeModal(){
   const location = useLocation();
 
   function handleSubmit(event) {
-    debugger;
+    
     event.preventDefault();
     closeModal();
 

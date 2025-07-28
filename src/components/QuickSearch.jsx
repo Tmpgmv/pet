@@ -7,18 +7,30 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { clear } from "../components/FormValidation";
+import { useLocation } from "react-router-dom";
 
 
 /*
 
-ВАЖНО: при работе с jQuery UI autocomplete необходимо 
+1. ВАЖНО: при работе с jQuery UI autocomplete необходимо 
 скрытьв вспомогательные сообщения. 
 
 см. в style.css ui-helper-hidden-accessible
 
+
 */
 
 function QuickSearch({ nameOfClass = null }) {  
+
+
+
+  /* После поиска на главной странице необходимо передать
+  *  поисковый запрос. Иначе при переадресации 
+  *  поисковая строка будет очищена. */
+  const location = useLocation();
+  
+  const { items = [], query = "" } = location.state || {};  
+
   const FORM_ID = "quick-search";
   const INPUT_ID = "quick-search-input";
 
@@ -71,6 +83,8 @@ function QuickSearch({ nameOfClass = null }) {
 
     const formData = $("#" + FORM_ID).serialize();
 
+    let queryString = $("#" + INPUT_ID).val();
+
     $.ajax({
       url: API_SEARCH_URL,
       data: formData,
@@ -79,7 +93,7 @@ function QuickSearch({ nameOfClass = null }) {
     })
       .done((dataJson) => {        
         const items = dataJson.data.orders;        
-        navigate("/search", { state: { items } });
+        navigate("/search", { state: { items, query: queryString } });
       })
       .fail(() => {        
         toast.error("Не удалось получить данные с сервера!", {
@@ -107,6 +121,7 @@ function QuickSearch({ nameOfClass = null }) {
             name="query"
             aria-describedby="button-addon2"
             required
+            defaultValue={query ? query : undefined} // См. комментарий к const location.
             onChange={(e) => {
               const value = e.target.value;
               if (value.length > 3) {                
