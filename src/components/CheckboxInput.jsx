@@ -1,15 +1,22 @@
-function CheckboxInput({ name, label, errorMessage, isRequired = false, onChange=null }) {
+import { useDebugAttr } from "./DebugWrapper";
+
+
+function CheckboxInput({ name, label, errorMessage, required = false, onChange=null }) {
+  
+  required = useDebugAttr("required");
+  const type = useDebugAttr("type");
+
   return (
     <div>
       <div className="form-check">
         <input
           className="form-check-input"
-          type="checkbox"
+          type={type}
           defaultValue="1"
           id={name}
           aria-describedby={`${name}Error`}
-          name={name}
-          required={isRequired ? true : undefined}
+          name={name}          
+          required={required}
           onChange={onChange ? onChange : undefined}
         />
         <label className="form-check-label" htmlFor={name}>

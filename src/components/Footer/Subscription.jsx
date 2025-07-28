@@ -32,21 +32,17 @@ function Subscription() {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      notifyFailure();
+        notifyFailure();
+        let responseJson = jqXHR.responseJSON;
 
-      let responseText = jqXHR.responseText;
-
-      if (responseText) {
-        let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
+        let errors = responseJson.error.errors;
 
         $.each(errors, function (key, data) {
           let unitedErrorText = data.join();
-          $("#validationServerEmail").addClass("is-invalid");
+          $("#" + key).addClass("is-invalid");
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);
         });
-      }
     });
   }
 

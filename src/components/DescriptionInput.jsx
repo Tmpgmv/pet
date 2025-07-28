@@ -1,5 +1,8 @@
+import {DEBUG} from "../general/constants";
+import attr from "../general/debugFunctions";
 
 function DescriptionInput({defaultValue=null}) {
+  
   return (
     <div>
       <label htmlFor="validationServerDescription" className="form-label">
@@ -11,7 +14,7 @@ function DescriptionInput({defaultValue=null}) {
         aria-describedby="descriptionError"
         name="description"
         rows={3}
-        required={true}
+        required={DEBUG ? undefined : true}
         defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id="descriptionError" className="invalid-feedback">

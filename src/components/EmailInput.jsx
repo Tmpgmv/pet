@@ -1,4 +1,7 @@
 import capitalizeFirstLetter from "../general/capitalizeFirstLetter";
+import { DEBUG } from "../general/constants";
+// import { attr } from "../general/debugFunctions";
+import { useDebugAttr } from "./DebugWrapper";
 
 function EmailInput({id="email", defaultValue=""}) {
   /* Для формы подписки на события обязательно задать id="subscription".
@@ -7,6 +10,10 @@ function EmailInput({id="email", defaultValue=""}) {
   * поле для ввод электронной почты, и внизу на той же странице будет поле подписки.
   * И у них не должен совпасть Id поля ввода.
   */
+  
+  const required = useDebugAttr("required");
+  const type = useDebugAttr("type");
+
 
   let capitalizedId = capitalizeFirstLetter(id);
   let validationServerId = "validationServer" + capitalizedId;
@@ -17,12 +24,12 @@ function EmailInput({id="email", defaultValue=""}) {
         Электронная почта
       </label>
       <input
-        type="email"
+        type={type} // В дебажном режиме проверим работу с ошибками. Иначе нативное поведение формы не даст этого сделать.
         className="form-control"
         id={validationServerId}
         aria-describedby={`${id}Error`}
         name="email"
-        required={true}
+        required={required}
         defaultValue={defaultValue ? defaultValue : undefined}
       />
       <div id={`${id}Error`} className="invalid-feedback">

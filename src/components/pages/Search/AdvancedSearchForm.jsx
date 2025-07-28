@@ -1,15 +1,14 @@
 import $ from "jquery";
 import "jquery-ui/ui/widgets/autocomplete";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../../../components/Spinner";
+import { API_ADVANCED_SEARCH_URL } from "../../../general/constants";
 import Button from "../../Button";
 import DistrictInput from "../../DistrictInput";
-import KindInput from "../../KindInput";
-import { API_ADVANCED_SEARCH_URL } from "../../../general/constants";
-import { clearSeachResult } from "../../../general/clearSearchResult";
 import { clear } from "../../FormValidation";
-import { useState } from "react";
-import Spinner from "../../../components/Spinner";
+import KindInput from "../../KindInput";
 
 function areAllInputFieldsValid() {
   let result = false;

@@ -39,6 +39,7 @@ import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
+import { DebugWrap } from "../../DebugWrapper";
 
 
 function Main({ formId }) {
@@ -117,7 +118,11 @@ function Main({ formId }) {
 
         <PhoneInput />
 
-        <EmailInput />
+        <DebugWrap values={{ required: true, 
+                             type: "email" }}>
+          <EmailInput />
+
+        </DebugWrap>
 
         <KindInput />
 
@@ -131,12 +136,14 @@ function Main({ formId }) {
 
         <ImageInput id="photo3" />
 
-        <CheckboxInput
-          name="confirm"
-          label="Согласие на обработку персональных данных"
-          errorMessage="Необходимо согласиться."
-          isRequired={true}
-        />
+        <DebugWrap values={{ required: true, 
+                             type: "checkbox" }}>
+          <CheckboxInput
+            name="confirm"
+            label="Согласие на обработку персональных данных"
+            errorMessage="Необходимо согласиться."            
+          />
+        </DebugWrap>  
 
         <CheckboxInput
           name="register"
