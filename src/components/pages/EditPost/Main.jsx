@@ -91,17 +91,21 @@ function Main({ formId }) {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {      
-      notifyFailure("Не удалось сохранить данные.");
-      let responseJson = jqXHR.responseJSON;
+      notifyFailure();      
 
-      let errors = responseJson.error.errors;
+      let responseText = jqXHR.responseText;
 
-      $.each(errors, function (key, data) {
-        let unitedErrorText = data.join();
-        $("#" + key).addClass("is-invalid");
-        let selector = "#" + key + "Error";
-        $(selector).text(unitedErrorText);
-      });
+      if (responseText) {
+        let responseTextJson = $.parseJSON(responseText);
+        let errors = responseTextJson.error.errors;
+
+        $.each(errors, function (key, data) {
+          let unitedErrorText = data.join();
+          $("#" + key).addClass("is-invalid");
+          let selector = "#" + key + "Error";
+          $(selector).text(unitedErrorText);
+        });
+      }
     });
 
 

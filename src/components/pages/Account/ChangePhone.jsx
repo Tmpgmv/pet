@@ -57,11 +57,11 @@ function ChangePhone() {
 
       if (responseText) {
         let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
+        let errors = responseTextJson.error.errors;
 
         $.each(errors, function (key, data) {
           let unitedErrorText = data.join();
-          $("#validationServerPhone").addClass("is-invalid");
+          $("#" + key).addClass("is-invalid");
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);
         });

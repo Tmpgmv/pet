@@ -9,14 +9,12 @@ import $ from "jquery";
 import { toast } from "react-toastify";
 import {clear} from "../../FormValidation";
 
-// function clear() {
-//   $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-// }
+
 
 function ChangeEmail() {
   const location = useLocation();
   const TOKEN = getToken();
-  const FORM_ID = "change-email-form";
+  const FORM_ID = "change-email-form";  
   const navigate = useNavigate();
   const notifyFailure = () => toast.error("Не удалось изменить email!");
 
@@ -49,17 +47,17 @@ function ChangeEmail() {
     });
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
-      notifyFailure();
+      notifyFailure();      
 
       let responseText = jqXHR.responseText;
 
       if (responseText) {
         let responseTextJson = $.parseJSON(responseText);
-        let errors = responseTextJson.error.error;
+        let errors = responseTextJson.error.errors;
 
         $.each(errors, function (key, data) {
           let unitedErrorText = data.join();
-          $("#validationServerEmail").addClass("is-invalid");
+          $("#" + key).addClass("is-invalid");
           let selector = "#" + key + "Error";
           $(selector).text(unitedErrorText);
         });

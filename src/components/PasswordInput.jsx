@@ -4,11 +4,14 @@ import {attr} from "../general/debugFunctions";
 При регистрации необходимо объявить требования к паролю.
 Однако, при добавлении нового объявления требуется просто 
 ввести существующий пароль.
+
+
+Обязательно диспользовать двойные слеши в паттерне.
 */
 function PasswordInput({ extendedLabel = false }) {
     // Debug {
       var required = attr({ debugValue: false, prodValue: true });      
-      var pattern = attr({ debugValue: "*", prodValue: "(?=.*\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-Za-zА-Яа-яЁё\d]{7,}" });
+      var pattern = attr({ debugValue: "*", prodValue: "(?=.*\\d)(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-Za-zА-Яа-яЁё\\d]{7,}" });
     //} Debug
   return (
     <div>
