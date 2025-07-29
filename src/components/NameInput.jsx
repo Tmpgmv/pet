@@ -2,10 +2,10 @@ import {attr} from "../general/debugFunctions";
 
 function NameInput({ defaultValue = null }) {
   {
-    var required = attr({ debugValue: false, prodValue: required });
-    var pattern = attr({ debugValue: ".*", prodValue: "[А-Яа-яЁё\s\-]+" });
+    var required = attr({ debugValue: false, prodValue: true });
+    var pattern = attr({ debugValue: ".*", prodValue: "[А-Яа-яЁё\\s\\-]+" });
   }
-
+  
   return (
     <div>
       <label htmlFor="name" className="form-label">

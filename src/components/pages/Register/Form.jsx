@@ -82,7 +82,7 @@ function Form({ formId }) {
         name="confirm"
         label="Согласие на обработку персональных данных"
         errorMessage="Необходимо согласиться."
-        isRequired={true}
+        required={true}
       />
 
       <div className="col-12">

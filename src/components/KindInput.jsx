@@ -8,7 +8,7 @@ function KindInput({
                   }) {
   // Debug {
     required = attr({ debugValue: false, prodValue: required });
-    var pattern = attr({ debugValue: "*", prodValue: "[а-яёА-ЯЁs-]+" });
+    var pattern = attr({ debugValue: "*", prodValue: "[а-яёА-ЯЁ\\s\\-]+" });
   // } Debug
 
   return (

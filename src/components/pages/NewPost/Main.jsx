@@ -25,8 +25,10 @@ import $ from "jquery";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { clear } from "../../../components/FormValidation";
 import { API_PETS_URL, PETS } from "../../../general/constants";
 import getToken from "../../../general/getToken";
+import { getUserInfo } from "../../../general/getUserInfo";
 import Button from "../../Button";
 import CheckboxInput from "../../CheckboxInput";
 import DescriptionInput from "../../DescriptionInput";
@@ -39,9 +41,6 @@ import NameInput from "../../NameInput";
 import PasswordConfirmationInput from "../../PasswordConfirmationInput";
 import PasswordInput from "../../PasswordInput";
 import PhoneInput from "../../PhoneInput";
-import { DebugWrap } from "../../DebugWrapper";
-import {clear} from "../../../components/FormValidation";
-import {getUserInfo} from "../../../general/getUserInfo";
 
 function Main({ formId }) {
   const location = useLocation();
@@ -138,6 +137,7 @@ function Main({ formId }) {
           name="confirm"
           label="Согласие на обработку персональных данных"
           errorMessage="Необходимо согласиться."
+          required={true}
         />
 
         <CheckboxInput

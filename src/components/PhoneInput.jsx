@@ -4,7 +4,7 @@ function PhoneInput({ defaultValue=null}) {
 
   // Debug {
     var required = attr({ debugValue: false, prodValue: true });
-    var pattern = attr({ debugValue: ".*", prodValue: "^\+?\d+$" });
+    var pattern = attr({ debugValue: ".*", prodValue: "^\\+?\\d+$" });
     var type = attr({ debugValue: "text", prodValue: "tel" });
   // } Debug
 
